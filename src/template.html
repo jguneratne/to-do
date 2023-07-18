@@ -3,7 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do Application</title>
+    <title><%= htmlWebpackPlugin.options.title%>></title>
+    <link rel="stylesheet" type="text/css" href="../src/style.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="heading">My To Do List</h1>
+        <button type="submit" class="show-form-btn">
+          <img
+            src="../src/assets/imgs/plus-box.svg"
+            alt="Button to Add To-Do Item"
+          />
+        </button>
+      </div>
+
+      <div class="main">
+        <div class="side-nav">
+          <button class="tab-btn category-tab" data-for-tab="category">
+            Category View
+          </button>
+          <button class="tab-btn due-date-tab" data-for-tab="due-date">
+            Due Date View
+          </button>
+          <button class="tab-btn completed-tab" data-for-tab="completed-items">
+            Completed Tasks
+          </button>
+        </div>
+
+        <div class="content-box">
+          <div class="tab-content by-category" data-tab="category">
+            <h2>Test By Category</h2>
+          </div>
+
+          <div class="tab-content by-due-date" data-tab="due-date">
+            <h2>Test By Due Date</h2>
+          </div>
+
+          <div class="tab-content by-completed" data-tab="completed-items">
+            <h2>Test Completed Items</h2>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p class="my-copyright">Jenn Guneratne © 2023</p>
+
+        <a
+          href="https://github.com/jguneratne/to-do"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="github-logo"
+            src="../src/assets/imgs/GitHub-Mark-32px.png"
+            alt="Octocat GitHub Logo"
+          />
+        </a>
+      </footer>
+    </div>
+  </body>
 </html>

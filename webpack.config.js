@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: ["./src/index.js", "./src/tabControl.js"],
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -12,7 +12,9 @@ module.exports = {
   devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Webpack Template",
+      title: "To Do Application",
+      filename: "index.html",
+      template: "src/template.html",
     }),
   ],
   module: {
