@@ -64,6 +64,7 @@
 .main {
   background-color: var(--main-bground-color);
   grid-area: 2 / 1 / 3 / 2;
+  position: relative;
 
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -101,6 +102,119 @@
 
 .tab-btn:last-child {
   border-bottom: none;
+}
+
+/* Main: To-Do-Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1.5ch;
+  height: min-content;
+  min-width: min-content;
+  width: 45%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 5ch;
+  background-color: var(--inactive-tab-color);
+  border-radius: 3ch;
+  outline: 1px solid black;
+  outline-offset: -2ch;
+}
+
+.req-msg {
+  font-family: "Happy Monkey";
+  font-size: 2.3ch;
+  text-align: center;
+  margin-bottom: 3ch;
+}
+
+.form-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2ch;
+}
+
+.instruct {
+  display: flex;
+  justify-content: end;
+  margin-top: -1.4ch;
+}
+
+.title-msg::before {
+  content: "Please add a title.";
+  /* color: var(--focusColor); */
+  font-family: "Happy Monkey";
+  font-size: 1.8ch;
+}
+
+.description-msg::before {
+  content: "Add project details.";
+  /* color: var(--focusColor); */
+  font-family: "Happy Monkey";
+  font-size: 1.8ch;
+}
+
+.due-date-msg::before {
+  content: "Please select a due date.";
+  /* color: var(--focusColor); */
+  font-family: "Happy Monkey";
+  font-size: 1.8ch;
+}
+
+.btn-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3ch;
+  margin-top: 4ch;
+}
+
+label {
+  display: inline-block;
+  width: 15ch;
+  font-family: "Happy Monkey";
+  font-size: 2.15ch;
+}
+
+input[type="text"] {
+  display: inline-block;
+  flex: 1;
+  height: 3ch;
+  width: 10%;
+  padding-left: 1ch;
+  font-family: "Happy Monkey";
+  font-size: 1.9ch;
+  background-color: var(--main-bground-color);
+  border-radius: 1ch;
+  border: 0.2ch solid var(--head-foot-color);
+}
+
+input[type="text"].description {
+  height: 20ch;
+}
+
+input[type="text"]:valid {
+  background-color: var(--main-bground-color);
+}
+
+button.add-to-do {
+  font-family: "Happy Monkey";
+  font-size: 1.8ch;
+  width: 8ch;
+  background-color: var(--main-bground-color);
+  padding: 0.8ch;
+  border-radius: 3ch;
+  border: 1px solid var(--head-foot-color);
+}
+
+button.add-book:hover {
+  background-color: var(--main-bground-color);
+  cursor: pointer;
 }
 
 /* Main: Tab Content */
