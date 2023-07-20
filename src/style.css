@@ -168,7 +168,8 @@
   font-size: 1.8ch;
 }
 
-.btn-line {
+.btn-line,
+.cat-btn-line {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -204,18 +205,21 @@ input[type="text"]:valid {
   background-color: var(--main-bground-color);
 }
 
-button.add-to-do {
+button.add-to-do,
+button.add-category {
   font-family: "Happy Monkey";
   font-size: 1.8ch;
   width: 8ch;
+  height: min-content;
   background-color: var(--main-bground-color);
   padding: 0.8ch;
   border-radius: 3ch;
   border: 1px solid var(--head-foot-color);
 }
 
-button.add-book:hover {
-  background-color: var(--main-bground-color);
+button.add-to-do:hover,
+button.add-category:hover {
+  background-color: var(--head-foot-color);
   cursor: pointer;
 }
 
@@ -238,7 +242,9 @@ button.add-book:hover {
   display: flex;
 }
 
-.category-line {
+.category-form {
+  display: flex;
+  flex-direction: column;
   background-color: var(--inactive-tab-color);
   height: min-content;
   width: 50ch;
@@ -249,6 +255,14 @@ button.add-book:hover {
 input[type="text"].category {
   margin-left: -5ch;
   width: 70%;
+}
+
+.cat-btn-line {
+  margin-top: 2ch;
+}
+
+button.add-category {
+  margin-top: -2ch;
 }
 
 /* Footer */
