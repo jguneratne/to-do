@@ -1,4 +1,5 @@
 import tabControls from "./tabControl";
+import showCategoryForm from "./controller";
 
 document.addEventListener("DOMContentLoaded", () => {
   tabControls();
@@ -10,4 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".content-box").forEach((tabContent) => {
     tabContent.querySelector(".tab-content").click();
   });
+
+  showCategoryForm();
 });

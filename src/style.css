@@ -242,6 +242,10 @@ button.add-category:hover {
   display: flex;
 }
 
+.cat-form-container {
+  display: none;
+}
+
 .category-form {
   display: flex;
   flex-direction: column;
@@ -259,10 +263,6 @@ input[type="text"].category {
 
 .cat-btn-line {
   margin-top: 2ch;
-}
-
-button.add-category {
-  margin-top: -2ch;
 }
 
 /* Footer */
