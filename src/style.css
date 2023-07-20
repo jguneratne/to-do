@@ -124,6 +124,8 @@
   border-radius: 3ch;
   outline: 1px solid black;
   outline-offset: -2ch;
+
+  display: none;
 }
 
 .req-msg {
@@ -229,6 +231,28 @@ button.add-book:hover {
 
 .tab-content--active {
   display: block;
+}
+
+/* Main: Category View */
+.by-category {
+  display: flex;
+}
+
+.new-category {
+  height: 13ch;
+  width: 30ch;
+  border: none;
+  border-radius: 1ch;
+  background-color: var(--inactive-tab-color);
+  opacity: 70%;
+  font-family: "Lancelot";
+  font-size: 2ch;
+}
+
+.new-category:hover {
+  opacity: 100%;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* Footer */
