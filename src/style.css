@@ -238,21 +238,17 @@ button.add-book:hover {
   display: flex;
 }
 
-.new-category {
-  height: 13ch;
-  width: 30ch;
-  border: none;
-  border-radius: 1ch;
+.category-line {
   background-color: var(--inactive-tab-color);
-  opacity: 70%;
-  font-family: "Lancelot";
-  font-size: 2ch;
+  height: min-content;
+  width: 50ch;
+  padding: 1.5ch;
+  border-radius: 1ch;
 }
 
-.new-category:hover {
-  opacity: 100%;
-  cursor: pointer;
-  text-decoration: underline;
+input[type="text"].category {
+  margin-left: -5ch;
+  width: 70%;
 }
 
 /* Footer */
