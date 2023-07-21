@@ -1,28 +1,35 @@
 export default function tabControls() {
-  document.querySelectorAll(".tab-btn").forEach((button) => {
+  document.querySelectorAll(".btn-ctrl").forEach((button) => {
     button.addEventListener("click", () => {
-      const sideNav = button.parentElement;
+      const btnContainer = document.querySelector(".container");
       const clickedTab = button.dataset.forTab;
       const tabContainer = document.querySelector(".content-box");
       const activeTab = tabContainer.querySelector(
         `.tab-content[data-tab="${clickedTab}"]`
       );
+      const addBtn = document.querySelector(".show-form-btn");
+      const categoryTab = document.querySelector(".cat-tab");
 
-      console.log(sideNav);
+      //   console.log(btnContainer);
       console.log(clickedTab);
-      console.log(tabContainer);
+      //   console.log(tabContainer);
       console.log(activeTab);
 
-      sideNav.querySelectorAll(".tab-btn").forEach((tabBtn) => {
-        tabBtn.classList.remove("tab-btn--active");
+      btnContainer.querySelectorAll(".btn-ctrl").forEach((tabBtn) => {
+        tabBtn.classList.remove("btn-ctrl--active");
       });
 
       tabContainer.querySelectorAll(".tab-content").forEach((tabContent) => {
         tabContent.classList.remove("tab-content--active");
       });
 
-      button.classList.add("tab-btn--active");
+      button.classList.add("btn-ctrl--active");
       activeTab.classList.add("tab-content--active");
+
+      if (addBtn.classList.contains("btn-ctrl--active")) {
+        addBtn.classList.remove("btn-ctrl--active");
+        categoryTab.classList.add("btn-ctrl--active");
+      }
     });
   });
 }

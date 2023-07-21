@@ -51,7 +51,8 @@
   margin-left: 1ch;
 }
 
-.header button.show-form-btn {
+.header button.show-form-btn,
+.header button.tab-btn {
   height: 8ch;
   border: none;
   margin-right: 5ch;
@@ -96,7 +97,7 @@
   cursor: pointer;
 }
 
-.tab-btn--active {
+.btn-ctrl--active {
   background-color: var(--main-bground-color);
 }
 
@@ -105,6 +106,10 @@
 }
 
 /* Main: To-Do-Form */
+.form-div {
+  display: none;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -124,8 +129,6 @@
   border-radius: 3ch;
   outline: 1px solid black;
   outline-offset: -2ch;
-
-  display: none;
 }
 
 .req-msg {
