@@ -101,8 +101,8 @@
 
         <div class="content-box">
           <div class="tab-content by-category" data-tab="category">
-            <div class="cat-form-container">
-              <div class="category-form">
+            <div class="cat-form-container" id="cat-form-container">
+              <form class="category-form" id="category-form">
                 <div class="category-line">
                   <label for="description">Category:</label>
                   <input
@@ -122,8 +122,16 @@
                   >
                     Add
                   </button>
+                  <button
+                    type="reset"
+                    id="reset"
+                    value="reset"
+                    class="cancel-category"
+                  >
+                    Cancel
+                  </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
 
