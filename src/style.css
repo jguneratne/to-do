@@ -245,14 +245,14 @@ button.cancel-category:hover {
 
 .tab-content--active {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Main: Category View */
 
 .by-category {
   display: flex;
-  width: 100%;
-  height: 100%;
 }
 
 .cat-form-container {
