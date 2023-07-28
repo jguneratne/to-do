@@ -7,13 +7,14 @@ export function newCategoryForm() {
 
   if (newCatForm.style.display === "initial") {
     const sideNav = document.querySelector(".side-nav");
-
     sideNav.classList.add("cat-form-visible");
   }
 }
 
 export function hideCategoryForm() {
   const categoryForm = document.querySelector(".cat-form-container");
+  const sideNav = document.querySelector(".side-nav");
 
   categoryForm.style.display = "none";
+  sideNav.classList.remove("cat-form-visible");
 }
