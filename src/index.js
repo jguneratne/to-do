@@ -1,5 +1,5 @@
 import tabControls from "./tabControl";
-// import showCategoryForm from "./controller";
+import { showCategoryForm, cancelCategoryForm } from "./controller";
 
 document.addEventListener("DOMContentLoaded", () => {
   tabControls();
@@ -20,5 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  //   showCategoryForm();
+  showCategoryForm();
+  cancelCategoryForm();
 });

@@ -1,15 +1,20 @@
-// import newCategoryForm from "./view";
-// import model from "./model";
+import { newCategoryForm, hideCategoryForm } from "./view";
 
-// Add eventListener to plus btn
-// call view.newCategoryForm
-// tell model to push new category to array
+// Add eventListener to plus btn to show category form
+// ons submit, model pushes new category to array
+// on submit, view hides and clears category form, and shows new category section
 
-// export default function showCategoryForm() {
-//   const addBtn = document.querySelector(".show-form-btn");
+export function showCategoryForm() {
+  const addBtn = document.querySelector(".show-form-btn");
 
-//   addBtn.addEventListener("pointerdown", newCategoryForm);
-// }
+  addBtn.addEventListener("pointerdown", newCategoryForm);
+}
+
+export function cancelCategoryForm() {
+  const cancelCategory = document.querySelector(".cancel-category");
+
+  cancelCategory.addEventListener("pointerdown", hideCategoryForm);
+}
 
 // Add eventListener to add To Do item inside each category
 // call view.newToDoItem

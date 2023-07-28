@@ -1,4 +1,4 @@
-export default function newCategoryForm() {
+export function newCategoryForm() {
   const newCatForm = document.querySelector(".cat-form-container");
   const categoryTab = document.querySelector(".by-category");
 
@@ -10,4 +10,10 @@ export default function newCategoryForm() {
 
     sideNav.classList.add("cat-form-visible");
   }
+}
+
+export function hideCategoryForm() {
+  const categoryForm = document.querySelector(".cat-form-container");
+
+  categoryForm.style.display = "none";
 }
