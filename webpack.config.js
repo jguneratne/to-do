@@ -21,6 +21,7 @@ module.exports = {
       title: "To Do Application",
       filename: "index.html",
       template: "src/template.html",
+      scriptLoading: "module",
     }),
   ],
   module: {
