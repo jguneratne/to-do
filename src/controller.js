@@ -1,3 +1,4 @@
+import { addBtn, cancelCategoryBtn } from "./querySelectors";
 import { newCategoryForm, hideCategoryForm } from "./view";
 
 // Add eventListener to plus btn to show category form
@@ -5,15 +6,11 @@ import { newCategoryForm, hideCategoryForm } from "./view";
 // on submit, view hides and clears category form, and shows new category section
 
 export function showCategoryForm() {
-  const addBtn = document.querySelector(".show-form-btn");
-
   addBtn.addEventListener("pointerdown", newCategoryForm);
 }
 
 export function cancelCategoryForm() {
-  const cancelCategory = document.querySelector(".cancel-category");
-
-  cancelCategory.addEventListener("pointerdown", hideCategoryForm);
+  cancelCategoryBtn.addEventListener("pointerdown", hideCategoryForm);
 }
 
 // Add eventListener to add To Do item inside each category

@@ -1,3 +1,5 @@
+import { addBtn, returnToCatTab } from "./querySelectors";
+
 export default function tabControls() {
   document.querySelectorAll(".btn-ctrl").forEach((button) => {
     button.addEventListener("click", () => {
@@ -7,8 +9,6 @@ export default function tabControls() {
       const activeTab = tabContainer.querySelector(
         `.tab-content[data-tab="${clickedTab}"]`
       );
-      const addBtn = document.querySelector(".show-form-btn");
-      const categoryTab = document.querySelector(".cat-tab");
 
       //   console.log(btnContainer);
       console.log(clickedTab);
@@ -28,7 +28,7 @@ export default function tabControls() {
 
       if (addBtn.classList.contains("btn-ctrl--active")) {
         addBtn.classList.remove("btn-ctrl--active");
-        categoryTab.classList.add("btn-ctrl--active");
+        returnToCatTab.classList.add("btn-ctrl--active");
       }
     });
   });

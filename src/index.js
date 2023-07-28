@@ -1,3 +1,4 @@
+import { addBtn, categoryTab } from "./querySelectors";
 import tabControls from "./tabControl";
 import { showCategoryForm, cancelCategoryForm } from "./controller";
 
@@ -10,9 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".content-box").forEach((tabContent) => {
     tabContent.querySelector(".tab-content").click();
-
-    const addBtn = document.querySelector(".show-form-btn");
-    const categoryTab = document.querySelector(".cat-tab");
 
     if (addBtn.classList.contains("btn-ctrl--active")) {
       addBtn.classList.remove("btn-ctrl--active");

@@ -1,20 +1,15 @@
-export function newCategoryForm() {
-  const newCatForm = document.querySelector(".cat-form-container");
-  const categoryTab = document.querySelector(".by-category");
+import { categoryForm, categoryTab, sideNav } from "./querySelectors";
 
-  newCatForm.style.display = "initial";
+export function newCategoryForm() {
+  categoryForm.style.display = "initial";
   categoryTab.classList.add("tab-content--active");
 
-  if (newCatForm.style.display === "initial") {
-    const sideNav = document.querySelector(".side-nav");
+  if (categoryForm.style.display === "initial") {
     sideNav.classList.add("cat-form-visible");
   }
 }
 
 export function hideCategoryForm() {
-  const categoryForm = document.querySelector(".cat-form-container");
-  const sideNav = document.querySelector(".side-nav");
-
   categoryForm.style.display = "none";
   sideNav.classList.remove("cat-form-visible");
 }

@@ -9,6 +9,7 @@ module.exports = {
     "./src/controller.js",
     "./src/model.js",
     "./src/view.js",
+    "./src/querySelectors.js",
   ],
   output: {
     filename: "bundle.js",
@@ -21,7 +22,8 @@ module.exports = {
       title: "To Do Application",
       filename: "index.html",
       template: "src/template.html",
-      scriptLoading: "module",
+      inject: "body",
+      scriptLoading: ["module"],
     }),
   ],
   module: {
