@@ -73,6 +73,10 @@
 
 /* Main: Side-Nav */
 
+.cat-form-visible {
+  pointer-events: none;
+}
+
 .side-nav {
   grid-area: 1 / 1 / 2 / 2;
   background-color: var(--inactive-tab-color);
@@ -241,12 +245,13 @@ button.add-category:hover {
 }
 
 /* Main: Category View */
-.by-category {
-  display: flex;
-}
 
 .cat-form-container {
   display: none;
+}
+
+.by-category {
+  display: flex;
 }
 
 .category-form {
