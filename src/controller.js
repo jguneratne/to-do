@@ -1,9 +1,6 @@
-import { addBtn, cancelCategoryBtn } from "./querySelectors";
-import { newCategoryForm, hideCategoryForm } from "./view";
-
-// Add eventListener to plus btn to show category form
-// ons submit, model pushes new category to array
-// on submit, view hides and clears category form, and shows new category section
+import { addBtn, cancelCategoryBtn, categoryForm } from "./querySelectors";
+import { newCategoryForm, clearCategoryForm, hideCategoryForm } from "./view";
+import newCategoryArray from "./model";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -11,6 +8,17 @@ export function showCategoryForm() {
 
 export function cancelCategoryForm() {
   cancelCategoryBtn.addEventListener("pointerdown", hideCategoryForm);
+}
+
+export function submitNewCategory() {
+  categoryForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    newCategoryArray();
+    clearCategoryForm();
+    hideCategoryForm();
+
+    // Add view function to show new category section in DOM
+  });
 }
 
 // Add eventListener to add To Do item inside each category

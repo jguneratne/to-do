@@ -1,15 +1,19 @@
-import { categoryForm, categoryTab, sideNav } from "./querySelectors";
+import { categoryFormBox, categoryTab, sideNav } from "./querySelectors";
 
 export function newCategoryForm() {
-  categoryForm.style.display = "initial";
+  categoryFormBox.style.display = "initial";
   categoryTab.classList.add("tab-content--active");
 
-  if (categoryForm.style.display === "initial") {
+  if (categoryFormBox.style.display === "initial") {
     sideNav.classList.add("cat-form-visible");
   }
 }
 
+export function clearCategoryForm() {
+  document.forms[0].reset();
+}
+
 export function hideCategoryForm() {
-  categoryForm.style.display = "none";
+  categoryFormBox.style.display = "none";
   sideNav.classList.remove("cat-form-visible");
 }

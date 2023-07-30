@@ -1,6 +1,10 @@
 import { addBtn, categoryTab } from "./querySelectors";
 import tabControls from "./tabControl";
-import { showCategoryForm, cancelCategoryForm } from "./controller";
+import {
+  showCategoryForm,
+  cancelCategoryForm,
+  submitNewCategory,
+} from "./controller";
 
 document.addEventListener("DOMContentLoaded", () => {
   tabControls();
@@ -20,4 +24,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showCategoryForm();
   cancelCategoryForm();
+  submitNewCategory();
 });
