@@ -251,6 +251,7 @@ button.cancel-category:hover {
 
 /* Main: Category View */
 
+/* Category View: New Category Form */
 .by-category {
   display: flex;
 }
@@ -285,6 +286,43 @@ input[type="text"].category {
 
 .cat-btn-line {
   margin-top: 2ch;
+}
+
+/* Category View: New Category Section */
+.cat-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cat-card {
+  font-family: "Lancelot";
+  font-size: 2ch;
+  background-color: var(--inactive-tab-color);
+  width: 30ch;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 3ch;
+  align-items: center;
+  padding: 1ch;
+  border-radius: 1ch;
+}
+
+.new-to-do {
+  font-family: "Happy Monkey";
+  font-size: 2ch;
+  width: 10ch;
+  height: 3ch;
+  border: 1px solid var(--form-green-color);
+  border-radius: 2ch;
+  background-color: var(--head-foot-color);
+  cursor: pointer;
+}
+
+.new-to-do:hover {
+  background-color: var(--main-bground-color);
 }
 
 /* Footer */
