@@ -2,6 +2,7 @@ import { addBtn, categoryForm, cancelCategoryBtn } from "./querySelectors";
 import {
   newCategoryForm,
   hideCategoryForm,
+  replaceCategorySections,
   createCategorySection,
 } from "./view";
 import { categories, newCategoryArray } from "./model";
@@ -19,9 +20,8 @@ export function submitNewCategory() {
     e.preventDefault();
     newCategoryArray();
     hideCategoryForm();
+    replaceCategorySections();
     createCategorySection(categories);
-
-    // Add view function to show new category section in DOM
   });
 }
 

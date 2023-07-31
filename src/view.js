@@ -2,6 +2,7 @@ import {
   categoryFormBox,
   categoryForm,
   categoryTab,
+  categorySection,
   sideNav,
 } from "./querySelectors";
 
@@ -22,9 +23,6 @@ export function hideCategoryForm() {
 
 export function createCategorySection(categories) {
   for (let i = 0; i < categories.length; i++) {
-    const categorySection = document.createElement("div");
-    categorySection.className = "cat-section";
-
     const categoryCard = document.createElement("div");
     categoryCard.className = "cat-card";
     categoryCard.setAttribute("data-cat-num", i);
@@ -37,9 +35,15 @@ export function createCategorySection(categories) {
     addItemBtn.className = "new-category";
     addItemBtn.textContent = "Add Item";
 
-    categoryTab.appendChild(categorySection);
     categorySection.appendChild(categoryCard);
     categoryCard.appendChild(categoryName);
     categoryCard.appendChild(addItemBtn);
+  }
+}
+
+export function replaceCategorySections() {
+  // Replaces all category sections on each new category creation to prevent duplicates
+  while (categorySection.firstChild) {
+    categorySection.removeChild(categorySection.firstChild);
   }
 }

@@ -294,6 +294,8 @@ input[type="text"].category {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 4ch;
 }
 
 .cat-card {
