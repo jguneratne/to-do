@@ -1,6 +1,10 @@
 import { addBtn, categoryForm, cancelCategoryBtn } from "./querySelectors";
-import { newCategoryForm, hideCategoryForm } from "./view";
-import { newCategoryArray } from "./model";
+import {
+  newCategoryForm,
+  hideCategoryForm,
+  createCategorySection,
+} from "./view";
+import { categories, newCategoryArray } from "./model";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -15,6 +19,7 @@ export function submitNewCategory() {
     e.preventDefault();
     newCategoryArray();
     hideCategoryForm();
+    createCategorySection(categories);
 
     // Add view function to show new category section in DOM
   });
