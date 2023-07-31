@@ -4,5 +4,5 @@ export const categoryTab = document.querySelector(".by-category");
 export const sideNav = document.querySelector(".side-nav");
 export const cancelCategoryBtn = document.querySelector(".cancel-category");
 export const categoryFormBox = document.querySelector(".cat-form-container");
-export const categoryForm = document.querySelector(".category-form");
+export const categoryForm = document.querySelector("#category-form");
 export const categoryInput = document.querySelector(".category");
