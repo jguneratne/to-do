@@ -254,11 +254,12 @@ button.cancel-category:hover {
 /* Category View: New Category Form */
 .by-category {
   display: flex;
+  position: relative;
 }
 
 .cat-form-container {
   display: none;
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
 }
@@ -266,7 +267,6 @@ button.cancel-category:hover {
 .category-form {
   display: flex;
   flex-direction: column;
-  position: absolute;
   right: 0;
   left: 0;
   top: 0;
@@ -310,7 +310,7 @@ input[type="text"].category {
   border-radius: 1ch;
 }
 
-.new-to-do {
+.new-category {
   font-family: "Happy Monkey";
   font-size: 2ch;
   width: 10ch;
@@ -321,7 +321,7 @@ input[type="text"].category {
   cursor: pointer;
 }
 
-.new-to-do:hover {
+.new-category:hover {
   background-color: var(--main-bground-color);
 }
 
