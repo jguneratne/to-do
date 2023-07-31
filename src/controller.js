@@ -1,6 +1,14 @@
 import { addBtn, cancelCategoryBtn, categoryForm } from "./querySelectors";
-import { newCategoryForm, clearCategoryForm, hideCategoryForm } from "./view";
-import newCategoryArray from "./model";
+
+import {
+  newCategoryForm,
+  clearCategoryForm,
+  hideCategoryForm,
+  createCategorySection,
+  // replaceCategorySections,
+} from "./view";
+
+import { categories, newCategoryArray } from "./model";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -14,10 +22,11 @@ export function submitNewCategory() {
   categoryForm.addEventListener("submit", (e) => {
     e.preventDefault();
     newCategoryArray();
+    categoryForm.reset();
     clearCategoryForm();
     hideCategoryForm();
-
-    // Add view function to show new category section in DOM
+    createCategorySection(categories);
+    // replaceCategorySections();
   });
 }
 

@@ -1,9 +1,9 @@
 import { categoryInput } from "./querySelectors";
 
-const categories = [];
+export const categories = [];
 // const completedTasks = [];
 
-export default function newCategoryArray() {
+export function newCategoryArray() {
   categories.push(categoryInput.value);
   console.log(categories);
 }
