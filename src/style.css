@@ -113,28 +113,25 @@
 /* Main: To-Do-Form */
 .form-div {
   display: none;
-  /* position: absolute;
+  position: absolute;
   left: 0;
-  top: 0;
+  top: 0ch;
   right: 0;
-  bottom: 0;
-  margin: auto; */
+  bottom: 0ch;
+  margin: auto;
+  overflow: scroll;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 1.5ch;
   height: min-content;
   min-width: min-content;
-  width: 45%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5ch;
   padding: 5ch;
   background-color: var(--inactive-tab-color);
   border-radius: 3ch;
@@ -261,6 +258,7 @@ button.cancel-category:hover {
 .by-category {
   display: flex;
   position: relative;
+  height: 92%;
 }
 
 .cat-form-container {
