@@ -4,6 +4,7 @@ import {
   hideCategoryForm,
   replaceCategorySections,
   createCategorySection,
+  toDoFormDisplay,
 } from "./view";
 import { categories, newCategoryArray } from "./model";
 
@@ -25,8 +26,14 @@ export function submitNewCategory() {
   });
 }
 
-// Add eventListener to add To Do item inside each category
-// call view.newToDoItem
+export function showToDoForm() {
+  document.body.addEventListener("click", function (event) {
+    const newToDoBtn = document.querySelector(".new-to-do");
+    if (event.target === newToDoBtn) {
+      toDoFormDisplay();
+    }
+  });
+}
 
 // Listen for submit of To Do Card form
 // Tell model to push data to arrays

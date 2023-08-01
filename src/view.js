@@ -4,6 +4,7 @@ import {
   categoryTab,
   categorySection,
   sideNav,
+  toDoFormContainer,
 } from "./querySelectors";
 
 export function newCategoryForm() {
@@ -32,7 +33,10 @@ export function createCategorySection(categories) {
     categoryName.textContent = `${categories[i]}`;
 
     const addItemBtn = document.createElement("button");
-    addItemBtn.className = "new-category";
+    addItemBtn.type = "button";
+    addItemBtn.className = "new-to-do";
+    addItemBtn.id = "add-item";
+    addItemBtn.value = "add-item";
     addItemBtn.textContent = "Add Item";
 
     categorySection.appendChild(categoryCard);
@@ -46,4 +50,8 @@ export function replaceCategorySections() {
   while (categorySection.firstChild) {
     categorySection.removeChild(categorySection.firstChild);
   }
+}
+
+export function toDoFormDisplay() {
+  toDoFormContainer.style.display = "initial";
 }

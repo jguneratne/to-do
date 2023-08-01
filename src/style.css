@@ -113,6 +113,12 @@
 /* Main: To-Do-Form */
 .form-div {
   display: none;
+  /* position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; */
 }
 
 .form {
@@ -312,7 +318,7 @@ input[type="text"].category {
   border-radius: 1ch;
 }
 
-.new-category {
+.new-to-do {
   font-family: "Happy Monkey";
   font-size: 2ch;
   width: 10ch;
@@ -323,7 +329,7 @@ input[type="text"].category {
   cursor: pointer;
 }
 
-.new-category:hover {
+.new-to-do:hover {
   background-color: var(--main-bground-color);
 }
 

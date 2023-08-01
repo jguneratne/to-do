@@ -4,6 +4,7 @@ import {
   showCategoryForm,
   cancelCategoryForm,
   submitNewCategory,
+  showToDoForm,
 } from "./controller";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,3 +27,5 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelCategoryForm();
   submitNewCategory();
 });
+
+showToDoForm();
