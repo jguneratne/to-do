@@ -26,6 +26,5 @@ document.addEventListener("DOMContentLoaded", () => {
   showCategoryForm();
   cancelCategoryForm();
   submitNewCategory();
+  showToDoForm();
 });
-
-showToDoForm();
