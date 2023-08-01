@@ -28,6 +28,9 @@ export function createCategorySection(categories) {
     categoryCard.className = "cat-card";
     categoryCard.setAttribute("data-cat-num", i);
 
+    const categoryContent = document.createElement("div");
+    categoryContent.className = "cat-content";
+
     const categoryName = document.createElement("h2");
     categoryName.className = "cat-name";
     categoryName.textContent = `${categories[i]}`;
@@ -40,7 +43,8 @@ export function createCategorySection(categories) {
     addItemBtn.textContent = "Add Item";
 
     categorySection.appendChild(categoryCard);
-    categoryCard.appendChild(categoryName);
+    categoryCard.appendChild(categoryContent);
+    categoryContent.appendChild(categoryName);
     categoryCard.appendChild(addItemBtn);
   }
 }
