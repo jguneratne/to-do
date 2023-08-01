@@ -196,6 +196,7 @@ label {
 }
 
 input[type="text"],
+/* input[type="textarea"].description, */
 input[type="datetime-local"] {
   display: inline-block;
   flex: 1;
@@ -209,8 +210,17 @@ input[type="datetime-local"] {
   border: 0.2ch solid var(--form-green-color);
 }
 
-input[type="text"].description {
-  height: 20ch;
+textarea {
+  flex: 1;
+  /* height: 3ch;
+  width: 10%; */
+  padding-left: 1ch;
+  font-family: "Happy Monkey";
+  font-size: 1.9ch;
+  background-color: var(--main-bground-color);
+  border-radius: 1ch;
+  border: 0.2ch solid var(--form-green-color);
+  resize: vertical;
 }
 
 input[type="text"]:valid {
