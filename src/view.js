@@ -1,4 +1,5 @@
 import {
+  addCatMsg,
   categoryFormBox,
   categoryForm,
   categoryTab,
@@ -8,6 +9,7 @@ import {
 } from "./querySelectors";
 
 export function newCategoryForm() {
+  addCatMsg.style.display = "none";
   categoryFormBox.style.display = "initial";
   categoryTab.classList.add("tab-content--active");
 
