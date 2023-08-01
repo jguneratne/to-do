@@ -42,6 +42,7 @@ export function createCategorySection(categories) {
     addItemBtn.className = "new-to-do";
     addItemBtn.id = "add-item";
     addItemBtn.value = "add-item";
+    addItemBtn.setAttribute("data-category", categories[i]);
     addItemBtn.textContent = "Add Item";
 
     categorySection.appendChild(categoryCard);
