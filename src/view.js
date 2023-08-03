@@ -61,6 +61,7 @@ export function replaceCategorySections() {
 }
 
 export function toDoFormDisplay(clickedBtn) {
-  categoryName.textContent = clickedBtn.dataset.category;
+  console.log(clickedBtn);
+  categoryName.textContent = clickedBtn;
   toDoFormContainer.style.display = "initial";
 }

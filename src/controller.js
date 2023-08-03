@@ -31,12 +31,9 @@ export function showToDoForm() {
     const toDoBtns = Array.from(document.querySelectorAll("[data-category"));
 
     toDoBtns.forEach((button) => {
+      const btnClick = event.target.dataset.category;
       if (event.target === button) {
-        const iterator = toDoBtns.values();
-        for (const value of iterator) {
-          console.log(value);
-          toDoFormDisplay(value);
-        }
+        toDoFormDisplay(btnClick);
       }
     });
   });
