@@ -6,7 +6,7 @@ import {
   createCategorySection,
   toDoFormDisplay,
 } from "./view";
-import { categories, newCategoryArray } from "./model";
+import { categories, newCategoryArray, newToDoItem } from "./model";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -28,10 +28,17 @@ export function submitNewCategory() {
 
 export function showToDoForm() {
   document.body.addEventListener("click", function (event) {
-    const newToDoBtn = document.querySelector(".new-to-do");
-    if (event.target === newToDoBtn) {
-      toDoFormDisplay();
-    }
+    const toDoBtns = Array.from(document.querySelectorAll("[data-category"));
+
+    toDoBtns.forEach((button) => {
+      if (event.target === button) {
+        const iterator = toDoBtns.values();
+        for (const value of iterator) {
+          console.log(value);
+          toDoFormDisplay(value);
+        }
+      }
+    });
   });
 }
 

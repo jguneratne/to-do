@@ -6,6 +6,7 @@ import {
   categorySection,
   sideNav,
   toDoFormContainer,
+  categoryName,
 } from "./querySelectors";
 
 export function newCategoryForm() {
@@ -59,6 +60,7 @@ export function replaceCategorySections() {
   }
 }
 
-export function toDoFormDisplay() {
+export function toDoFormDisplay(clickedBtn) {
+  categoryName.textContent = clickedBtn.dataset.category;
   toDoFormContainer.style.display = "initial";
 }
