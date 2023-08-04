@@ -11,9 +11,9 @@ export default function tabControls() {
       );
 
       //   console.log(btnContainer);
-      console.log(clickedTab);
+      // console.log(clickedTab);
       //   console.log(tabContainer);
-      console.log(activeTab);
+      // console.log(activeTab);
 
       btnContainer.querySelectorAll(".btn-ctrl").forEach((tabBtn) => {
         tabBtn.classList.remove("btn-ctrl--active");

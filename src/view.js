@@ -7,6 +7,7 @@ import {
   sideNav,
   toDoFormContainer,
   categoryName,
+  toDoForm,
 } from "./querySelectors";
 
 export function newCategoryForm() {
@@ -64,4 +65,9 @@ export function toDoFormDisplay(clickedBtn) {
   console.log(clickedBtn);
   categoryName.textContent = clickedBtn;
   toDoFormContainer.style.display = "initial";
+}
+
+export function hideToDoForm() {
+  toDoFormContainer.style.display = "none";
+  toDoForm.reset();
 }

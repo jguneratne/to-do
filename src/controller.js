@@ -1,10 +1,17 @@
-import { addBtn, categoryForm, cancelCategoryBtn } from "./querySelectors";
+import {
+  addBtn,
+  categoryForm,
+  cancelCategoryBtn,
+  categorySection,
+  toDoForm,
+} from "./querySelectors";
 import {
   newCategoryForm,
   hideCategoryForm,
   replaceCategorySections,
   createCategorySection,
   toDoFormDisplay,
+  hideToDoForm,
 } from "./view";
 import { categories, newCategoryArray, newToDoItem } from "./model";
 
@@ -27,15 +34,22 @@ export function submitNewCategory() {
 }
 
 export function showToDoForm() {
-  document.body.addEventListener("click", function (event) {
+  categorySection.addEventListener("click", function (event) {
     const toDoBtns = Array.from(document.querySelectorAll("[data-category"));
-
+    const btnClick = event.target.dataset.category;
     toDoBtns.forEach((button) => {
-      const btnClick = event.target.dataset.category;
       if (event.target === button) {
         toDoFormDisplay(btnClick);
       }
     });
+  });
+}
+
+export function submitToDo() {
+  toDoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    newToDoItem();
+    hideToDoForm();
   });
 }
 
