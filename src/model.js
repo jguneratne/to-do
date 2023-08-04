@@ -20,8 +20,9 @@ export function newToDoItem() {
   const title = toDoTitle.value;
   const description = toDoDescription.value;
   const dueDate = toDoDueDate.value;
-  const toDoItem = { category, title, description, dueDate };
+  const completedTask = false;
 
+  const toDoItem = { category, title, description, dueDate, completedTask };
   toDoItems.push(toDoItem);
   console.log(toDoItems);
 }

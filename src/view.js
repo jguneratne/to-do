@@ -8,6 +8,7 @@ import {
   toDoFormContainer,
   categoryName,
   toDoForm,
+  toDoDueDate,
 } from "./querySelectors";
 
 export function newCategoryForm() {
@@ -70,4 +71,60 @@ export function toDoFormDisplay(clickedBtn) {
 export function hideToDoForm() {
   toDoFormContainer.style.display = "none";
   toDoForm.reset();
+}
+
+export function displayToDoEntry(toDoItems) {
+  for (let i = 0; i < toDoItems.length; i++) {
+    const categoryContent = document.querySelector(".cat-content");
+
+    const toDoEntry = document.createElement("div");
+    toDoEntry.className = "to-do-entry";
+    toDoEntry.setAttribute("data-entry", i);
+
+    const toDoTitle = document.createElement("h3");
+    toDoTitle.className = "title";
+    toDoTitle.textContent = toDoItems[i].title;
+
+    const toDoDetails = document.createElement("p");
+    toDoDetails.className = "details";
+    toDoDetails.textContent = toDoItems[i].description;
+
+    // !!! Figure out how to use date-fns for this
+    const toDoDueDate = document.createElement("p");
+    toDoDueDate.className = "due-date";
+    toDoDueDate.textContent = toDoItems[i].dueDate;
+
+    const completedDiv = document.createElement("div");
+    completedDiv.className = "complete-container";
+
+    const completedCheckLabel = document.createElement("label");
+    completedCheckLabel.setAttribute = ("for", "complete");
+
+    const completedCheck = document.createElement("INPUT");
+    completedCheck.setAttribute("type", "checkbox");
+    completedCheck.className = "complete";
+    completedCheck.name = "complete";
+    completedCheck.id = "complete";
+    completedCheck.value = "Complete:";
+    completedCheck.textContent = "Complete:";
+    completedCheck.checked = toDoItems[i].completedTask;
+
+    const deleteIconDiv = document.createElement("div");
+    deleteIconDiv.className = "delete-icon";
+
+    const deleteIcon = document.createElement("img");
+    deleteIcon.src = "../src/assets/imgs/trash.svg";
+
+    if (toDoItems[i].category === categoryName.textContent) {
+      categoryContent.appendChild(toDoEntry);
+      toDoEntry.appendChild(toDoTitle);
+      toDoEntry.appendChild(toDoDetails);
+      toDoEntry.appendChild(toDoDueDate);
+      toDoEntry.appendChild(completedDiv);
+      completedDiv.appendChild(completedCheckLabel);
+      completedDiv.appendChild(completedCheck);
+      toDoEntry.appendChild(deleteIconDiv);
+      deleteIconDiv.appendChild(deleteIcon);
+    }
+  }
 }

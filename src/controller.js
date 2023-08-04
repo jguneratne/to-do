@@ -12,8 +12,9 @@ import {
   createCategorySection,
   toDoFormDisplay,
   hideToDoForm,
+  displayToDoEntry,
 } from "./view";
-import { categories, newCategoryArray, newToDoItem } from "./model";
+import { categories, newCategoryArray, newToDoItem, toDoItems } from "./model";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -50,6 +51,7 @@ export function submitToDo() {
     e.preventDefault();
     newToDoItem();
     hideToDoForm();
+    displayToDoEntry(toDoItems);
   });
 }
 
