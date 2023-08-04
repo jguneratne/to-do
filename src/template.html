@@ -31,17 +31,6 @@
           </button>
         </div>
 
-        <!-- <div class="to-do-form">
-              <div class="to-do-info"></div>
-                <h4>Category:</h4>
-                <h4>Title:</h4>
-                <h4>Due Date:</h4>
-                <h4>Complete:</h4>
-              <button type="submit" value="Remove" class="remove">
-                Delete 
-              </button>
-            </div> -->
-
         <div class="content-box">
           <div class="tab-content by-category cat-tab" data-tab="category">
             <div class="form-div">
@@ -107,16 +96,35 @@
             </div>
 
             <div class="cat-section">
-              <h2 class="add-cat-msg">
+              <!-- <h2 class="add-cat-msg">
                 Create Your First Category To Start Adding To-Do Items!
-              </h2>
-              <!-- <div class="cat-card">
+              </h2> -->
+              <div class="cat-card">
                 <div class="cat-content">
                   <h2 class="cat-name">Category Name</h2>
+                  <div class="to-do-entry">
+                    <h3 class="title">Title:</h3>
+                    <p class="details">Details:</p>
+                    <p class="due-date">Due Date:</p>
+                    <div class="complete-container">
+                      <label for="complete">Complete:</label>
+                      <input
+                        type="checkbox"
+                        id="complete"
+                        class="complete"
+                        name="complete"
+                        value="Complete:"
+                      />
+                    </div>
+
+                    <div class="delete-icon">
+                      <img src="../src/assets/imgs/trash.svg" />
+                    </div>
+                  </div>
                 </div>
 
                 <button class="new-to-do">Add Item</button>
-              </div> -->
+              </div>
             </div>
 
             <div class="cat-form-container" id="cat-form-container">
