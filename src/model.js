@@ -11,7 +11,13 @@ export const toDoItems = [];
 // const completedTasks = [];
 
 export function newCategoryArray() {
-  if (categories.includes(categoryInput.value)) {
+  const newCategory = categoryInput.value;
+
+  if (
+    categories.some(
+      (category) => category.toLowerCase() === newCategory.toLowerCase()
+    )
+  ) {
     alert("Duplicate category. Please choose a new category title");
   } else {
     categories.push(categoryInput.value);
