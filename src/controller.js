@@ -13,6 +13,7 @@ import {
   toDoFormDisplay,
   hideToDoForm,
   displayToDoEntry,
+  replaceToDoItems,
 } from "./view";
 import { categories, newCategoryArray, newToDoItem, toDoItems } from "./model";
 
@@ -31,6 +32,8 @@ export function submitNewCategory() {
     hideCategoryForm();
     replaceCategorySections();
     createCategorySection(categories);
+    replaceToDoItems();
+    displayToDoEntry(toDoItems);
   });
 }
 
@@ -48,18 +51,12 @@ export function showToDoForm() {
 
 export function submitToDo() {
   toDoForm.addEventListener("submit", (e) => {
+    const targetCategory = e.target.dataset.category;
+    console.log(targetCategory);
     e.preventDefault();
     newToDoItem();
     hideToDoForm();
+    replaceToDoItems();
     displayToDoEntry(toDoItems);
   });
 }
-
-// Listen for submit of To Do Card form
-// Tell model to push data to arrays
-// Tell view to create new card in relevant category (Category View)
-// Tell view to create new list item (Due Date View)
-
-// Listen for Completed Item
-// Tell model to push data to completed tasks
-// Tell view to add item to completed tasks (Completed Tasks View)

@@ -8,7 +8,6 @@ import {
   toDoFormContainer,
   categoryName,
   toDoForm,
-  toDoDueDate,
 } from "./querySelectors";
 
 export function newCategoryForm() {
@@ -33,12 +32,13 @@ export function createCategorySection(categories) {
     categoryCard.className = "cat-card";
     categoryCard.setAttribute("data-cat-num", i);
 
+    const cardCategoryName = document.createElement("h2");
+    cardCategoryName.className = "cat-name";
+    cardCategoryName.textContent = `${categories[i]}`;
+
     const categoryContent = document.createElement("div");
     categoryContent.className = "cat-content";
-
-    const categoryName = document.createElement("h2");
-    categoryName.className = "cat-name";
-    categoryName.textContent = `${categories[i]}`;
+    categoryContent.dataset.content = categories[i];
 
     const addItemBtn = document.createElement("button");
     addItemBtn.type = "button";
@@ -49,8 +49,8 @@ export function createCategorySection(categories) {
     addItemBtn.textContent = "Add Item";
 
     categorySection.appendChild(categoryCard);
+    categoryCard.appendChild(cardCategoryName);
     categoryCard.appendChild(categoryContent);
-    categoryContent.appendChild(categoryName);
     categoryCard.appendChild(addItemBtn);
   }
 }
@@ -63,7 +63,7 @@ export function replaceCategorySections() {
 }
 
 export function toDoFormDisplay(clickedBtn) {
-  console.log(clickedBtn);
+  // console.log(clickedBtn);
   categoryName.textContent = clickedBtn;
   toDoFormContainer.style.display = "initial";
 }
@@ -75,7 +75,7 @@ export function hideToDoForm() {
 
 export function displayToDoEntry(toDoItems) {
   for (let i = 0; i < toDoItems.length; i++) {
-    const categoryContent = document.querySelector(".cat-content");
+    const catContentDivs = document.querySelectorAll(".cat-content");
 
     const toDoEntry = document.createElement("div");
     toDoEntry.className = "to-do-entry";
@@ -89,7 +89,7 @@ export function displayToDoEntry(toDoItems) {
     toDoDetails.className = "details";
     toDoDetails.textContent = toDoItems[i].description;
 
-    // !!! Figure out how to use date-fns for this
+    // !!! Figure out how to use date-fns to format dueDate
     const toDoDueDate = document.createElement("p");
     toDoDueDate.className = "due-date";
     toDoDueDate.textContent = toDoItems[i].dueDate;
@@ -98,7 +98,8 @@ export function displayToDoEntry(toDoItems) {
     completedDiv.className = "complete-container";
 
     const completedCheckLabel = document.createElement("label");
-    completedCheckLabel.setAttribute = ("for", "complete");
+    completedCheckLabel.setAttribute("for", "complete");
+    completedCheckLabel.textContent = "Complete:";
 
     const completedCheck = document.createElement("INPUT");
     completedCheck.setAttribute("type", "checkbox");
@@ -106,7 +107,6 @@ export function displayToDoEntry(toDoItems) {
     completedCheck.name = "complete";
     completedCheck.id = "complete";
     completedCheck.value = "Complete:";
-    completedCheck.textContent = "Complete:";
     completedCheck.checked = toDoItems[i].completedTask;
 
     const deleteIconDiv = document.createElement("div");
@@ -115,16 +115,30 @@ export function displayToDoEntry(toDoItems) {
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
 
-    if (toDoItems[i].category === categoryName.textContent) {
-      categoryContent.appendChild(toDoEntry);
-      toDoEntry.appendChild(toDoTitle);
-      toDoEntry.appendChild(toDoDetails);
-      toDoEntry.appendChild(toDoDueDate);
-      toDoEntry.appendChild(completedDiv);
-      completedDiv.appendChild(completedCheckLabel);
-      completedDiv.appendChild(completedCheck);
-      toDoEntry.appendChild(deleteIconDiv);
-      deleteIconDiv.appendChild(deleteIcon);
-    }
+    catContentDivs.forEach((div) => {
+      if (toDoItems[i].category === div.dataset.content) {
+        console.log(div.dataset.content);
+
+        div.appendChild(toDoEntry);
+        toDoEntry.appendChild(toDoTitle);
+        toDoEntry.appendChild(toDoDetails);
+        toDoEntry.appendChild(toDoDueDate);
+        toDoEntry.appendChild(completedDiv);
+        completedDiv.appendChild(completedCheckLabel);
+        completedDiv.appendChild(completedCheck);
+        toDoEntry.appendChild(deleteIconDiv);
+        deleteIconDiv.appendChild(deleteIcon);
+      }
+    });
   }
+}
+
+export function replaceToDoItems() {
+  // Replaces all To Do Items on each new item creation to prevent duplicates
+  let toDoParents = document.querySelectorAll(".cat-content");
+  toDoParents.forEach((parent) => {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  });
 }
