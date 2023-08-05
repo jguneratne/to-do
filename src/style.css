@@ -327,6 +327,7 @@ input[type="text"].category {
   align-items: center;
   padding: 1ch;
   border-radius: 1ch;
+  margin-bottom: 2ch;
 }
 
 .cat-content {
