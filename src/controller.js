@@ -21,6 +21,7 @@ import {
   newToDoItem,
   toDoItems,
   removeToDo,
+  removeCategory,
 } from "./model";
 
 export function showCategoryForm() {
@@ -71,6 +72,18 @@ export function deleteToDoItem() {
   categorySection.addEventListener("pointerdown", (e) => {
     const deleteEntry = e.target.dataset.delete;
     removeToDo(deleteEntry);
+    replaceToDoItems();
+    displayToDoEntry(toDoItems);
+  });
+}
+
+export function deleteCategory() {
+  categorySection.addEventListener("pointerdown", (e) => {
+    const deleteCat = e.target.dataset.deleteCat;
+    console.log(deleteCat);
+    removeCategory(deleteCat);
+    //replaceCategorySections();
+    //createCategorySection(categories);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
   });

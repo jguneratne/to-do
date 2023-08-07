@@ -40,12 +40,31 @@ export function newToDoItem() {
 export function removeToDo(removedItem) {
   if (removedItem) {
     let confirmRemove = confirm(
-      "Are you sure you want to delete? This cannot be undone"
+      "Are you sure you want to delete this entry? This cannot be undone"
     );
 
     if (confirmRemove) {
       toDoItems.splice(removedItem, 1);
       console.log(toDoItems);
+    }
+  }
+}
+
+export function removeCategory(removedCat) {
+  if (removedCat) {
+    let confirmRemoveCat = confirm(
+      "Are you sure you want to delete this category with all of its entries? This cannot be undone"
+    );
+
+    if (confirmRemoveCat) {
+      for (let i = toDoItems.length - 1; i >= 0; i--) {
+        if (toDoItems[i].category === removedCat) {
+          toDoItems.splice(removedCat, 1);
+          console.log(toDoItems);
+        }
+      }
+      categories.splice(removedCat, 1);
+      console.log(categories);
     }
   }
 }

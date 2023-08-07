@@ -50,11 +50,11 @@ export function createCategorySection(categories) {
 
     const deleteIconContainer = document.createElement("div");
     deleteIconContainer.className = "delete-icon";
-    deleteIconContainer.setAttribute("data-delete-cat", i);
+    deleteIconContainer.setAttribute("data-delete-cat", categories[i]);
 
     const deleteBtnImg = document.createElement("img");
     deleteBtnImg.src = "../src/assets/imgs/trash.svg";
-    deleteBtnImg.setAttribute("data-delete-cat", i);
+    deleteBtnImg.setAttribute("data-delete-cat", categories[i]);
 
     categorySection.appendChild(categoryCard);
     categoryCard.appendChild(cardCategoryName);
