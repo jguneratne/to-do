@@ -37,11 +37,14 @@ export function newToDoItem() {
   console.log(toDoItems);
 }
 
-export function removeToDo() {
-  if (toDoItems.length !== 0) {
-    const deleteToDoEntry = document.querySelector("[data-entry");
-    for (let i = 0; i < toDoItems.length; i++) {
-      toDoItems.splice(deleteToDoEntry, 1);
+export function removeToDo(removedItem) {
+  if (removedItem) {
+    let confirmRemove = confirm(
+      "Are you sure you want to delete? This cannot be undone"
+    );
+
+    if (confirmRemove) {
+      toDoItems.splice(removedItem, 1);
       console.log(toDoItems);
     }
   }

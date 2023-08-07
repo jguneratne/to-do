@@ -111,10 +111,11 @@ export function displayToDoEntry(toDoItems) {
 
     const deleteIconDiv = document.createElement("div");
     deleteIconDiv.className = "delete-icon";
-    deleteIconDiv.setAttribute("data-entry", i);
+    deleteIconDiv.setAttribute("data-delete", i);
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
+    deleteIcon.setAttribute("data-delete", i);
 
     catContentDivs.forEach((div) => {
       if (toDoItems[i].category === div.dataset.content) {

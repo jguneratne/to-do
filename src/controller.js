@@ -68,11 +68,9 @@ export function submitToDo() {
 }
 
 export function deleteToDoItem() {
-  const toDoParent = document.querySelector(".content-box");
-
-  toDoParent.addEventListener("pointerdown", (e) => {
-    removeToDo();
-    console.log(toDoItems);
+  categorySection.addEventListener("pointerdown", (e) => {
+    const deleteEntry = e.target.dataset.delete;
+    removeToDo(deleteEntry);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
   });
