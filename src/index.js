@@ -6,6 +6,7 @@ import {
   submitNewCategory,
   showToDoForm,
   submitToDo,
+  deleteToDoItem,
 } from "./controller";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,4 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
   submitNewCategory();
   showToDoForm();
   submitToDo();
+  deleteToDoItem();
 });

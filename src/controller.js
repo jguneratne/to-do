@@ -15,7 +15,13 @@ import {
   displayToDoEntry,
   replaceToDoItems,
 } from "./view";
-import { categories, newCategoryArray, newToDoItem, toDoItems } from "./model";
+import {
+  categories,
+  newCategoryArray,
+  newToDoItem,
+  toDoItems,
+  removeToDo,
+} from "./model";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -56,6 +62,17 @@ export function submitToDo() {
     e.preventDefault();
     newToDoItem();
     hideToDoForm();
+    replaceToDoItems();
+    displayToDoEntry(toDoItems);
+  });
+}
+
+export function deleteToDoItem() {
+  const toDoParent = document.querySelector(".content-box");
+
+  toDoParent.addEventListener("pointerdown", (e) => {
+    removeToDo();
+    console.log(toDoItems);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
   });

@@ -36,3 +36,13 @@ export function newToDoItem() {
   toDoItems.push(toDoItem);
   console.log(toDoItems);
 }
+
+export function removeToDo() {
+  if (toDoItems.length !== 0) {
+    const deleteToDoEntry = document.querySelector("[data-entry");
+    for (let i = 0; i < toDoItems.length; i++) {
+      toDoItems.splice(deleteToDoEntry, 1);
+      console.log(toDoItems);
+    }
+  }
+}

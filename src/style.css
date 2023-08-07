@@ -418,6 +418,12 @@ input[type="checkbox"].complete:checked::before {
   margin-top: 3ch;
 }
 
+.delete-icon > img:hover {
+  width: 3ch;
+  margin-top: 2.1ch;
+  cursor: pointer;
+}
+
 /* Footer */
 
 footer {

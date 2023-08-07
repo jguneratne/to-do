@@ -111,6 +111,7 @@ export function displayToDoEntry(toDoItems) {
 
     const deleteIconDiv = document.createElement("div");
     deleteIconDiv.className = "delete-icon";
+    deleteIconDiv.setAttribute("data-entry", i);
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
