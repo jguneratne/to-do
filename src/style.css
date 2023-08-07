@@ -352,6 +352,23 @@ input[type="text"].category {
   background-color: var(--main-bground-color);
 }
 
+.cat-card .delete-icon {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-right: 1ch;
+  margin-bottom: 0.5ch;
+}
+
+.cat-card .delete-icon > img {
+  width: 2ch;
+}
+
+.cat-card .delete-icon > img:hover {
+  width: 2.2ch;
+  cursor: pointer;
+}
+
 /* Category Section: New To Do Item */
 
 .to-do-entry {
@@ -413,13 +430,17 @@ input[type="checkbox"].complete:checked::before {
   font-size: 4ch;
 }
 
-.delete-icon > img {
+.to-do-entry .delete-icon {
+  display: block;
+}
+
+.to-do-entry .delete-icon > img {
   width: 2ch;
   margin-top: 3ch;
 }
 
-.delete-icon > img:hover {
-  width: 3ch;
+.to-do-entry .delete-icon > img:hover {
+  width: 2.2ch;
   margin-top: 2.1ch;
   cursor: pointer;
 }

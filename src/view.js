@@ -48,10 +48,20 @@ export function createCategorySection(categories) {
     addItemBtn.setAttribute("data-category", categories[i]);
     addItemBtn.textContent = "Add Item";
 
+    const deleteIconContainer = document.createElement("div");
+    deleteIconContainer.className = "delete-icon";
+    deleteIconContainer.setAttribute("data-delete-cat", i);
+
+    const deleteBtnImg = document.createElement("img");
+    deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+    deleteBtnImg.setAttribute("data-delete-cat", i);
+
     categorySection.appendChild(categoryCard);
     categoryCard.appendChild(cardCategoryName);
     categoryCard.appendChild(categoryContent);
     categoryCard.appendChild(addItemBtn);
+    categoryCard.appendChild(deleteIconContainer);
+    deleteIconContainer.appendChild(deleteBtnImg);
   }
 }
 
