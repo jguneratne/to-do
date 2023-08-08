@@ -44,18 +44,6 @@ export function submitNewCategory() {
   });
 }
 
-export function showToDoForm() {
-  categorySection.addEventListener("click", function (event) {
-    const toDoBtns = Array.from(document.querySelectorAll("[data-category"));
-    const btnClick = event.target.dataset.category;
-    toDoBtns.forEach((button) => {
-      if (event.target === button) {
-        toDoFormDisplay(btnClick);
-      }
-    });
-  });
-}
-
 export function submitToDo() {
   toDoForm.addEventListener("submit", (e) => {
     const targetCategory = e.target.dataset.category;
@@ -68,23 +56,45 @@ export function submitToDo() {
   });
 }
 
-export function deleteToDoItem() {
-  categorySection.addEventListener("pointerdown", (e) => {
-    const deleteEntry = e.target.dataset.delete;
-    removeToDo(deleteEntry);
-    replaceToDoItems();
-    displayToDoEntry(toDoItems);
-  });
-}
+export function handleCategoryEvents() {
+  categorySection.addEventListener("pointerdown", function (event) {
+    const addBtn = event.target.dataset.category;
+    const deleteToDo = event.target.dataset.delete;
+    const deleteCategory = event.target.dataset.deleteCat;
 
-export function deleteCategory() {
-  categorySection.addEventListener("pointerdown", (e) => {
-    const deleteCat = e.target.dataset.deleteCat;
-    console.log(deleteCat);
-    removeCategory(deleteCat);
-    //replaceCategorySections();
-    //createCategorySection(categories);
-    replaceToDoItems();
-    displayToDoEntry(toDoItems);
+    console.log(addBtn);
+    console.log(deleteToDo);
+    console.log(deleteCategory);
+
+    const addBtns = Array.from(document.querySelectorAll("[data-category"));
+    addBtns.forEach((button) => {
+      if (event.target === button) {
+        toDoFormDisplay(addBtn);
+      }
+    });
+
+    const toDoEntries = Array.from(
+      document.querySelectorAll(["[data-delete]"])
+    );
+    toDoEntries.forEach((entry) => {
+      if (event.target === entry) {
+        removeToDo(deleteToDo);
+        replaceToDoItems();
+        displayToDoEntry(toDoItems);
+      }
+    });
+
+    const deleteCatBtns = Array.from(
+      document.querySelectorAll("[data-delete-cat")
+    );
+    deleteCatBtns.forEach((btn) => {
+      if (event.target === btn) {
+        removeCategory(deleteCategory);
+        replaceCategorySections();
+        createCategorySection(categories);
+        replaceToDoItems();
+        displayToDoEntry(toDoItems);
+      }
+    });
   });
 }

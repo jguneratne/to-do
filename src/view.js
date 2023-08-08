@@ -72,9 +72,9 @@ export function replaceCategorySections() {
   }
 }
 
-export function toDoFormDisplay(clickedBtn) {
-  // console.log(clickedBtn);
-  categoryName.textContent = clickedBtn;
+export function toDoFormDisplay(addBtn) {
+  console.log(addBtn);
+  categoryName.textContent = addBtn;
   toDoFormContainer.style.display = "initial";
 }
 
