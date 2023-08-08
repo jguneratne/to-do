@@ -6,6 +6,7 @@ import {
   toDoForm,
 } from "./querySelectors";
 import {
+  showCatMessage,
   newCategoryForm,
   hideCategoryForm,
   replaceCategorySections,
@@ -60,11 +61,12 @@ export function handleCategoryEvents() {
   categorySection.addEventListener("pointerdown", function (event) {
     const addBtn = event.target.dataset.category;
     const deleteToDo = event.target.dataset.delete;
+    const deleteCategoryIndex = event.target.dataset.deleteCatIndex;
     const deleteCategory = event.target.dataset.deleteCat;
 
-    console.log(addBtn);
-    console.log(deleteToDo);
-    console.log(deleteCategory);
+    // console.log(addBtn);
+    // console.log(deleteToDo);
+    // console.log(deleteCategory);
 
     const addBtns = Array.from(document.querySelectorAll("[data-category"));
     addBtns.forEach((button) => {
@@ -89,11 +91,12 @@ export function handleCategoryEvents() {
     );
     deleteCatBtns.forEach((btn) => {
       if (event.target === btn) {
-        removeCategory(deleteCategory);
+        removeCategory(deleteCategoryIndex, deleteCategory);
         replaceCategorySections();
         createCategorySection(categories);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
+        showCatMessage(categories, toDoItems);
       }
     });
   });

@@ -10,6 +10,14 @@ import {
   toDoForm,
 } from "./querySelectors";
 
+export function showCatMessage(categories, toDoItems) {
+  if (categories.length === 0 && toDoItems.length === 0) {
+    console.log(categories.length);
+    console.log(toDoItems.length);
+    addCatMsg.style.display = "initial";
+  }
+}
+
 export function newCategoryForm() {
   addCatMsg.style.display = "none";
   categoryFormBox.style.display = "initial";
@@ -51,10 +59,12 @@ export function createCategorySection(categories) {
     const deleteIconContainer = document.createElement("div");
     deleteIconContainer.className = "delete-icon";
     deleteIconContainer.setAttribute("data-delete-cat", categories[i]);
+    deleteIconContainer.setAttribute("data-delete-cat-index", i);
 
     const deleteBtnImg = document.createElement("img");
     deleteBtnImg.src = "../src/assets/imgs/trash.svg";
     deleteBtnImg.setAttribute("data-delete-cat", categories[i]);
+    deleteBtnImg.setAttribute("data-delete-cat-index", i);
 
     categorySection.appendChild(categoryCard);
     categoryCard.appendChild(cardCategoryName);

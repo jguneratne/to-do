@@ -7,7 +7,7 @@ import {
 } from "./querySelectors";
 
 export const categories = [];
-export const toDoItems = [];
+export let toDoItems = [];
 // const completedTasks = [];
 
 export function newCategoryArray() {
@@ -50,20 +50,23 @@ export function removeToDo(removedItem) {
   }
 }
 
-export function removeCategory(removedCat) {
+export function removeCategory(removedIndex, removedCat) {
   if (removedCat) {
+    console.log(removedIndex);
+    console.log(removedCat);
     let confirmRemoveCat = confirm(
       "Are you sure you want to delete this category with all of its entries? This cannot be undone"
     );
 
     if (confirmRemoveCat) {
-      for (let i = toDoItems.length - 1; i >= 0; i--) {
-        if (toDoItems[i].category === removedCat) {
-          toDoItems.splice(removedCat, 1);
-          console.log(toDoItems);
-        }
-      }
-      categories.splice(removedCat, 1);
+      const deletedEntries = toDoItems.filter(
+        (entry) => entry.category !== removedCat
+      );
+      //console.log(deletedEntries);
+      toDoItems = deletedEntries;
+      console.log(toDoItems);
+
+      categories.splice(removedIndex, 1);
       console.log(categories);
     }
   }
