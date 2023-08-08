@@ -6,7 +6,6 @@ import {
   toDoForm,
 } from "./querySelectors";
 import {
-  showCatMessage,
   newCategoryForm,
   hideCategoryForm,
   replaceCategorySections,
@@ -15,6 +14,7 @@ import {
   hideToDoForm,
   displayToDoEntry,
   replaceToDoItems,
+  showCatMessage,
 } from "./view";
 import {
   categories,
@@ -96,7 +96,7 @@ export function handleCategoryEvents() {
         createCategorySection(categories);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
-        showCatMessage(categories, toDoItems);
+        showCatMessage();
       }
     });
   });

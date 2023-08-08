@@ -1,3 +1,4 @@
+import { toDoItems } from "./model";
 import {
   addCatMsg,
   categoryFormBox,
@@ -10,16 +11,8 @@ import {
   toDoForm,
 } from "./querySelectors";
 
-export function showCatMessage(categories, toDoItems) {
-  if (categories.length === 0 && toDoItems.length === 0) {
-    console.log(categories.length);
-    console.log(toDoItems.length);
-    addCatMsg.style.display = "initial";
-  }
-}
-
 export function newCategoryForm() {
-  addCatMsg.style.display = "none";
+  addCatMsg.style.display = "block";
   categoryFormBox.style.display = "initial";
   categoryTab.classList.add("tab-content--active");
 
@@ -31,6 +24,7 @@ export function newCategoryForm() {
 export function hideCategoryForm() {
   categoryFormBox.style.display = "none";
   categoryForm.reset();
+  addCatMsg.style.display = "initial";
   sideNav.classList.remove("cat-form-visible");
 }
 
@@ -163,4 +157,19 @@ export function replaceToDoItems() {
       parent.removeChild(parent.firstChild);
     }
   });
+}
+
+export function showCatMessage() {
+  if (
+    addCatMsg.style.display === "none" &&
+    categorySection.hasChildNodes() === false
+  ) {
+    addCatMsg.style.display = "initial";
+  }
+
+  // let childCheck = categorySection.hasChildNodes();
+  // console.log(childCheck);
+  // if (childCheck === false) {
+  //   addCatMsg.style.display = "block";
+  // }
 }
