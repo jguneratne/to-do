@@ -8,7 +8,7 @@ import {
 
 export const categories = [];
 export let toDoItems = [];
-export const completedTasks = [];
+const completedTasks = [];
 
 export function newCategoryArray() {
   const newCategory = categoryInput.value;
