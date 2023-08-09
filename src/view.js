@@ -120,8 +120,9 @@ export function displayToDoEntry(toDoItems) {
     completedCheck.className = "complete";
     completedCheck.name = "complete";
     completedCheck.id = "complete";
-    completedCheck.value = "Complete:";
-    completedCheck.checked = toDoItems[i].completedTask;
+    completedCheck.value = "complete";
+    completedCheck.checked = false;
+    completedCheck.setAttribute("data-check", i);
 
     const deleteIconDiv = document.createElement("div");
     deleteIconDiv.className = "delete-icon";
@@ -129,7 +130,6 @@ export function displayToDoEntry(toDoItems) {
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
-    deleteIcon.setAttribute("data-delete", i);
 
     catContentDivs.forEach((div) => {
       if (toDoItems[i].category === div.dataset.content) {

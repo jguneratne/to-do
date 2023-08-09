@@ -23,6 +23,7 @@ import {
   toDoItems,
   removeToDo,
   removeCategory,
+  changeCompleteStatus,
 } from "./model";
 
 export function showCategoryForm() {
@@ -64,10 +65,6 @@ export function handleCategoryEvents() {
     const deleteCategoryIndex = event.target.dataset.deleteCatIndex;
     const deleteCategory = event.target.dataset.deleteCat;
 
-    // console.log(addBtn);
-    // console.log(deleteToDo);
-    // console.log(deleteCategory);
-
     const addBtns = Array.from(document.querySelectorAll("[data-category"));
     addBtns.forEach((button) => {
       if (event.target === button) {
@@ -99,5 +96,16 @@ export function handleCategoryEvents() {
         showCatMessage();
       }
     });
+  });
+}
+
+export function checkComplete() {
+  categorySection.addEventListener("change", (event) => {
+    const taskIndex = event.target.dataset.check;
+
+    if (event.target === taskIndex);
+    changeCompleteStatus(taskIndex);
+    replaceToDoItems();
+    displayToDoEntry(toDoItems);
   });
 }

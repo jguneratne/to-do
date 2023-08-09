@@ -6,6 +6,7 @@ import {
   submitNewCategory,
   submitToDo,
   handleCategoryEvents,
+  checkComplete,
 } from "./controller";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,4 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
   submitNewCategory();
   submitToDo();
   handleCategoryEvents();
+  checkComplete();
 });

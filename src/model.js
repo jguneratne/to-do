@@ -8,7 +8,7 @@ import {
 
 export const categories = [];
 export let toDoItems = [];
-// const completedTasks = [];
+export const completedTasks = [];
 
 export function newCategoryArray() {
   const newCategory = categoryInput.value;
@@ -68,6 +68,24 @@ export function removeCategory(removedIndex, removedCat) {
 
       categories.splice(removedIndex, 1);
       console.log(categories);
+    }
+  }
+}
+
+export function changeCompleteStatus(taskIndex) {
+  if (toDoItems.at(taskIndex)) {
+    if (toDoItems[taskIndex].completedTask === true) {
+      toDoItems[taskIndex].completedTask = false;
+    } else {
+      toDoItems[taskIndex].compeltedTask === false;
+      toDoItems[taskIndex].completedTask = true;
+
+      let moveTask = toDoItems.at(taskIndex);
+      completedTasks.push(moveTask);
+      toDoItems.splice(taskIndex, 1);
+
+      console.log(toDoItems);
+      console.log(completedTasks);
     }
   }
 }
