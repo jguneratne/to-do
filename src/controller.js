@@ -4,6 +4,7 @@ import {
   cancelCategoryBtn,
   categorySection,
   toDoForm,
+  cancelToDoBtn,
 } from "./querySelectors";
 import {
   showCatMessage,
@@ -56,6 +57,10 @@ export function submitToDo() {
     replaceToDoItems();
     displayToDoEntry(toDoItems);
   });
+}
+
+export function cancelToDo() {
+  cancelToDoBtn.addEventListener("pointerdown", hideToDoForm);
 }
 
 export function handleCategoryEvents() {

@@ -232,7 +232,8 @@ input[type="text"]:valid {
 
 button.add-to-do,
 button.add-category,
-button.cancel-category {
+button.cancel-category,
+button.cancel-to-do {
   font-family: "Happy Monkey";
   font-size: 1.8ch;
   width: 8ch;
@@ -245,7 +246,8 @@ button.cancel-category {
 
 button.add-to-do:hover,
 button.add-category:hover,
-button.cancel-category:hover {
+button.cancel-category:hover,
+button.cancel-to-do:hover {
   background-color: var(--form-green-color);
   cursor: pointer;
 }

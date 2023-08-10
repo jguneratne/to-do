@@ -5,6 +5,7 @@ import {
   cancelCategoryForm,
   submitNewCategory,
   submitToDo,
+  cancelToDo,
   handleCategoryEvents,
   checkComplete,
 } from "./controller";
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelCategoryForm();
   submitNewCategory();
   submitToDo();
+  cancelToDo();
   handleCategoryEvents();
   checkComplete();
 });
