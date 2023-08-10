@@ -3,7 +3,6 @@ import {
   toDoTitle,
   toDoDescription,
   toDoDueDate,
-  toDoDueTime,
   categoryName,
 } from "./querySelectors";
 
@@ -31,7 +30,6 @@ export function newToDoItem() {
   const title = toDoTitle.value;
   const description = toDoDescription.value;
   const dueDate = toDoDueDate.value;
-  const dueTime = toDoDueTime.value;
   const completedTask = false;
 
   const toDoItem = {
@@ -39,7 +37,6 @@ export function newToDoItem() {
     title,
     description,
     dueDate,
-    dueTime,
     completedTask,
   };
   toDoItems.push(toDoItem);

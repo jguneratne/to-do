@@ -14,5 +14,4 @@ export const cancelToDoBtn = document.querySelector(".cancel-to-do");
 export const toDoTitle = document.querySelector(".title");
 export const toDoDescription = document.querySelector(".description");
 export const toDoDueDate = document.querySelector(".due-date");
-export const toDoDueTime = document.querySelector(".due-time");
 export const categoryName = document.querySelector(".category-name");

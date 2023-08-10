@@ -188,14 +188,7 @@
 }
 
 .due-date-msg::before {
-  content: "Please select a due date.";
-  /* color: var(--focusColor); */
-  font-family: "Happy Monkey";
-  font-size: 1.8ch;
-}
-
-.due-time-msg::before {
-  content: "Please select the time due.";
+  content: "Please select a date and time.";
   /* color: var(--focusColor); */
   font-family: "Happy Monkey";
   font-size: 1.8ch;
@@ -220,8 +213,7 @@ label {
 
 input[type="text"],
 /* input[type="textarea"].description, */
-input[type="date"],
-input[type="time"] {
+input[type="datetime-local"] {
   display: inline-block;
   flex: 1;
   height: 3ch;
@@ -246,7 +238,6 @@ textarea {
   border-radius: 1ch;
   border: 0.2ch solid var(--form-green-color);
   resize: vertical;
-  margin-top: 1.5ch;
 }
 
 input[type="text"]:valid {
@@ -412,6 +403,7 @@ input[type="text"].category {
 .due-date {
   padding-bottom: 1ch;
   font-size: 2.4ch;
+  font-family: "Happy Monkey";
 }
 
 .to-do-entry > label {
