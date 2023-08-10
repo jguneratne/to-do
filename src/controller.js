@@ -26,6 +26,7 @@ import {
   removeCategory,
   changeCompleteStatus,
 } from "./model";
+import formatDateTimes from "./dates";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -53,6 +54,7 @@ export function submitToDo() {
     console.log(targetCategory);
     e.preventDefault();
     newToDoItem();
+    formatDateTimes();
     hideToDoForm();
     replaceToDoItems();
     displayToDoEntry(toDoItems);

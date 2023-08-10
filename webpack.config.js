@@ -10,6 +10,7 @@ module.exports = {
     "./src/model.js",
     "./src/view.js",
     "./src/querySelectors.js",
+    "./src/dates.js",
   ],
   output: {
     filename: "bundle.js",
