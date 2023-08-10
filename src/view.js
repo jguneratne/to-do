@@ -103,10 +103,14 @@ export function displayToDoEntry(toDoItems) {
     toDoDetails.className = "details";
     toDoDetails.textContent = toDoItems[i].description;
 
-    // !!! Figure out how to use date-fns to format dueDate
+    // !!! Figure out how to use date-fns to format dueDate and Time
     const toDoDueDate = document.createElement("p");
     toDoDueDate.className = "due-date";
     toDoDueDate.textContent = toDoItems[i].dueDate;
+
+    const toDoDueTime = document.createElement("p");
+    toDoDueTime.className = "due-time";
+    toDoDueTime.textContent = toDoItems[i].dueTime;
 
     const completedDiv = document.createElement("div");
     completedDiv.className = "complete-container";
@@ -140,6 +144,7 @@ export function displayToDoEntry(toDoItems) {
         toDoEntry.appendChild(toDoTitle);
         toDoEntry.appendChild(toDoDetails);
         toDoEntry.appendChild(toDoDueDate);
+        toDoEntry.appendChild(toDoDueTime);
         toDoEntry.appendChild(completedDiv);
         completedDiv.appendChild(completedCheckLabel);
         completedDiv.appendChild(completedCheck);

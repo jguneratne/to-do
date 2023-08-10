@@ -79,7 +79,7 @@
                 <div class="form-line">
                   <label for="due-date">* Due Date:</label>
                   <input
-                    type="datetime-local"
+                    type="date"
                     id="due-date"
                     class="due-date"
                     name="toDoInfo"
@@ -88,6 +88,20 @@
                 </div>
                 <div class="instruct">
                   <p class="due-date-msg"></p>
+                </div>
+
+                <div class="form-line">
+                  <label for="due-time">* Time Due:</label>
+                  <input
+                    type="time"
+                    id="due-time"
+                    class="due-time"
+                    name="toDoInfo"
+                    required
+                  />
+                </div>
+                <div class="instruct">
+                  <p class="due-time-msg"></p>
                 </div>
 
                 <div class="btn-line">
