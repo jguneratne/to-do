@@ -99,9 +99,20 @@ export function displayToDoEntry(toDoItems) {
     toDoTitle.className = "title";
     toDoTitle.textContent = toDoItems[i].title;
 
+    const toDoDetailsTitle = document.createElement("div");
+    toDoDetailsTitle.className = "details-title";
+    toDoDetailsTitle.textContent = "Details:";
+    if (toDoItems[i].description === "") {
+      toDoDetailsTitle.style.display = "none";
+    }
+
     const toDoDetails = document.createElement("p");
     toDoDetails.className = "details";
     toDoDetails.textContent = toDoItems[i].description;
+
+    const toDoDueDateTitle = document.createElement("div");
+    toDoDueDateTitle.className = "due-title";
+    toDoDueDateTitle.textContent = "Due Date:";
 
     const toDoDueDate = document.createElement("p");
     toDoDueDate.className = "show-due-date";
@@ -151,7 +162,9 @@ export function displayToDoEntry(toDoItems) {
 
         div.appendChild(toDoEntry);
         toDoEntry.appendChild(toDoTitle);
+        toDoEntry.appendChild(toDoDetailsTitle);
         toDoEntry.appendChild(toDoDetails);
+        toDoEntry.appendChild(toDoDueDateTitle);
         toDoEntry.appendChild(toDoDueDate);
         toDoEntry.appendChild(completedDiv);
         completedDiv.appendChild(completedCheckLabel);

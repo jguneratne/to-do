@@ -412,10 +412,18 @@ input[type="text"].category {
   padding-bottom: 1ch;
 }
 
+.details-title,
+.due-title {
+  width: 100%;
+  text-align: left;
+  font-size: 2.5ch;
+  margin-left: 1.5ch;
+}
+
 .details,
 .show-due-date {
   padding-bottom: 1ch;
-  font-size: 2ch;
+  font-size: 1.9ch;
   font-family: "Happy Monkey";
 }
 
