@@ -1,6 +1,7 @@
 import {
   categoryInput,
   toDoTitle,
+  toDoPriority,
   toDoDescription,
   toDoDueDate,
   categoryName,
@@ -28,6 +29,7 @@ export function newCategoryArray() {
 export function newToDoItem() {
   const category = categoryName.textContent;
   const title = toDoTitle.value;
+  const priority = toDoPriority.value;
   const description = toDoDescription.value;
   const dueDate = toDoDueDate.value;
   const completedTask = false;
@@ -35,6 +37,7 @@ export function newToDoItem() {
   const toDoItem = {
     category,
     title,
+    priority,
     description,
     dueDate,
     completedTask,

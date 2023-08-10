@@ -62,6 +62,22 @@
                 </div>
 
                 <div class="form-line">
+                  <label for="task-priority">Priority Level:</label>
+                  <select
+                    id="task-priority"
+                    class="task-priority"
+                    name="toDoInfo"
+                  >
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+                <div class="instruct">
+                  <p class="priority-msg"></p>
+                </div>
+
+                <div class="form-line">
                   <label for="description">Description:</label>
                   <textarea
                     id="description"
@@ -110,7 +126,7 @@
               <h2 class="add-cat-msg">
                 Create Your First Category To Start Adding To-Do Items!
               </h2>
-              <div class="cat-card">
+              <!-- <div class="cat-card">
                 <div class="cat-content">
                   <h2 class="cat-name">Category Name</h2>
                   <div class="to-do-entry">
@@ -139,7 +155,7 @@
                 </div>
 
                 <button class="new-to-do">Add Item</button>
-              </div>
+              </div> -->
             </div>
 
             <div class="cat-form-container" id="cat-form-container">

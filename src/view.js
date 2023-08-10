@@ -103,7 +103,6 @@ export function displayToDoEntry(toDoItems) {
     toDoDetails.className = "details";
     toDoDetails.textContent = toDoItems[i].description;
 
-    // !!! Figure out how to use date-fns to format dueDate and Time
     const toDoDueDate = document.createElement("p");
     toDoDueDate.className = "show-due-date";
     toDoDueDate.textContent = toDoItems[i].dueDate;
@@ -126,11 +125,25 @@ export function displayToDoEntry(toDoItems) {
 
     const deleteIconDiv = document.createElement("div");
     deleteIconDiv.className = "delete-icon";
-    deleteIconDiv.setAttribute("data-delete", i);
+    // deleteIconDiv.setAttribute("data-delete", i);
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
     deleteIcon.setAttribute("data-delete", i);
+
+    const priorityDiv = document.createElement("div");
+    priorityDiv.className = "priority";
+
+    const priorityColor = document.createElement("div");
+    priorityColor.className = "priority-color";
+    priorityColor.style.border = "1px solid #535347";
+    if (toDoItems[i].priority.toLowerCase() === "low") {
+      priorityColor.style.backgroundColor = "#e7f24f";
+    } else if (toDoItems[i].priority.toLowerCase() === "medium") {
+      priorityColor.style.backgroundColor = "#eeb250";
+    } else if (toDoItems[i].priority.toLowerCase === "high") {
+      priorityColor.style.backgroundColor = "#bc2702";
+    }
 
     catContentDivs.forEach((div) => {
       if (toDoItems[i].category === div.dataset.content) {
@@ -145,6 +158,8 @@ export function displayToDoEntry(toDoItems) {
         completedDiv.appendChild(completedCheck);
         toDoEntry.appendChild(deleteIconDiv);
         deleteIconDiv.appendChild(deleteIcon);
+        toDoEntry.appendChild(priorityDiv);
+        priorityDiv.appendChild(priorityColor);
       }
     });
   }

@@ -177,7 +177,14 @@
 }
 
 .title-msg::before {
-  content: "Please add a title.";
+  content: "Add a title.";
+  /* color: var(--focusColor); */
+  font-family: "Happy Monkey";
+  font-size: 1.8ch;
+}
+
+.priority-msg::before {
+  content: "Choose a priority level.";
   /* color: var(--focusColor); */
   font-family: "Happy Monkey";
   font-size: 1.8ch;
@@ -191,7 +198,7 @@
 }
 
 .due-date-msg::before {
-  content: "Please select a date and time.";
+  content: "Select a date and time.";
   /* color: var(--focusColor); */
   font-family: "Happy Monkey";
   font-size: 1.8ch;
@@ -216,7 +223,8 @@ label {
 
 input[type="text"],
 /* input[type="textarea"].description, */
-input[type="datetime-local"] {
+input[type="datetime-local"],
+.task-priority {
   display: inline-block;
   flex: 1;
   height: 3ch;
