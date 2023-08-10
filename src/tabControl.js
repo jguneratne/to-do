@@ -28,6 +28,7 @@ export default function tabControls() {
 
       if (
         button.classList.contains("date-tab") ||
+        button.classList.contains("priority") ||
         button.classList.contains("completed-tab")
       ) {
         addCategoryMsg.style.display = "none";

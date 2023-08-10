@@ -118,6 +118,7 @@
 /* Main: Tab opening messages */
 .add-cat-msg,
 .nothing-date-msg,
+.nothing-priority-msg,
 .nothing-complete-msg {
   width: 100%;
   text-align: center;
