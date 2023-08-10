@@ -112,6 +112,12 @@
   border-bottom: none;
 }
 
+/* Main: Add Category Message */
+.add-cat-msg {
+  width: 100%;
+  text-align: center;
+}
+
 /* Main: To-Do-Form */
 .form-div {
   display: none;
@@ -445,6 +451,12 @@ input[type="checkbox"].complete:checked::before {
   width: 2.2ch;
   margin-top: 2.1ch;
   cursor: pointer;
+}
+
+/* Main: Due Date View */
+
+.by-due-date {
+  width: 100%;
 }
 
 /* Footer */

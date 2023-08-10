@@ -1,4 +1,4 @@
-import { addBtn, returnToCatTab } from "./querySelectors";
+import { addCategoryMsg, addBtn, returnToCatTab } from "./querySelectors";
 
 export default function tabControls() {
   document.querySelectorAll(".btn-ctrl").forEach((button) => {
@@ -25,6 +25,15 @@ export default function tabControls() {
 
       button.classList.add("btn-ctrl--active");
       activeTab.classList.add("tab-content--active");
+
+      if (
+        button.classList.contains("date-tab") ||
+        button.classList.contains("completed-tab")
+      ) {
+        addCategoryMsg.style.display = "none";
+      } else if (button.classList.contains("cat-tab")) {
+        addCategoryMsg.style.display = "initial";
+      }
 
       if (addBtn.classList.contains("btn-ctrl--active")) {
         addBtn.classList.remove("btn-ctrl--active");
