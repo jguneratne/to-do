@@ -1,6 +1,6 @@
 import { toDoItems } from "./model";
 import {
-  addCatMsg,
+  addCategoryMsg,
   categoryFormBox,
   categoryForm,
   categoryTab,
@@ -12,7 +12,7 @@ import {
 } from "./querySelectors";
 
 export function newCategoryForm() {
-  addCatMsg.style.display = "block";
+  addCategoryMsg.style.display = "none";
   categoryFormBox.style.display = "initial";
   categoryTab.classList.add("tab-content--active");
 
@@ -24,7 +24,7 @@ export function newCategoryForm() {
 export function hideCategoryForm() {
   categoryFormBox.style.display = "none";
   categoryForm.reset();
-  addCatMsg.style.display = "initial";
+  addCategoryMsg.style.display = "initial";
   sideNav.classList.remove("cat-form-visible");
 }
 
@@ -161,16 +161,8 @@ export function replaceToDoItems() {
 }
 
 export function showCatMessage() {
-  if (
-    addCatMsg.style.display === "none" &&
-    categorySection.hasChildNodes() === false
-  ) {
-    addCatMsg.style.display = "initial";
+  console.log(categorySection.hasChildNodes());
+  if (categorySection.hasChildNodes() === false) {
+    addCategoryMsg.style.display = "initial";
   }
-
-  // let childCheck = categorySection.hasChildNodes();
-  // console.log(childCheck);
-  // if (childCheck === false) {
-  //   addCatMsg.style.display = "block";
-  // }
 }

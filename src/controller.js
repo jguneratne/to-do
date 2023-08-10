@@ -102,7 +102,7 @@ export function handleCategoryEvents() {
         createCategorySection(categories);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
-        showCatMessage(categories, toDoItems);
+        showCatMessage();
       }
     });
   });
