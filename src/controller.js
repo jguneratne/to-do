@@ -45,6 +45,7 @@ export function submitNewCategory() {
     createCategorySection(categories);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
+    formatDateTimes();
   });
 }
 
@@ -91,6 +92,7 @@ export function handleCategoryEvents() {
         removeToDo(deleteToDo);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
+        formatDateTimes();
       }
     });
 
@@ -104,6 +106,7 @@ export function handleCategoryEvents() {
         createCategorySection(categories);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
+        formatDateTimes();
         showCatMessage();
       }
     });
@@ -118,5 +121,6 @@ export function checkComplete() {
     changeCompleteStatus(taskIndex);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
+    formatDateTimes();
   });
 }
