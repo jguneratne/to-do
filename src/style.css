@@ -401,7 +401,7 @@ input[type="text"].category {
 }
 
 .details,
-.due-date {
+.show-due-date {
   padding-bottom: 1ch;
   font-size: 2ch;
   font-family: "Happy Monkey";

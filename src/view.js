@@ -105,7 +105,7 @@ export function displayToDoEntry(toDoItems) {
 
     // !!! Figure out how to use date-fns to format dueDate and Time
     const toDoDueDate = document.createElement("p");
-    toDoDueDate.className = "due-date";
+    toDoDueDate.className = "show-due-date";
     toDoDueDate.textContent = toDoItems[i].dueDate;
 
     const completedDiv = document.createElement("div");

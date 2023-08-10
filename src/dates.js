@@ -1,14 +1,11 @@
 import { format, parseISO } from "date-fns";
 
-import { toDoItems } from "./model";
-
 export default function formatDateTimes() {
-  for (let i = 0; i < toDoItems.length; i++) {
-    // console.log(toDoItems[i].dueDate);
-    const formatted = format(parseISO(toDoItems[i].dueDate, 0), "PPp");
-    console.log(formatted);
+  const dueDateDisplay = document.querySelectorAll(".show-due-date");
 
-    toDoItems[i].dueDate = formatted;
-    console.log(toDoItems);
-  }
+  dueDateDisplay.forEach((date) => {
+    // console.log(date.textContent);
+    const formatted = format(parseISO(date.textContent, 0), "PPp");
+    date.textContent = formatted;
+  });
 }

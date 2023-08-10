@@ -54,10 +54,10 @@ export function submitToDo() {
     console.log(targetCategory);
     e.preventDefault();
     newToDoItem();
-    formatDateTimes();
     hideToDoForm();
     replaceToDoItems();
     displayToDoEntry(toDoItems);
+    formatDateTimes();
   });
 }
 
