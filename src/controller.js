@@ -70,10 +70,6 @@ export function handleCategoryEvents() {
     const deleteCategoryIndex = event.target.dataset.deleteCatIndex;
     const deleteCategory = event.target.dataset.deleteCat;
 
-    // console.log(addBtn);
-    // console.log(deleteToDo);
-    // console.log(deleteCategory);
-
     const addBtns = Array.from(document.querySelectorAll("[data-category"));
     addBtns.forEach((button) => {
       if (event.target === button) {

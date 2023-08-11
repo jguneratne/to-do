@@ -82,6 +82,7 @@ export function toDoFormDisplay(addBtn, minDate) {
   categoryName.textContent = addBtn;
 
   toDoFormContainer.style.display = "initial";
+  toDoFormContainer.scrollTo(0, 0);
   limitDatePicker();
 }
 
