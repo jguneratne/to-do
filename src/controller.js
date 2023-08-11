@@ -26,7 +26,6 @@ import {
   removeCategory,
   changeCompleteStatus,
 } from "./model";
-import { formatDateTimes } from "./dates";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -45,7 +44,6 @@ export function submitNewCategory() {
     createCategorySection(categories);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
-    formatDateTimes();
   });
 }
 
@@ -58,7 +56,6 @@ export function submitToDo() {
     hideToDoForm();
     replaceToDoItems();
     displayToDoEntry(toDoItems);
-    formatDateTimes();
   });
 }
 
@@ -92,7 +89,6 @@ export function handleCategoryEvents() {
         removeToDo(deleteToDo);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
-        formatDateTimes();
       }
     });
 
@@ -106,7 +102,6 @@ export function handleCategoryEvents() {
         createCategorySection(categories);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
-        formatDateTimes();
         showCatMessage();
       }
     });
@@ -121,6 +116,5 @@ export function checkComplete() {
     changeCompleteStatus(taskIndex);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
-    formatDateTimes();
   });
 }

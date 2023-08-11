@@ -10,7 +10,7 @@ import {
   categoryName,
   toDoForm,
 } from "./querySelectors";
-import { limitDatePicker, findPastDue } from "./dates";
+import { formatDateTimes, limitDatePicker, findPastDue } from "./dates";
 
 export function newCategoryForm() {
   addCategoryMsg.style.display = "none";
@@ -179,6 +179,7 @@ export function displayToDoEntry(toDoItems) {
     });
   }
   findPastDue();
+  formatDateTimes();
 }
 
 export function replaceToDoItems() {
