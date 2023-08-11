@@ -26,7 +26,7 @@ import {
   removeCategory,
   changeCompleteStatus,
 } from "./model";
-import formatDateTimes from "./dates";
+import { formatDateTimes } from "./dates";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
