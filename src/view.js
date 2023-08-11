@@ -10,7 +10,7 @@ import {
   categoryName,
   toDoForm,
 } from "./querySelectors";
-import { limitDatePicker } from "./dates";
+import { limitDatePicker, findPastDue } from "./dates";
 
 export function newCategoryForm() {
   addCategoryMsg.style.display = "none";
@@ -139,7 +139,6 @@ export function displayToDoEntry(toDoItems) {
 
     const deleteIconDiv = document.createElement("div");
     deleteIconDiv.className = "delete-icon";
-    // deleteIconDiv.setAttribute("data-delete", i);
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
@@ -179,6 +178,7 @@ export function displayToDoEntry(toDoItems) {
       }
     });
   }
+  findPastDue();
 }
 
 export function replaceToDoItems() {
