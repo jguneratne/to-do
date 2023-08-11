@@ -490,6 +490,11 @@ input[type="checkbox"].complete:checked::before {
 .to-do-entry .priority {
   width: 100%;
   height: 3ch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2ch;
+  padding-right: 2ch;
 }
 
 .to-do-entry .priority-color {
@@ -498,7 +503,10 @@ input[type="checkbox"].complete:checked::before {
   border-radius: 50%;
   border: 2px solid var(--form-green-color);
   background-color: var(--high-priority-color);
-  margin-left: 2ch;
+}
+
+.to-do-entry .priority > img {
+  width: 2.2ch;
 }
 
 /* Main: Due Date View */

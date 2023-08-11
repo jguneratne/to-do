@@ -142,6 +142,7 @@ export function displayToDoEntry(toDoItems) {
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
+    deleteIcon.alt = "Delete Entry";
     deleteIcon.setAttribute("data-delete", i);
 
     const priorityDiv = document.createElement("div");
@@ -157,6 +158,12 @@ export function displayToDoEntry(toDoItems) {
     } else if (toDoItems[i].priority.toLowerCase === "high") {
       priorityColor.style.backgroundColor = "#bc2702";
     }
+
+    const editIcon = document.createElement("img");
+    editIcon.className = "edit-btn";
+    editIcon.src = "../src/assets/imgs/edit-button-svgrepo-com.svg";
+    editIcon.alt = "Edit Entry";
+    editIcon.setAttribute("data-edit", i);
 
     catContentDivs.forEach((div) => {
       if (toDoItems[i].category === div.dataset.content) {
@@ -175,6 +182,7 @@ export function displayToDoEntry(toDoItems) {
         deleteIconDiv.appendChild(deleteIcon);
         toDoEntry.appendChild(priorityDiv);
         priorityDiv.appendChild(priorityColor);
+        priorityDiv.appendChild(editIcon);
       }
     });
   }
