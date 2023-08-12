@@ -1,4 +1,9 @@
-import { addCategoryMsg, addBtn, returnToCatTab } from "./querySelectors";
+import {
+  addCategoryMsg,
+  addBtn,
+  categoryTab,
+  returnToCatTab,
+} from "./querySelectors";
 
 export default function tabControls() {
   document.querySelectorAll(".btn-ctrl").forEach((button) => {
@@ -32,6 +37,7 @@ export default function tabControls() {
         button.classList.contains("completed-tab")
       ) {
         addCategoryMsg.style.display = "none";
+        categoryTab.style.display = "none";
       } else if (button.classList.contains("cat-tab")) {
         addCategoryMsg.style.display = "initial";
       }
