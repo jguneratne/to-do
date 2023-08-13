@@ -239,9 +239,42 @@
           </div>
 
           <div class="tab-content by-completed" data-tab="completed-items">
-            <div class="nothing-complete-msg">
-              <h2>No completed tasks yet!</h2>
+            <div class="completed-tasks-div">
+              <div class="completed-tasks-row completed-task-header">
+                <h2 class="completed-completed-header headers">Completed</h2>
+                <h2 class="completed-title-header headers">Title</h2>
+                <h2 class="completed-description-header headers">
+                  Description
+                </h2>
+                <h2 class="completed-due-date-header headers">Due Date</h2>
+                <h2 class="completed-priority-header headers">Priority</h2>
+              </div>
+
+              <div class="completed-tasks-row">
+                <div class="completed-view-checkbox grid-cells">
+                  <label for="complete"></label>
+                  <input
+                    type="checkbox"
+                    id="complete"
+                    class="complete"
+                    name="complete"
+                    value="Complete:"
+                  />
+                </div>
+                <div class="completed-task-title grid-cells">Mow the Lawn</div>
+                <div class="completed-task-description grid-cells">
+                  Cut the grass today
+                </div>
+                <div class="completd-task-due grid-cells">2023-08-13T07:15</div>
+                <div class="completed-task-priority grid-cells">
+                  <div class="priority-color"></div>
+                </div>
+              </div>
             </div>
+
+            <!-- <div class="nothing-complete-msg">
+              <h2>No completed tasks yet!</h2>
+            </div> -->
           </div>
         </div>
       </div>

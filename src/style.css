@@ -215,7 +215,9 @@
   margin-top: 4ch;
 }
 
-label {
+.form-line > label,
+.category-line > label,
+.complete-container > label {
   display: inline-block;
   width: 15ch;
   font-family: "Happy Monkey";
@@ -481,7 +483,7 @@ input[type="checkbox"].complete:checked::before {
 
 .to-do-entry .delete-icon > img {
   width: 2ch;
-  margin-top: 3ch;
+  margin-top: 4ch;
 }
 
 .to-do-entry .delete-icon > img:hover {
@@ -500,7 +502,8 @@ input[type="checkbox"].complete:checked::before {
   padding-right: 2ch;
 }
 
-.to-do-entry .priority-color {
+.to-do-entry .priority-color,
+.grid-cells .priority-color {
   width: 2.2ch;
   height: 2.2ch;
   border-radius: 50%;
@@ -516,6 +519,61 @@ input[type="checkbox"].complete:checked::before {
 
 .by-due-date {
   width: 100%;
+}
+
+/* Main: Completed Tasks View */
+.completed-tasks-div {
+  display: grid;
+  grid-auto-rows: min-content;
+  margin-right: 2ch;
+  margin-bottom: 2ch;
+}
+
+.completed-tasks-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: min-content;
+  padding-top: 1ch;
+  padding-bottom: 1ch;
+  font-family: "Happy Monkey";
+  font-size: 2ch;
+  border-bottom: 1px solid black;
+}
+
+.completed-task-header {
+  border-bottom: 0.3ch solid black;
+  font-family: "lancelot";
+  font-size: 2ch;
+}
+
+.headers,
+.grid-cells {
+  text-align: center;
+  height: min-content;
+}
+
+.headers:not(:last-of-type),
+.grid-cells:not(:last-of-type) {
+  width: 100%;
+  border-right: 0.2ch solid black;
+}
+
+.grid-cells > label {
+  width: 15ch;
+  font-family: "Happy Monkey";
+  font-size: 2.15ch;
+  margin-top: 1.5ch;
+}
+
+.grid-cells .priority-color {
+  align-items: center;
+  width: 2.2ch;
+  height: 2.2ch;
+  border-radius: 50%;
+  border: 2px solid var(--form-green-color);
+  background-color: var(--high-priority-color);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Footer */
