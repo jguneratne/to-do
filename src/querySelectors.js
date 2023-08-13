@@ -11,6 +11,7 @@ export const categorySection = document.querySelector(".cat-section");
 export const toDoFormContainer = document.querySelector(".form-div");
 export const toDoForm = document.querySelector(".form");
 export const cancelToDoBtn = document.querySelector(".cancel-to-do");
+export const categoryName = document.querySelector(".category-name");
 export const toDoTitle = document.querySelector(".title");
 export const toDoPriority = document.querySelector(".task-priority");
 export const toDoDescription = document.querySelector(".description");
@@ -18,4 +19,5 @@ export const toDoDueDate = document.querySelector(".due-date");
 export const dateTimePicker = document.querySelector(
   "input[type='datetime-local']"
 );
-export const categoryName = document.querySelector(".category-name");
+export const addToDoBtn = document.querySelector("[data-form-add]");
+export const editToDoBtn = document.querySelector("[data-form-edit]");

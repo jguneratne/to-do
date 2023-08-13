@@ -5,6 +5,8 @@ import {
   categorySection,
   toDoForm,
   cancelToDoBtn,
+  addToDoBtn,
+  editToDoBtn,
 } from "./querySelectors";
 import {
   showCatMessage,
@@ -16,11 +18,13 @@ import {
   hideToDoForm,
   displayToDoEntry,
   replaceToDoItems,
+  showFormWithInfo,
 } from "./view";
 import {
   categories,
   newCategoryArray,
   newToDoItem,
+  editToDo,
   toDoItems,
   removeToDo,
   removeCategory,
@@ -48,14 +52,21 @@ export function submitNewCategory() {
 }
 
 export function submitToDo() {
-  toDoForm.addEventListener("submit", (e) => {
-    const targetCategory = e.target.dataset.category;
-    console.log(targetCategory);
-    e.preventDefault();
-    newToDoItem();
-    hideToDoForm();
-    replaceToDoItems();
-    displayToDoEntry(toDoItems);
+  toDoForm.addEventListener("pointerdown", (e) => {
+    if (e.target === addToDoBtn) {
+      // console.log(targetCategory);
+      newToDoItem();
+      hideToDoForm();
+      replaceToDoItems();
+      displayToDoEntry(toDoItems);
+    }
+
+    if (e.target === editToDoBtn) {
+      editToDo();
+      hideToDoForm();
+      replaceToDoItems();
+      displayToDoEntry(toDoItems);
+    }
   });
 }
 
@@ -65,11 +76,8 @@ export function cancelToDo() {
 
 export function handleCategoryEvents() {
   categorySection.addEventListener("pointerdown", function (event) {
+    //Display To Do Entry Form
     const addBtn = event.target.dataset.category;
-    const deleteToDo = event.target.dataset.delete;
-    const deleteCategoryIndex = event.target.dataset.deleteCatIndex;
-    const deleteCategory = event.target.dataset.deleteCat;
-
     const addBtns = Array.from(document.querySelectorAll("[data-category"));
     addBtns.forEach((button) => {
       if (event.target === button) {
@@ -77,6 +85,8 @@ export function handleCategoryEvents() {
       }
     });
 
+    // Delete To Do Items
+    const deleteToDo = event.target.dataset.delete;
     const toDoEntries = Array.from(
       document.querySelectorAll(["[data-delete]"])
     );
@@ -88,6 +98,9 @@ export function handleCategoryEvents() {
       }
     });
 
+    // Delete Category with any and all entries
+    const deleteCategoryIndex = event.target.dataset.deleteCatIndex;
+    const deleteCategory = event.target.dataset.deleteCat;
     const deleteCatBtns = Array.from(
       document.querySelectorAll("[data-delete-cat")
     );
@@ -99,6 +112,16 @@ export function handleCategoryEvents() {
         replaceToDoItems();
         displayToDoEntry(toDoItems);
         showCatMessage();
+      }
+    });
+
+    // Show form to edit To Do entry
+    const editBtn = event.target.dataset.edit;
+    const editBtns = Array.from(document.querySelectorAll("[data-edit"));
+    editBtns.forEach((edit) => {
+      if (event.target === edit) {
+        console.log(editBtn);
+        showFormWithInfo(editBtn, toDoItems);
       }
     });
   });

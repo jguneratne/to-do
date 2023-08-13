@@ -1,4 +1,4 @@
-import { toDoItems } from "./model";
+import { editToDo } from "./model";
 import {
   addCategoryMsg,
   categoryFormBox,
@@ -7,8 +7,14 @@ import {
   categorySection,
   sideNav,
   toDoFormContainer,
-  categoryName,
   toDoForm,
+  categoryName,
+  toDoTitle,
+  toDoPriority,
+  toDoDescription,
+  toDoDueDate,
+  addToDoBtn,
+  editToDoBtn,
 } from "./querySelectors";
 import { formatDateTimes, limitDatePicker, findPastDue } from "./dates";
 
@@ -77,13 +83,36 @@ export function replaceCategorySections() {
   }
 }
 
-export function toDoFormDisplay(addBtn, minDate) {
+export function toDoFormDisplay(addBtn) {
   console.log(addBtn);
   categoryName.textContent = addBtn;
 
   toDoFormContainer.style.display = "initial";
   toDoFormContainer.scrollTo(0, 0);
+  addToDoBtn.style.display = "initial";
+  editToDoBtn.style.display = "none";
   limitDatePicker();
+}
+
+export function showFormWithInfo(editBtnIndex, toDoItems) {
+  for (let i = 0; i < toDoItems.length; i++) {
+    toDoFormContainer.style.display = "initial";
+    toDoFormContainer.scrollTo(0, 0);
+    addToDoBtn.style.display = "none";
+    editToDoBtn.style.display = "initial";
+    limitDatePicker();
+
+    if (parseInt(editBtnIndex) === parseInt(toDoItems.indexOf(toDoItems[i]))) {
+      categoryName.textContent = toDoItems[i].category;
+      toDoTitle.value = toDoItems[i].title;
+      toDoPriority.value = toDoItems[i].priority;
+      toDoDescription.value = toDoItems[i].description;
+      toDoDueDate.value = toDoItems[i].dueDate;
+    }
+
+    const entryIndex = toDoItems.indexOf(toDoItems[i]);
+    editToDo(entryIndex);
+  }
 }
 
 export function hideToDoForm() {

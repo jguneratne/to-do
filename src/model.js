@@ -59,6 +59,17 @@ export function removeToDo(removedItem) {
   }
 }
 
+export function editToDo(entryIndex) {
+  if (toDoItems.at(entryIndex)) {
+    toDoItems.at(entryIndex).category = categoryName.textContent;
+    toDoItems.at(entryIndex).title = toDoTitle.value;
+    toDoItems.at(entryIndex).priority = toDoPriority.value;
+    toDoItems.at(entryIndex).description = toDoDescription.value;
+    toDoItems.at(entryIndex).dueDate = toDoDueDate.value;
+    console.log(toDoItems);
+  }
+}
+
 export function removeCategory(removedIndex, removedCat) {
   if (removedCat) {
     console.log(removedIndex);

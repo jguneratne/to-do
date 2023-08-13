@@ -39,6 +39,7 @@
 
         <div class="content-box">
           <div class="tab-content by-category cat-tab" data-tab="category">
+            <!-- Form to Submit To Do Entries -->
             <div class="form-div">
               <form action="#" method="get" class="form">
                 <div class="req-msg">
@@ -110,9 +111,26 @@
                 </div>
 
                 <div class="btn-line">
-                  <button type="submit" id="add" value="add" class="add-to-do">
+                  <button
+                    type="button"
+                    id="add"
+                    value="add"
+                    class="add-to-do"
+                    data-form-add="form-add"
+                  >
                     Add
                   </button>
+
+                  <button
+                    type="button"
+                    id="edit"
+                    value="edit"
+                    class="edit-to-do"
+                    data-form-edit="form-edit"
+                  >
+                    Edit
+                  </button>
+
                   <button
                     type="button"
                     id="cancel-btn"
@@ -124,6 +142,7 @@
                 </div>
               </form>
             </div>
+            <!-- End Form -->
 
             <div class="cat-section">
               <h2 class="add-cat-msg">
