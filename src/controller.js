@@ -1,4 +1,5 @@
 import {
+  contentBox,
   addBtn,
   categoryForm,
   cancelCategoryBtn,
@@ -131,7 +132,7 @@ export function handleCategoryEvents() {
 }
 
 export function checkComplete() {
-  categorySection.addEventListener("change", (event) => {
+  contentBox.addEventListener("change", (event) => {
     const taskIndex = event.target.dataset.check;
 
     if (event.target === taskIndex);

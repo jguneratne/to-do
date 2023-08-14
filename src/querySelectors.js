@@ -1,3 +1,4 @@
+export const contentBox = document.querySelector(".content-box");
 export const addCategoryMsg = document.querySelector(".add-cat-msg");
 export const addBtn = document.querySelector(".show-form-btn");
 export const returnToCatTab = document.querySelector(".cat-tab");
