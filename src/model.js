@@ -46,7 +46,7 @@ export function newToDoItem() {
   console.log(toDoItems);
 }
 
-export function removeToDo(removedItem) {
+export function removeToDoFromCategory(removedItem) {
   if (removedItem) {
     let confirmRemove = confirm(
       "Are you sure you want to delete this entry? This cannot be undone"
@@ -55,6 +55,19 @@ export function removeToDo(removedItem) {
     if (confirmRemove) {
       toDoItems.splice(removedItem, 1);
       console.log(toDoItems);
+    }
+  }
+}
+
+export function removeToDoFromCompleted(removedItem) {
+  if (removedItem) {
+    let confirmRemove = confirm(
+      "Are you sure you want to delete this entry? This cannot be undone"
+    );
+
+    if (confirmRemove) {
+      completedTasks.splice(removedItem, 1);
+      console.log(completedTasks);
     }
   }
 }

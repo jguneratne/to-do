@@ -3,7 +3,6 @@ import {
   addBtn,
   categoryForm,
   cancelCategoryBtn,
-  categorySection,
   toDoForm,
   cancelToDoBtn,
   addToDoBtn,
@@ -29,7 +28,8 @@ import {
   newToDoItem,
   editToDo,
   toDoItems,
-  removeToDo,
+  removeToDoFromCategory,
+  removeToDoFromCompleted,
   removeCategory,
   changeCompleteStatus,
   completedTasks,
@@ -90,15 +90,26 @@ export function handleEventDelegation() {
     });
 
     // Delete To Do Items
-    const deleteToDo = event.target.dataset.delete;
-    const toDoEntries = Array.from(
-      document.querySelectorAll(["[data-delete]"])
+    const deleteCatToDo = event.target.dataset.catDelete;
+    const deleteCompToDo = event.target.dataset.compDelete;
+    const categoryToDoEntries = Array.from(
+      document.querySelectorAll(["[data-cat-delete]"])
     );
-    toDoEntries.forEach((entry) => {
-      if (event.target === entry) {
-        removeToDo(deleteToDo);
+    const completeToDoEntries = Array.from(
+      document.querySelectorAll(["[data-comp-delete]"])
+    );
+    categoryToDoEntries.forEach((catEntry) => {
+      if (event.target === catEntry) {
+        removeToDoFromCategory(deleteCatToDo);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
+      }
+    });
+    completeToDoEntries.forEach((compEntry) => {
+      if (event.target === compEntry) {
+        removeToDoFromCompleted(deleteCompToDo);
+        replaceCompletedRows();
+        showCompletedTasks(completedTasks);
       }
     });
 

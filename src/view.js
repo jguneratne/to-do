@@ -174,7 +174,7 @@ export function displayToDoEntry(toDoItems) {
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
     deleteIcon.alt = "Delete Entry";
-    deleteIcon.setAttribute("data-delete", i);
+    deleteIcon.setAttribute("data-cat-delete", i);
 
     const priorityDiv = document.createElement("div");
     priorityDiv.className = "priority";
@@ -231,20 +231,17 @@ export function replaceToDoItems() {
   });
 }
 
-export function showCatMessage() {
-  console.log(categorySection.hasChildNodes());
-  if (categorySection.hasChildNodes() === false) {
-    addCategoryMsg.style.display = "initial";
-  }
-}
+// export function showCatMessage() {
+//   console.log(categorySection.hasChildNodes());
+//   if (categorySection.hasChildNodes() === false) {
+//     addCategoryMsg.style.display = "initial";
+//   }
+// }
 
 export function showCompletedTasks(completedTasks) {
   for (let i = 0; i < completedTasks.length; i++) {
     const completedTasksRowDiv = document.createElement("div");
     completedTasksDiv.className = "completed-tasks-row-parent";
-
-    // const completedTaskHeader = document.createElement("div");
-    // completedTaskHeader.className = "completed-task-header";
 
     const completedTasksRow = document.createElement("div");
     completedTasksRow.className = "completed-tasks-row";
@@ -295,8 +292,7 @@ export function showCompletedTasks(completedTasks) {
 
     const deleteBtnImg = document.createElement("img");
     deleteBtnImg.src = "../src/assets/imgs/trash.svg";
-    deleteBtnImg.setAttribute("data-delete-cat", completedTasks[i]);
-    deleteBtnImg.setAttribute("data-delete-cat-index", i);
+    deleteBtnImg.setAttribute("data-comp-delete", i);
 
     completedTasksDiv.appendChild(completedTasksRowDiv);
     completedTasksRowDiv.appendChild(completedTasksRow);
