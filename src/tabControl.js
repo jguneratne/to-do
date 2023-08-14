@@ -1,18 +1,13 @@
-import {
-  addCategoryMsg,
-  addBtn,
-  categoryTab,
-  returnToCatTab,
-} from "./querySelectors";
+import { addBtn, returnToCatTab } from "./querySelectors";
 
 export default function tabControls() {
   document.querySelectorAll(".btn-ctrl").forEach((button) => {
     button.addEventListener("click", () => {
       const btnContainer = document.querySelector(".container");
-      const clickedTab = button.dataset.forTab;
+      const clickedBtn = button.dataset.forTab;
       const tabContainer = document.querySelector(".content-box");
       const activeTab = tabContainer.querySelector(
-        `.tab-content[data-tab="${clickedTab}"]`
+        `.tab-content[data-tab="${clickedBtn}"]`
       );
 
       //   console.log(btnContainer);
@@ -30,17 +25,6 @@ export default function tabControls() {
 
       button.classList.add("btn-ctrl--active");
       activeTab.classList.add("tab-content--active");
-
-      if (
-        button.classList.contains("date-tab") ||
-        button.classList.contains("priority") ||
-        button.classList.contains("completed-tab")
-      ) {
-        addCategoryMsg.style.display = "none";
-        categoryTab.style.display = "none";
-      } else if (button.classList.contains("cat-tab")) {
-        addCategoryMsg.style.display = "initial";
-      }
 
       if (addBtn.classList.contains("btn-ctrl--active")) {
         addBtn.classList.remove("btn-ctrl--active");
