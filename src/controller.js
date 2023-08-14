@@ -10,7 +10,7 @@ import {
   editToDoBtn,
 } from "./querySelectors";
 import {
-  showCatMessage,
+  //showCatMessage,
   newCategoryForm,
   hideCategoryForm,
   replaceCategorySections,
@@ -78,8 +78,8 @@ export function cancelToDo() {
   cancelToDoBtn.addEventListener("pointerdown", hideToDoForm);
 }
 
-export function handleCategoryEvents() {
-  categorySection.addEventListener("pointerdown", function (event) {
+export function handleEventDelegation() {
+  contentBox.addEventListener("pointerdown", function (event) {
     //Display To Do Entry Form
     const addBtn = event.target.dataset.category;
     const addBtns = Array.from(document.querySelectorAll("[data-category"));

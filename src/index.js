@@ -6,7 +6,7 @@ import {
   submitNewCategory,
   submitToDo,
   cancelToDo,
-  handleCategoryEvents,
+  handleEventDelegation,
   checkComplete,
 } from "./controller";
 
@@ -26,6 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   submitNewCategory();
   submitToDo();
   cancelToDo();
-  handleCategoryEvents();
+  handleEventDelegation();
   checkComplete();
 });
