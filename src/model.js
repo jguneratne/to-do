@@ -9,7 +9,7 @@ import {
 
 export const categories = [];
 export let toDoItems = [];
-const completedTasks = [];
+export const completedTasks = [];
 
 export function newCategoryArray() {
   const newCategory = categoryInput.value;

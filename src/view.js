@@ -15,6 +15,7 @@ import {
   toDoDueDate,
   addToDoBtn,
   editToDoBtn,
+  completedTasksDiv,
 } from "./querySelectors";
 import { formatDateTimes, limitDatePicker, findPastDue } from "./dates";
 
@@ -235,4 +236,90 @@ export function showCatMessage() {
   if (categorySection.hasChildNodes() === false) {
     addCategoryMsg.style.display = "initial";
   }
+}
+
+export function showCompletedTasks(completedTasks) {
+  for (let i = 0; i < completedTasks.length; i++) {
+    const completedTasksRowDiv = document.createElement("div");
+    completedTasksDiv.className = "completed-tasks-row-parent";
+
+    // const completedTaskHeader = document.createElement("div");
+    // completedTaskHeader.className = "completed-task-header";
+
+    const completedTasksRow = document.createElement("div");
+    completedTasksRow.className = "completed-tasks-row";
+
+    const gridCellsCheck = document.createElement("div");
+    gridCellsCheck.className = "grid-cells .complete-view-complete";
+
+    const completedLabel = document.createElement("label");
+    completedLabel.setAttribute("for", "complete");
+
+    const completedCheckbox = document.createElement("INPUT");
+    completedCheckbox.setAttribute("type", "checkbox");
+    completedCheckbox.className = "complete";
+    completedCheckbox.name = "complete";
+    completedCheckbox.id = "complete";
+    completedCheckbox.value = "complete";
+    completedCheckbox.checked = completedTasks[i].completedTask;
+    completedCheckbox.setAttribute("data-check", i);
+
+    const gridCellsTitle = document.createElement("div");
+    gridCellsTitle.className = "grid-cells .complete-view-title";
+    gridCellsTitle.textContent = completedTasks[i].title;
+
+    const gridCellsDescription = document.createElement("div");
+    gridCellsDescription.className = "grid-cells .complete-view-description";
+    if (completedTasks[i].description !== "") {
+      gridCellsDescription.textContent = completedTasks[i].description;
+    } else {
+      gridCellsDescription.textContent = "----";
+    }
+
+    const gridCellsPriority = document.createElement("div");
+    gridCellsPriority.className = "grid-cells .complete-view-priority";
+
+    const gridCellsPriorityColor = document.createElement("div");
+    gridCellsPriorityColor.className = "priority-color";
+    gridCellsPriorityColor.style.border = "1px solid #535347";
+    if (completedTasks[i].priority.toLowerCase() === "low") {
+      gridCellsPriorityColor.style.backgroundColor = "#e7f24f";
+    } else if (completedTasks[i].priority.toLowerCase() === "medium") {
+      gridCellsPriorityColor.style.backgroundColor = "#eeb250";
+    } else if (completedTasks[i].priority.toLowerCase === "high") {
+      gridCellsPriorityColor.style.backgroundColor = "#bc2702";
+    }
+
+    const gridCellsDelete = document.createElement("div");
+    gridCellsDelete.className = "grid-cells .complete-view-delete";
+
+    const deleteBtnImg = document.createElement("img");
+    deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+    deleteBtnImg.setAttribute("data-delete-cat", completedTasks[i]);
+    deleteBtnImg.setAttribute("data-delete-cat-index", i);
+
+    completedTasksDiv.appendChild(completedTasksRowDiv);
+    completedTasksRowDiv.appendChild(completedTasksRow);
+    completedTasksRow.appendChild(gridCellsCheck);
+    gridCellsCheck.appendChild(completedLabel);
+    gridCellsCheck.appendChild(completedCheckbox);
+    completedTasksRow.appendChild(gridCellsTitle);
+    completedTasksRow.appendChild(gridCellsDescription);
+    completedTasksRow.appendChild(gridCellsPriority);
+    gridCellsPriority.appendChild(gridCellsPriorityColor);
+    completedTasksRow.appendChild(gridCellsDelete);
+    gridCellsDelete.appendChild(deleteBtnImg);
+  }
+}
+
+export function replaceCompletedRows() {
+  // Replaces all rows of Completed Tasks to prevent duplicates
+
+  const completedTaskRows = document.querySelectorAll(".completed-tasks-row");
+
+  completedTaskRows.forEach((row) => {
+    if (row.parentNode) {
+      row.parentNode.removeChild(row);
+    }
+  });
 }

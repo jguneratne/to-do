@@ -522,11 +522,31 @@ input[type="checkbox"].complete:checked::before {
 }
 
 /* Main: Completed Tasks View */
-.completed-tasks-div {
+.completed-div {
   display: grid;
   grid-auto-rows: min-content;
   margin-right: 2ch;
   margin-bottom: 2ch;
+  width: 100%;
+}
+
+.completed-task-header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 0.3ch solid black;
+  font-family: "lancelot";
+  font-size: 2ch;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1ch;
+  margin-right: 2ch;
+  height: min-content;
+}
+
+.completed-tasks-row-parent {
+  width: 100%;
+  margin-right: 2ch;
+  height: min-content;
 }
 
 .completed-tasks-row {
@@ -540,12 +560,6 @@ input[type="checkbox"].complete:checked::before {
   border-bottom: 1px solid black;
 }
 
-.completed-task-header {
-  border-bottom: 0.3ch solid black;
-  font-family: "lancelot";
-  font-size: 2ch;
-}
-
 .headers,
 .grid-cells {
   text-align: center;
@@ -556,6 +570,26 @@ input[type="checkbox"].complete:checked::before {
 .grid-cells:not(:last-of-type) {
   width: 100%;
   border-right: 0.2ch solid black;
+}
+
+.complete-view-complete {
+  grid-column: 1;
+}
+
+.complete-view-title {
+  grid-column: 2;
+}
+
+.complete-view-description {
+  grid-column: 3;
+}
+
+.complete-view-priority {
+  grid-column: 4;
+}
+
+.complete-view-delete {
+  grid-column: 5;
 }
 
 .grid-cells > label {
@@ -574,6 +608,15 @@ input[type="checkbox"].complete:checked::before {
   background-color: var(--high-priority-color);
   margin-left: auto;
   margin-right: auto;
+}
+
+.grid-cells > img {
+  width: 2ch;
+}
+
+.grid-cells > img:hover {
+  width: 2.2ch;
+  cursor: pointer;
 }
 
 /* Footer */

@@ -19,6 +19,8 @@ import {
   displayToDoEntry,
   replaceToDoItems,
   showFormWithInfo,
+  showCompletedTasks,
+  replaceCompletedRows,
 } from "./view";
 import {
   categories,
@@ -29,6 +31,7 @@ import {
   removeToDo,
   removeCategory,
   changeCompleteStatus,
+  completedTasks,
 } from "./model";
 
 export function showCategoryForm() {
@@ -135,5 +138,7 @@ export function checkComplete() {
     changeCompleteStatus(taskIndex);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
+    replaceCompletedRows();
+    showCompletedTasks(completedTasks);
   });
 }
