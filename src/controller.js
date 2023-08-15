@@ -21,6 +21,8 @@ import {
   showFormWithInfo,
   showCompletedTasks,
   replaceCompletedRows,
+  showByDueDate,
+  replaceDueDateRows,
 } from "./view";
 import {
   categories,
@@ -33,7 +35,9 @@ import {
   removeCategory,
   changeCompleteStatus,
   completedTasks,
+  sortByDate,
 } from "./model";
+import { findPastDue, formatDateTimes } from "./dates";
 
 export function showCategoryForm() {
   addBtn.addEventListener("pointerdown", newCategoryForm);
@@ -60,16 +64,26 @@ export function submitToDo() {
     if (e.target === addToDoBtn) {
       // console.log(targetCategory);
       newToDoItem();
+      sortByDate();
       hideToDoForm();
       replaceToDoItems();
       displayToDoEntry(toDoItems);
+      replaceDueDateRows();
+      showByDueDate(toDoItems);
+      findPastDue();
+      formatDateTimes();
     }
 
     if (e.target === editToDoBtn) {
       editToDo();
+      sortByDate();
       hideToDoForm();
       replaceToDoItems();
       displayToDoEntry(toDoItems);
+      replaceDueDateRows();
+      showByDueDate(toDoItems);
+      findPastDue();
+      formatDateTimes();
     }
   });
 }
@@ -90,19 +104,23 @@ export function handleEventDelegation() {
     });
 
     // Delete To Do Items
-    const deleteCatToDo = event.target.dataset.catDelete;
+    const deleteToDoItem = event.target.dataset.itemDelete;
     const deleteCompToDo = event.target.dataset.compDelete;
-    const categoryToDoEntries = Array.from(
-      document.querySelectorAll(["[data-cat-delete]"])
+    const toDoEntries = Array.from(
+      document.querySelectorAll(["[data-item-delete]"])
     );
     const completeToDoEntries = Array.from(
       document.querySelectorAll(["[data-comp-delete]"])
     );
-    categoryToDoEntries.forEach((catEntry) => {
-      if (event.target === catEntry) {
-        removeToDoFromCategory(deleteCatToDo);
+    toDoEntries.forEach((entry) => {
+      if (event.target === entry) {
+        removeToDoFromCategory(deleteToDoItem);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
+        replaceDueDateRows();
+        showByDueDate(toDoItems);
+        findPastDue();
+        formatDateTimes();
       }
     });
     completeToDoEntries.forEach((compEntry) => {
@@ -126,7 +144,11 @@ export function handleEventDelegation() {
         createCategorySection(categories);
         replaceToDoItems();
         displayToDoEntry(toDoItems);
-        showCatMessage();
+        replaceDueDateRows();
+        showByDueDate(toDoItems);
+        findPastDue();
+        formatDateTimes();
+        // showCatMessage();
       }
     });
 
@@ -150,7 +172,11 @@ export function checkComplete() {
     changeCompleteStatus(taskIndex);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
+    replaceDueDateRows();
+    showByDueDate(toDoItems);
     replaceCompletedRows();
     showCompletedTasks(completedTasks);
+    findPastDue();
+    formatDateTimes();
   });
 }

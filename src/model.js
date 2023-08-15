@@ -129,3 +129,10 @@ export function changeCompleteStatus(taskIndex) {
     }
   }
 }
+
+export function sortByDate() {
+  toDoItems.sort(
+    (date1, date2) => Date.parse(date1.dueDate) - Date.parse(date2.dueDate)
+  );
+  console.log(toDoItems);
+}

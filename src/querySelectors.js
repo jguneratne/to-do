@@ -23,4 +23,5 @@ export const dateTimePicker = document.querySelector(
 );
 export const addToDoBtn = document.querySelector("[data-form-add]");
 export const editToDoBtn = document.querySelector("[data-form-edit]");
-export const completedTasksDiv = document.querySelector(".completed-div");
+export const dueDateTaskDiv = document.querySelector(".due-view-div");
+export const completedTasksDiv = document.querySelector(".completed-view-div");

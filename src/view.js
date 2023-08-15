@@ -15,9 +15,10 @@ import {
   toDoDueDate,
   addToDoBtn,
   editToDoBtn,
+  dueDateTaskDiv,
   completedTasksDiv,
 } from "./querySelectors";
-import { formatDateTimes, limitDatePicker, findPastDue } from "./dates";
+import { limitDatePicker } from "./dates";
 
 export function newCategoryForm() {
   addCategoryMsg.style.display = "none";
@@ -174,7 +175,7 @@ export function displayToDoEntry(toDoItems) {
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "../src/assets/imgs/trash.svg";
     deleteIcon.alt = "Delete Entry";
-    deleteIcon.setAttribute("data-cat-delete", i);
+    deleteIcon.setAttribute("data-item-delete", i);
 
     const priorityDiv = document.createElement("div");
     priorityDiv.className = "priority";
@@ -217,8 +218,6 @@ export function displayToDoEntry(toDoItems) {
       }
     });
   }
-  findPastDue();
-  formatDateTimes();
 }
 
 export function replaceToDoItems() {
@@ -237,6 +236,92 @@ export function replaceToDoItems() {
 //     addCategoryMsg.style.display = "initial";
 //   }
 // }
+
+export function showByDueDate(toDoItems) {
+  for (let i = 0; i < toDoItems.length; i++) {
+    const dueDateTasksRowDiv = document.createElement("div");
+    dueDateTasksRowDiv.className = "due-tasks-row-parent";
+
+    const dueDateTasksRow = document.createElement("div");
+    dueDateTasksRow.className = "due-view-row";
+
+    const dueViewDueDate = document.createElement("div");
+    dueViewDueDate.className = "due-view-due show-due-date";
+    dueViewDueDate.textContent = toDoItems[i].dueDate;
+
+    const dueDateTitle = document.createElement("div");
+    dueDateTitle.className = "grid-cells .due-view-title";
+    dueDateTitle.textContent = toDoItems[i].title;
+
+    const dueDateDescription = document.createElement("div");
+    dueDateDescription.className = "grid-cells .due-view-description";
+    if (toDoItems[i].description !== "") {
+      dueDateDescription.textContent = toDoItems[i].description;
+    } else {
+      dueDateDescription.textContent = "----";
+    }
+
+    const dueDatePriority = document.createElement("div");
+    dueDatePriority.className = "grid-cells .due-view-priority";
+    const dueDatePriorityColor = document.createElement("div");
+    dueDatePriorityColor.className = "priority-color";
+    dueDatePriorityColor.style.border = "1px solid #535347";
+    if (toDoItems[i].priority.toLowerCase() === "low") {
+      dueDatePriorityColor.style.backgroundColor = "#e7f24f";
+    } else if (toDoItems[i].priority.toLowerCase() === "medium") {
+      dueDatePriorityColor.style.backgroundColor = "#eeb250";
+    } else if (toDoItems[i].priority.toLowerCase === "high") {
+      dueDatePriorityColor.style.backgroundColor = "#bc2702";
+    }
+
+    const dueDateCheck = document.createElement("div");
+    dueDateCheck.className = "grid-cells .due-view-complete";
+
+    const dueDateLabel = document.createElement("label");
+    dueDateLabel.setAttribute("for", "complete");
+
+    const dueDateCheckbox = document.createElement("INPUT");
+    dueDateCheckbox.setAttribute("type", "checkbox");
+    dueDateCheckbox.className = "complete";
+    dueDateCheckbox.name = "complete";
+    dueDateCheckbox.id = "complete";
+    dueDateCheckbox.value = "complete";
+    dueDateCheckbox.checked = toDoItems[i].completedTask;
+    dueDateCheckbox.setAttribute("data-check", i);
+
+    const dueDateDelete = document.createElement("div");
+    dueDateDelete.className = "grid-cells .due-view-delete";
+
+    const deleteBtnImg = document.createElement("img");
+    deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+    deleteBtnImg.setAttribute("data-item-delete", i);
+
+    dueDateTaskDiv.appendChild(dueDateTasksRowDiv);
+    dueDateTasksRowDiv.appendChild(dueDateTasksRow);
+    dueDateTasksRow.appendChild(dueViewDueDate);
+    dueDateTasksRow.appendChild(dueDateTitle);
+    dueDateTasksRow.appendChild(dueDateDescription);
+    dueDateTasksRow.appendChild(dueDatePriority);
+    dueDatePriority.appendChild(dueDatePriorityColor);
+    dueDateTasksRow.appendChild(dueDateCheck);
+    dueDateCheck.appendChild(dueDateLabel);
+    dueDateCheck.appendChild(dueDateCheckbox);
+    dueDateTasksRow.appendChild(dueDateDelete);
+    dueDateDelete.appendChild(deleteBtnImg);
+  }
+}
+
+export function replaceDueDateRows() {
+  // Replaces all rows of DueDate view to prevent duplicates
+
+  const dueViewRows = document.querySelectorAll(".due-view-row");
+
+  dueViewRows.forEach((row) => {
+    if (row.parentNode) {
+      row.parentNode.removeChild(row);
+    }
+  });
+}
 
 export function showCompletedTasks(completedTasks) {
   for (let i = 0; i < completedTasks.length; i++) {
