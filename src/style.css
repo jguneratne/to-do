@@ -92,6 +92,7 @@
   grid-area: 1 / 2 / 2 / 3;
   min-height: 100%;
   height: min-content;
+  margin: 0 2ch;
 }
 
 .tab-btn {
@@ -116,10 +117,7 @@
 }
 
 /* Main: Tab opening messages */
-.add-cat-msg,
-.nothing-date-msg,
-.nothing-priority-msg,
-.nothing-complete-msg {
+.add-cat-msg {
   width: 100%;
   text-align: center;
 }
@@ -131,9 +129,9 @@
   position: absolute;
   z-index: 10;
   left: 0;
-  top: 0ch;
+  top: 0;
   right: 0;
-  bottom: 0ch;
+  bottom: 0;
   margin: auto;
   overflow: scroll;
 }
@@ -157,7 +155,7 @@
 
 .req-msg {
   font-family: "Happy Monkey";
-  font-size: 2.3ch;
+  font-size: 2.8ch;
   text-align: center;
   margin-bottom: 1.5ch;
 }
@@ -170,6 +168,7 @@
 .category-name {
   margin-top: 1.5ch;
   font-size: 2.2ch;
+  font-family: "Happy Monkey";
 }
 
 .instruct {
@@ -520,8 +519,10 @@ input[type="checkbox"].complete:checked::before {
   width: 100%;
 }
 
-/* Main: Completed Tasks View */
-.completed-div {
+/* Main: Due Date, Priority and Completed Tasks View - Grid Styling */
+.due-view-div,
+.priority-view-div,
+.completed-view-div {
   display: grid;
   grid-auto-rows: min-content;
   margin-right: 2ch;
@@ -529,9 +530,20 @@ input[type="checkbox"].complete:checked::before {
   width: 100%;
 }
 
+.due-task-header,
+.priority-task-header {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
 .completed-task-header {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+
+.due-task-header,
+.priority-task-header,
+.completed-task-header {
   border-bottom: 0.3ch solid black;
   font-family: "lancelot";
   font-size: 2ch;
@@ -542,15 +554,28 @@ input[type="checkbox"].complete:checked::before {
   height: min-content;
 }
 
+.due-tasks-row-parent,
+.priority-tasks-row-parent,
 .completed-tasks-row-parent {
   width: 100%;
   margin-right: 2ch;
   height: min-content;
 }
 
+.due-view-row,
+.priority-view-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
 .completed-tasks-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+
+.due-view-row,
+.priority-view-row,
+.completed-tasks-row {
   height: min-content;
   padding-top: 1ch;
   padding-bottom: 1ch;
@@ -569,6 +594,36 @@ input[type="checkbox"].complete:checked::before {
 .grid-cells:not(:last-of-type) {
   width: 100%;
   border-right: 0.2ch solid black;
+}
+
+.due-view-due,
+.priority-view-priority {
+  grid-column: 1;
+}
+
+.due-view-title,
+.priority-view-title {
+  grid-column: 2;
+}
+
+.due-view-description,
+.priority-view-description {
+  grid-column: 3;
+}
+
+.due-view-priority,
+.priority-view-due {
+  grid-column: 4;
+}
+
+.due-view-complete,
+.priority-view-complete {
+  grid-column: 5;
+}
+
+.due-view-delete,
+.priority-view-delete {
+  grid-column: 6;
 }
 
 .complete-view-complete {

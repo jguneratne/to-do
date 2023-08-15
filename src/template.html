@@ -223,19 +223,81 @@
           </div>
 
           <div class="tab-content by-due-date" data-tab="due-date">
-            <div class="nothing-date-msg">
-              <h2>No due dates yet!</h2>
+            <div class="due-view-div">
+              <div class="due-task-header">
+                <h2 class="due-date-header headers">Due Date</h2>
+                <h2 class="due-title-header headers">Title</h2>
+                <h2 class="due-description-header headers">Description</h2>
+                <h2 class="due-priority-header headers">Priority</h2>
+                <h2 class="due-complete-header headers">Complete</h2>
+                <h2 class="due-delete-header headers">Delete</h2>
+              </div>
+            </div>
+
+            <div class="due-tasks-row-parent">
+              <div class="due-view-row">
+                <div class="grid-cells due-view-due">Test</div>
+                <div class="grid-cells due-view-title">Test</div>
+                <div class="grid-cells due-view-description">Test</div>
+                <div class="grid-cells due-view-priority">
+                  <div class="priority-color"></div>
+                </div>
+                <div class="grid-cells due-view-complete">
+                  <label for="complete"></label>
+                  <input
+                    type="checkbox"
+                    id="complete"
+                    class="complete"
+                    name="complete"
+                    value="Complete:"
+                  />
+                </div>
+                <div class="grid-cells due-view-delete">
+                  <img src="../src/assets/imgs/trash.svg" alt="Delete Entry" />
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="tab-content by-priority" data-tab="priority">
-            <div class="nothing-priority-msg">
-              <h2>No priorities yet!</h2>
+            <div class="priority-view-div">
+              <div class="priority-task-header">
+                <h2 class="priority-priority-header headers">Priority</h2>
+                <h2 class="priority-title-header headers">Title</h2>
+                <h2 class="priority-description-header headers">Description</h2>
+                <h2 class="priority-date-header headers">Due Date</h2>
+                <h2 class="priority-complete-header headers">Complete</h2>
+                <h2 class="priority-delete-header headers">Delete</h2>
+              </div>
+            </div>
+
+            <div class="priority-tasks-row-parent">
+              <div class="priority-view-row">
+                <div class="grid-cells priority-view-priority">
+                  <div class="priority-color"></div>
+                </div>
+                <div class="grid-cells priority-view-title">Test</div>
+                <div class="grid-cells priority-view-description">Test</div>
+                <div class="grid-cells priority-view-due">Test</div>
+                <div class="grid-cells priority-view-complete">
+                  <label for="complete"></label>
+                  <input
+                    type="checkbox"
+                    id="complete"
+                    class="complete"
+                    name="complete"
+                    value="Complete:"
+                  />
+                </div>
+                <div class="grid-cells priority-view-delete">
+                  <img src="../src/assets/imgs/trash.svg" alt="Delete Entry" />
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="tab-content by-completed" data-tab="completed-items">
-            <div class="completed-div">
+            <div class="completed-view-div">
               <div class="completed-task-header">
                 <h2 class="completed-completed-header headers">Completed</h2>
                 <h2 class="completed-title-header headers">Title</h2>
@@ -274,10 +336,6 @@
                 </div> -->
             <!-- </div> -->
             <!-- </div> -->
-
-            <!-- <div class="nothing-complete-msg">
-              <h2>No completed tasks yet!</h2>
-            </div> -->
           </div>
         </div>
       </div>
