@@ -2,8 +2,26 @@ import { format, parseISO, isAfter } from "date-fns";
 import { dateTimePicker } from "./querySelectors";
 import { toDoItems } from "./model";
 
-export function formatDateTimes() {
+export function formatDatesCategory() {
   const dueDateDisplay = document.querySelectorAll(".show-due-date");
+
+  dueDateDisplay.forEach((date) => {
+    const formatted = format(parseISO(date.textContent, 0), "PPp");
+    date.textContent = formatted;
+  });
+}
+
+export function formatDatesDueView() {
+  const dueDateDisplay = document.querySelectorAll(".show-date-due");
+
+  dueDateDisplay.forEach((date) => {
+    const formatted = format(parseISO(date.textContent, 0), "PPp");
+    date.textContent = formatted;
+  });
+}
+
+export function formatDatesPriority() {
+  const dueDateDisplay = document.querySelectorAll(".show-date-priority");
 
   dueDateDisplay.forEach((date) => {
     const formatted = format(parseISO(date.textContent, 0), "PPp");

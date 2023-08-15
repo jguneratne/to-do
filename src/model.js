@@ -136,3 +136,15 @@ export function sortByDate() {
   );
   console.log(toDoItems);
 }
+
+export function sortByPriority() {
+  const importance = {
+    low: 3,
+    medium: 2,
+    high: 1,
+  };
+
+  toDoItems.sort((a, b) => importance[a.priority] - importance[b.priority]);
+
+  console.log(toDoItems);
+}

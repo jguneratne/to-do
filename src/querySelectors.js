@@ -3,6 +3,8 @@ export const addCategoryMsg = document.querySelector(".add-cat-msg");
 export const addBtn = document.querySelector(".show-form-btn");
 export const returnToCatTab = document.querySelector(".cat-tab");
 export const categoryBtn = document.querySelector("[data-for-tab='category']");
+export const dueDateBtn = document.querySelector("[data-for-tab='due-date']");
+export const priorityBtn = document.querySelector("[data-for-tab='priority']");
 export const categoryTab = document.querySelector(".by-category");
 export const sideNav = document.querySelector(".side-nav");
 export const cancelCategoryBtn = document.querySelector(".cancel-category");
@@ -24,4 +26,5 @@ export const dateTimePicker = document.querySelector(
 export const addToDoBtn = document.querySelector("[data-form-add]");
 export const editToDoBtn = document.querySelector("[data-form-edit]");
 export const dueDateTaskDiv = document.querySelector(".due-view-div");
+export const priorityTaskDiv = document.querySelector(".priority-view-div");
 export const completedTasksDiv = document.querySelector(".completed-view-div");

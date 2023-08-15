@@ -16,9 +16,10 @@ import {
   addToDoBtn,
   editToDoBtn,
   dueDateTaskDiv,
+  priorityTaskDiv,
   completedTasksDiv,
 } from "./querySelectors";
-import { limitDatePicker } from "./dates";
+import { limitDatePicker, findPastDue, formatDateTimes } from "./dates";
 
 export function newCategoryForm() {
   addCategoryMsg.style.display = "none";
@@ -246,7 +247,7 @@ export function showByDueDate(toDoItems) {
     dueDateTasksRow.className = "due-view-row";
 
     const dueViewDueDate = document.createElement("div");
-    dueViewDueDate.className = "due-view-due show-due-date";
+    dueViewDueDate.className = "due-view-due show-date-due";
     dueViewDueDate.textContent = toDoItems[i].dueDate;
 
     const dueDateTitle = document.createElement("div");
@@ -317,6 +318,92 @@ export function replaceDueDateRows() {
   const dueViewRows = document.querySelectorAll(".due-view-row");
 
   dueViewRows.forEach((row) => {
+    if (row.parentNode) {
+      row.parentNode.removeChild(row);
+    }
+  });
+}
+
+export function showByPriority(toDoItems) {
+  for (let i = 0; i < toDoItems.length; i++) {
+    const priorityTasksRowDiv = document.createElement("div");
+    priorityTasksRowDiv.className = "priority-tasks-row-parent";
+
+    const priorityTasksRow = document.createElement("div");
+    priorityTasksRow.className = "priority-view-row";
+
+    const priorityViewPriority = document.createElement("div");
+    priorityViewPriority.className = "grid-cells .priority-view-priority";
+    const priorityViewPriorityColor = document.createElement("div");
+    priorityViewPriorityColor.className = "priority-color";
+    priorityViewPriorityColor.style.border = "1px solid #535347";
+    if (toDoItems[i].priority.toLowerCase() === "low") {
+      priorityViewPriorityColor.style.backgroundColor = "#e7f24f";
+    } else if (toDoItems[i].priority.toLowerCase() === "medium") {
+      priorityViewPriorityColor.style.backgroundColor = "#eeb250";
+    } else if (toDoItems[i].priority.toLowerCase === "high") {
+      priorityViewPriorityColor.style.backgroundColor = "#bc2702";
+    }
+
+    const priorityTitle = document.createElement("div");
+    priorityTitle.className = "grid-cells .priority-view-title";
+    priorityTitle.textContent = toDoItems[i].title;
+
+    const priorityDescription = document.createElement("div");
+    priorityDescription.className = "grid-cells .priority-view-description";
+    if (toDoItems[i].description !== "") {
+      priorityDescription.textContent = toDoItems[i].description;
+    } else {
+      priorityDescription.textContent = "----";
+    }
+
+    const priorityViewDueDate = document.createElement("div");
+    priorityViewDueDate.className = "priority-view-due show-date-priority";
+    priorityViewDueDate.textContent = toDoItems[i].dueDate;
+
+    const priorityCheck = document.createElement("div");
+    priorityCheck.className = "grid-cells .priority-view-complete";
+
+    const priorityLabel = document.createElement("label");
+    priorityLabel.setAttribute("for", "complete");
+
+    const priorityCheckbox = document.createElement("INPUT");
+    priorityCheckbox.setAttribute("type", "checkbox");
+    priorityCheckbox.className = "complete";
+    priorityCheckbox.name = "complete";
+    priorityCheckbox.id = "complete";
+    priorityCheckbox.value = "complete";
+    priorityCheckbox.checked = toDoItems[i].completedTask;
+    priorityCheckbox.setAttribute("data-check", i);
+
+    const priorityDelete = document.createElement("div");
+    priorityDelete.className = "grid-cells .priority-view-delete";
+
+    const deleteBtnImg = document.createElement("img");
+    deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+    deleteBtnImg.setAttribute("data-item-delete", i);
+
+    priorityTaskDiv.appendChild(priorityTasksRowDiv);
+    priorityTasksRowDiv.appendChild(priorityTasksRow);
+    priorityTasksRow.appendChild(priorityViewPriority);
+    priorityViewPriority.appendChild(priorityViewPriorityColor);
+    priorityTasksRow.appendChild(priorityTitle);
+    priorityTasksRow.appendChild(priorityDescription);
+    priorityTasksRow.appendChild(priorityViewDueDate);
+    priorityTasksRow.appendChild(priorityCheck);
+    priorityCheck.appendChild(priorityLabel);
+    priorityCheck.appendChild(priorityCheckbox);
+    priorityTasksRow.appendChild(priorityDelete);
+    priorityDelete.appendChild(deleteBtnImg);
+  }
+}
+
+export function replacePriorityRows() {
+  // Replaces all rows of priority view to prevent duplicates
+
+  const priorityViewRows = document.querySelectorAll(".priority-view-row");
+
+  priorityViewRows.forEach((row) => {
     if (row.parentNode) {
       row.parentNode.removeChild(row);
     }
