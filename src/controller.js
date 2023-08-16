@@ -10,6 +10,7 @@ import {
   categoryBtn,
   dueDateBtn,
   priorityBtn,
+  completedTabContent,
   completedBtn,
   sideNav,
 } from "./querySelectors";
@@ -198,7 +199,7 @@ export function handleEventDelegation() {
   });
 }
 
-export function checkComplete() {
+export function markComplete() {
   contentBox.addEventListener("change", (event) => {
     const taskIndex = event.target.dataset.check;
 
@@ -206,13 +207,10 @@ export function checkComplete() {
     changeCompleteStatus(taskIndex);
     replaceCompletedRows();
     showCompletedTasks(completedTasks);
-    if (categoryBtn.classList.contains("btn-ctrl--active")) {
-      sortByCreationDate();
-      replaceToDoItems();
-      displayToDoEntry(toDoItems);
-      findPastDue();
-      formatDatesCategory();
-    }
+    replaceToDoItems();
+    displayToDoEntry(toDoItems);
+    findPastDue();
+    formatDatesCategory();
 
     if (dueDateBtn.classList.contains("btn-ctrl--active")) {
       sortByDueDate();

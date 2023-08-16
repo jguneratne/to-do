@@ -112,24 +112,9 @@ export function changeCompleteStatus(taskIndex) {
   if (toDoItems.at(taskIndex)) {
     toDoItems[taskIndex].compeltedTask === false;
     toDoItems[taskIndex].completedTask = true;
-
-    let moveTask = toDoItems.at(taskIndex);
-    completedTasks.push(moveTask);
-    toDoItems.splice(taskIndex, 1);
-
-    console.log(toDoItems);
-    console.log(completedTasks);
-  } else if (completedTasks.at(taskIndex)) {
-    if (completedTasks[taskIndex].completedTask === true) {
-      completedTasks[taskIndex].completedTask = false;
-
-      let reinstateTask = completedTasks.at(taskIndex);
-      toDoItems.push(reinstateTask);
-      completedTasks.splice(taskIndex, 1);
-
-      console.log(toDoItems);
-      console.log(completedTasks);
-    }
+  } else {
+    if (toDoItems[taskIndex].completedTask === true);
+    toDoItems[taskIndex].completedTask = false;
   }
 }
 

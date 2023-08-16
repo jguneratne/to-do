@@ -8,7 +8,7 @@ import {
   cancelToDo,
   displayByView,
   handleEventDelegation,
-  checkComplete,
+  markComplete,
 } from "./controller";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,5 +29,5 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelToDo();
   displayByView();
   handleEventDelegation();
-  checkComplete();
+  markComplete();
 });

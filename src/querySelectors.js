@@ -31,4 +31,5 @@ export const addToDoBtn = document.querySelector("[data-form-add]");
 export const editToDoBtn = document.querySelector("[data-form-edit]");
 export const dueDateTaskDiv = document.querySelector(".due-view-div");
 export const priorityTaskDiv = document.querySelector(".priority-view-div");
+export const completedTabContent = document.querySelector(".by-completed");
 export const completedTasksDiv = document.querySelector(".completed-view-div");
