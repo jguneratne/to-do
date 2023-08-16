@@ -13,7 +13,7 @@ import {
   sideNav,
 } from "./querySelectors";
 import {
-  // showCatMessage,
+  showCatMessage,
   newCategoryForm,
   hideCategoryForm,
   replaceCategorySections,
@@ -180,7 +180,7 @@ export function handleEventDelegation() {
         displayToDoEntry(toDoItems);
         findPastDue();
         formatDatesCategory();
-        // showCatMessage();
+        showCatMessage(categories);
       }
     });
 

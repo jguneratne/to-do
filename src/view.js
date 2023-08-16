@@ -233,12 +233,14 @@ export function replaceToDoItems() {
   });
 }
 
-// export function showCatMessage(categories) {
-//   // console.log(categorySection.hasChildNodes());
-//   if (categories.length === 0) {
-//     addCategoryMsg.style.display = "initial";
-//   }
-// }
+export function showCatMessage(categories) {
+  if (categories.length === 0) {
+    console.log(categories.length);
+    if (addCategoryMsg.style.display === "none") {
+      addCategoryMsg.style.display = "block";
+    }
+  }
+}
 
 export function showByDueDate(toDoItems) {
   for (let i = 0; i < toDoItems.length; i++) {
