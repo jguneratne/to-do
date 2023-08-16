@@ -202,42 +202,36 @@ export function checkComplete() {
   contentBox.addEventListener("change", (event) => {
     const taskIndex = event.target.dataset.check;
 
-    if (event.target === taskIndex) {
-      if (categoryBtn.classList.contains("btn-ctrl--active")) {
-        changeCompleteStatus(taskIndex);
-        replaceCompletedRows();
-        showCompletedTasks(completedTasks);
-        sortByCreationDate();
-        replaceToDoItems();
-        displayToDoEntry(toDoItems);
-        findPastDue();
-        formatDatesCategory();
-      }
-      if (dueDateBtn.classList.contains("btn-ctrl--active")) {
-        changeCompleteStatus(taskIndex);
-        replaceCompletedRows();
-        showCompletedTasks(completedTasks);
-        sortByDueDate();
-        replaceDueDateRows();
-        showByDueDate(toDoItems);
-        findPastDue();
-        formatDatesDueView();
-      }
-      if (priorityBtn.classList.contains("btn-ctrl--active")) {
-        changeCompleteStatus(taskIndex);
-        replaceCompletedRows();
-        showCompletedTasks(completedTasks);
-        sortByPriority();
-        replacePriorityRows();
-        showByPriority(toDoItems);
-        findPastDue();
-        formatDatesPriority();
-      }
-      if (completedBtn.classList.contains("btn-ctrl--active")) {
-        changeCompleteStatus(taskIndex);
-        replaceCompletedRows();
-        showCompletedTasks(completedTasks);
-      }
+    if (event.target === taskIndex) console.log(taskIndex);
+    changeCompleteStatus(taskIndex);
+    replaceCompletedRows();
+    showCompletedTasks(completedTasks);
+    if (categoryBtn.classList.contains("btn-ctrl--active")) {
+      sortByCreationDate();
+      replaceToDoItems();
+      displayToDoEntry(toDoItems);
+      findPastDue();
+      formatDatesCategory();
+    }
+
+    if (dueDateBtn.classList.contains("btn-ctrl--active")) {
+      sortByDueDate();
+      replaceDueDateRows();
+      showByDueDate(toDoItems);
+      findPastDue();
+      formatDatesDueView();
+    }
+    if (priorityBtn.classList.contains("btn-ctrl--active")) {
+      sortByPriority();
+      replacePriorityRows();
+      showByPriority(toDoItems);
+      findPastDue();
+      formatDatesPriority();
+    }
+    if (completedBtn.classList.contains("btn-ctrl--active")) {
+      changeCompleteStatus(taskIndex);
+      replaceCompletedRows();
+      showCompletedTasks(completedTasks);
     }
   });
 }
