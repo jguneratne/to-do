@@ -61,19 +61,6 @@ export function removeToDoFromCategory(removedItem) {
   }
 }
 
-// export function removeToDoFromCompleted(removedItem) {
-//   if (removedItem) {
-//     let confirmRemove = confirm(
-//       "Are you sure you want to delete this entry? This cannot be undone"
-//     );
-
-//     if (confirmRemove) {
-//       completedTasks.splice(removedItem, 1);
-//       console.log(completedTasks);
-//     }
-//   }
-// }
-
 export function editToDo(entryIndex) {
   if (toDoItems.at(entryIndex)) {
     toDoItems.at(entryIndex).category = categoryName.textContent;

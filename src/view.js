@@ -473,7 +473,7 @@ export function showCompletedTasks(toDoItems) {
 
       const deleteBtnImg = document.createElement("img");
       deleteBtnImg.src = "../src/assets/imgs/trash.svg";
-      deleteBtnImg.setAttribute("data-comp-delete", i);
+      deleteBtnImg.setAttribute("data-item-delete", i);
 
       completedTasksDiv.appendChild(completedTasksRowDiv);
       completedTasksRowDiv.appendChild(completedTasksRow);

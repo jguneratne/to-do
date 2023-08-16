@@ -141,27 +141,34 @@ export function handleEventDelegation() {
 
     // Delete To Do Items
     const deleteToDoItem = event.target.dataset.itemDelete;
-    const deleteCompToDo = event.target.dataset.compDelete;
     const toDoEntries = Array.from(
       document.querySelectorAll(["[data-item-delete]"])
-    );
-    const completeToDoEntries = Array.from(
-      document.querySelectorAll(["[data-comp-delete]"])
     );
     toDoEntries.forEach((entry) => {
       if (event.target === entry) {
         removeToDoFromCategory(deleteToDoItem);
+        sortByCreationDate();
         replaceToDoItems();
         displayToDoEntry(toDoItems);
         findPastDue();
         formatDatesCategory();
-      }
-    });
-    completeToDoEntries.forEach((compEntry) => {
-      if (event.target === compEntry) {
-        // removeToDoFromCompleted(deleteCompToDo);
         replaceCompletedRows();
         showCompletedTasks(toDoItems);
+
+        if (dueDateBtn.classList.contains("btn-ctrl--active")) {
+          sortByDueDate();
+          replaceDueDateRows();
+          showByDueDate(toDoItems);
+          findPastDue();
+          formatDatesDueView();
+        }
+        if (priorityBtn.classList.contains("btn-ctrl--active")) {
+          sortByPriority();
+          replacePriorityRows();
+          showByPriority(toDoItems);
+          findPastDue();
+          formatDatesPriority();
+        }
       }
     });
 
