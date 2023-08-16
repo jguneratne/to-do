@@ -161,7 +161,7 @@
 }
 
 .form-line.hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .form-line {
@@ -328,6 +328,7 @@ button.cancel-to-do:hover {
   background-color: var(--head-foot-color);
   height: min-content;
   width: 50ch;
+  margin-top: 5ch;
   padding: 1.5ch;
   border-radius: 1ch;
 }
@@ -589,10 +590,6 @@ input[type="checkbox"].complete:checked::before {
 .grid-cells {
   text-align: center;
   height: min-content;
-}
-
-.due-view-row .due-view-title {
-  border-left: 0.2ch solid black;
 }
 
 .headers:not(:last-of-type),

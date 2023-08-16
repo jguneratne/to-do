@@ -4,10 +4,10 @@ import { toDoItems } from "./model";
 
 export function formatDatesCategory() {
   const dueDateDisplay = document.querySelectorAll(".show-due-date");
-
   dueDateDisplay.forEach((date) => {
     const formatted = format(parseISO(date.textContent, 0), "PPp");
     date.textContent = formatted;
+    date.style.textAlign = "center";
   });
 }
 
