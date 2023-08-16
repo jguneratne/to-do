@@ -4,6 +4,7 @@ import {
   toDoPriority,
   toDoDescription,
   toDoDueDate,
+  creationTimePicker,
   categoryName,
 } from "./querySelectors";
 
@@ -32,6 +33,7 @@ export function newToDoItem() {
   const priority = toDoPriority.value;
   const description = toDoDescription.value;
   const dueDate = toDoDueDate.value;
+  const creationTime = creationTimePicker.value;
   const completedTask = false;
 
   const toDoItem = {
@@ -40,6 +42,7 @@ export function newToDoItem() {
     priority,
     description,
     dueDate,
+    creationTime,
     completedTask,
   };
   toDoItems.push(toDoItem);
@@ -130,7 +133,15 @@ export function changeCompleteStatus(taskIndex) {
   }
 }
 
-export function sortByDate() {
+export function sortByCreationDate() {
+  toDoItems.sort(
+    (date1, date2) =>
+      Date.parse(date1.creationTime) - Date.parse(date2.creationTime)
+  );
+  console.log(toDoItems);
+}
+
+export function sortByDueDate() {
   toDoItems.sort(
     (date1, date2) => Date.parse(date1.dueDate) - Date.parse(date2.dueDate)
   );

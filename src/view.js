@@ -231,9 +231,9 @@ export function replaceToDoItems() {
   });
 }
 
-// export function showCatMessage() {
-//   console.log(categorySection.hasChildNodes());
-//   if (categorySection.hasChildNodes() === false) {
+// export function showCatMessage(categories) {
+//   // console.log(categorySection.hasChildNodes());
+//   if (categories.length === 0) {
 //     addCategoryMsg.style.display = "initial";
 //   }
 // }

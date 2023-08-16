@@ -7,12 +7,14 @@ import {
   cancelToDoBtn,
   addToDoBtn,
   editToDoBtn,
+  categoryBtn,
   dueDateBtn,
   priorityBtn,
+  completedBtn,
   sideNav,
 } from "./querySelectors";
 import {
-  //showCatMessage,
+  // showCatMessage,
   newCategoryForm,
   hideCategoryForm,
   replaceCategorySections,
@@ -40,7 +42,8 @@ import {
   removeCategory,
   changeCompleteStatus,
   completedTasks,
-  sortByDate,
+  sortByCreationDate,
+  sortByDueDate,
   sortByPriority,
 } from "./model";
 import {
@@ -73,8 +76,8 @@ export function submitNewCategory() {
 export function submitToDo() {
   toDoForm.addEventListener("pointerdown", (e) => {
     if (e.target === addToDoBtn) {
-      // console.log(targetCategory);
       newToDoItem();
+      sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
       displayToDoEntry(toDoItems);
@@ -84,9 +87,12 @@ export function submitToDo() {
 
     if (e.target === editToDoBtn) {
       editToDo();
+      sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
       displayToDoEntry(toDoItems);
+      findPastDue();
+      formatDatesCategory();
     }
   });
 }
@@ -95,21 +101,26 @@ export function cancelToDo() {
   cancelToDoBtn.addEventListener("pointerdown", hideToDoForm);
 }
 
-export function displayDateOrPriority() {
+export function displayByView() {
   sideNav.addEventListener("pointerdown", (event) => {
+    // Display by Category
+    if (categoryBtn.classList.contains("cat-tab")) {
+      sortByCreationDate();
+      replaceToDoItems();
+      displayToDoEntry(toDoItems);
+      findPastDue();
+      formatDatesCategory();
+    }
     // Display by Due Date
     if (dueDateBtn.classList.contains("date-tab")) {
-      console.log("dueDateView");
-      sortByDate();
+      sortByDueDate();
       replaceDueDateRows();
       showByDueDate(toDoItems);
       findPastDue();
       formatDatesDueView();
     }
-
     // Display by Priority
     if (priorityBtn.classList.contains("priority-tab")) {
-      console.log("priorityView");
       sortByPriority();
       replacePriorityRows();
       showByPriority(toDoItems);
@@ -191,27 +202,42 @@ export function checkComplete() {
   contentBox.addEventListener("change", (event) => {
     const taskIndex = event.target.dataset.check;
 
-    if (event.target === taskIndex);
-    changeCompleteStatus(taskIndex);
-    replaceToDoItems();
-    displayToDoEntry(toDoItems);
-    if (dueDateBtn.classList.contains("date-tab")) {
-      sortByDate();
-      replaceDueDateRows();
-      showByDueDate(toDoItems);
-      findPastDue();
-      formatDatesDueView();
+    if (event.target === taskIndex) {
+      if (categoryBtn.classList.contains("btn-ctrl--active")) {
+        changeCompleteStatus(taskIndex);
+        replaceCompletedRows();
+        showCompletedTasks(completedTasks);
+        sortByCreationDate();
+        replaceToDoItems();
+        displayToDoEntry(toDoItems);
+        findPastDue();
+        formatDatesCategory();
+      }
+      if (dueDateBtn.classList.contains("btn-ctrl--active")) {
+        changeCompleteStatus(taskIndex);
+        replaceCompletedRows();
+        showCompletedTasks(completedTasks);
+        sortByDueDate();
+        replaceDueDateRows();
+        showByDueDate(toDoItems);
+        findPastDue();
+        formatDatesDueView();
+      }
+      if (priorityBtn.classList.contains("btn-ctrl--active")) {
+        changeCompleteStatus(taskIndex);
+        replaceCompletedRows();
+        showCompletedTasks(completedTasks);
+        sortByPriority();
+        replacePriorityRows();
+        showByPriority(toDoItems);
+        findPastDue();
+        formatDatesPriority();
+      }
+      if (completedBtn.classList.contains("btn-ctrl--active")) {
+        changeCompleteStatus(taskIndex);
+        replaceCompletedRows();
+        showCompletedTasks(completedTasks);
+      }
     }
-    if (priorityBtn.classList.contains("priority-tab")) {
-      sortByPriority();
-      replacePriorityRows();
-      showByPriority(toDoItems);
-      findPastDue();
-      formatDatesPriority();
-    }
-    replaceCompletedRows();
-    showCompletedTasks(completedTasks);
-    findPastDue();
-    formatDatesCategory();
   });
 }

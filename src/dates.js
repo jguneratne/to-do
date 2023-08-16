@@ -1,5 +1,5 @@
 import { format, parseISO, isAfter } from "date-fns";
-import { dateTimePicker } from "./querySelectors";
+import { dateTimePicker, creationTimePicker } from "./querySelectors";
 import { toDoItems } from "./model";
 
 export function formatDatesCategory() {
@@ -54,6 +54,7 @@ export function limitDatePicker() {
   console.log(minDate);
 
   dateTimePicker.setAttribute("min", minDate);
+  creationTimePicker.setAttribute("value", minDate);
 
   return minDate;
 }
