@@ -416,7 +416,7 @@ export function replacePriorityRows() {
   });
 }
 
-export function showCompletedTasks(completedTasks) {
+export function showCompletedTasks(toDoItems) {
   for (let i = 0; i < toDoItems.length; i++) {
     if (toDoItems[i].completedTask === true) {
       const completedTasksRowDiv = document.createElement("div");

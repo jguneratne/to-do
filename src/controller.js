@@ -10,8 +10,6 @@ import {
   categoryBtn,
   dueDateBtn,
   priorityBtn,
-  completedTabContent,
-  completedBtn,
   sideNav,
 } from "./querySelectors";
 import {
@@ -39,10 +37,9 @@ import {
   editToDo,
   toDoItems,
   removeToDoFromCategory,
-  removeToDoFromCompleted,
+  //  removeToDoFromCompleted,
   removeCategory,
   changeCompleteStatus,
-  completedTasks,
   sortByCreationDate,
   sortByDueDate,
   sortByPriority,
@@ -162,9 +159,9 @@ export function handleEventDelegation() {
     });
     completeToDoEntries.forEach((compEntry) => {
       if (event.target === compEntry) {
-        removeToDoFromCompleted(deleteCompToDo);
+        // removeToDoFromCompleted(deleteCompToDo);
         replaceCompletedRows();
-        showCompletedTasks(completedTasks);
+        showCompletedTasks(toDoItems);
       }
     });
 
@@ -206,7 +203,7 @@ export function markComplete() {
     if (event.target === taskIndex) console.log(taskIndex);
     changeCompleteStatus(taskIndex);
     replaceCompletedRows();
-    showCompletedTasks(completedTasks);
+    showCompletedTasks(toDoItems);
     replaceToDoItems();
     displayToDoEntry(toDoItems);
     findPastDue();
@@ -225,11 +222,6 @@ export function markComplete() {
       showByPriority(toDoItems);
       findPastDue();
       formatDatesPriority();
-    }
-    if (completedBtn.classList.contains("btn-ctrl--active")) {
-      changeCompleteStatus(taskIndex);
-      replaceCompletedRows();
-      showCompletedTasks(completedTasks);
     }
   });
 }

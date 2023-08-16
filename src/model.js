@@ -10,7 +10,6 @@ import {
 
 export const categories = [];
 export let toDoItems = [];
-export const completedTasks = [];
 
 export function newCategoryArray() {
   const newCategory = categoryInput.value;
@@ -62,18 +61,18 @@ export function removeToDoFromCategory(removedItem) {
   }
 }
 
-export function removeToDoFromCompleted(removedItem) {
-  if (removedItem) {
-    let confirmRemove = confirm(
-      "Are you sure you want to delete this entry? This cannot be undone"
-    );
+// export function removeToDoFromCompleted(removedItem) {
+//   if (removedItem) {
+//     let confirmRemove = confirm(
+//       "Are you sure you want to delete this entry? This cannot be undone"
+//     );
 
-    if (confirmRemove) {
-      completedTasks.splice(removedItem, 1);
-      console.log(completedTasks);
-    }
-  }
-}
+//     if (confirmRemove) {
+//       completedTasks.splice(removedItem, 1);
+//       console.log(completedTasks);
+//     }
+//   }
+// }
 
 export function editToDo(entryIndex) {
   if (toDoItems.at(entryIndex)) {
@@ -110,12 +109,15 @@ export function removeCategory(removedIndex, removedCat) {
 
 export function changeCompleteStatus(taskIndex) {
   if (toDoItems.at(taskIndex)) {
-    toDoItems[taskIndex].compeltedTask === false;
-    toDoItems[taskIndex].completedTask = true;
-  } else {
-    if (toDoItems[taskIndex].completedTask === true);
-    toDoItems[taskIndex].completedTask = false;
+    if (toDoItems[taskIndex].completedTask === false) {
+      toDoItems[taskIndex].completedTask = true;
+    } else {
+      toDoItems[taskIndex].completedTask === true;
+      toDoItems[taskIndex].completedTask = false;
+    }
   }
+
+  console.log(toDoItems);
 }
 
 export function sortByCreationDate() {
