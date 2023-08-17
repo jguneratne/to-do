@@ -65,6 +65,8 @@ export function hideCategoryForm() {
 }
 
 export function createCategorySection(categories) {
+  addCategoryMsg.style.display = "none";
+
   for (let i = 0; i < categories.length; i++) {
     const categoryCard = document.createElement("div");
     categoryCard.className = "cat-card";
@@ -259,13 +261,12 @@ export function replaceToDoItems() {
   });
 }
 
-export function showCatMessage(categories) {
-  if (categories.length === 0) {
-    console.log(categories.length);
-    if (addCategoryMsg.style.display === "none") {
-      addCategoryMsg.style.display = "block";
-    }
+export function showCatMessage() {
+  console.log(addCategoryMsg.style.display);
+  if (addCategoryMsg.style.display === "none") {
+    addCategoryMsg.style.display = "initial";
   }
+  console.log(addCategoryMsg.style.display);
 }
 
 export function showByDueDate(toDoItems) {

@@ -118,6 +118,7 @@
 
 /* Main: Tab opening messages */
 .add-cat-msg {
+  display: block;
   width: 100%;
   text-align: center;
 }
@@ -265,8 +266,6 @@ input[type="text"]:valid {
 
 button.add-to-do,
 button.edit-to-do,
-/* button.add-category, */
-/* button.select-to-do, */
 button.cancel-category,
 button.cancel-to-do {
   font-family: "Happy Monkey";
@@ -281,7 +280,6 @@ button.cancel-to-do {
 
 button.add-to-do:hover,
 button.edit-to-do:hover,
-/* button.add-category:hover, */
 button.cancel-category:hover,
 button.cancel-to-do:hover {
   background-color: var(--form-green-color);

@@ -57,6 +57,13 @@ import {
   formatDatesPriority,
 } from "./dates";
 
+// export function displayMsgAddCat() {
+//   if (categories.length === 0) {
+//     console.log(categories.length);
+//     showCatMessage();
+//   }
+// }
+
 export function selectActionForm() {
   addBtn.addEventListener("pointerdown", selectAddType);
 }
@@ -213,7 +220,9 @@ export function handleEventDelegation() {
         displayToDoEntry(toDoItems);
         findPastDue();
         formatDatesCategory();
-        showCatMessage(categories);
+        if (categories.length === 0) {
+          showCatMessage();
+        }
       }
     });
 
