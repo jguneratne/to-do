@@ -1,6 +1,8 @@
-import { editToDo, toDoItems } from "./model";
+import { editToDo } from "./model";
 import {
   addCategoryMsg,
+  selectAddTypeDiv,
+  categoryWarning,
   categoryFormBox,
   categoryForm,
   categoryTab,
@@ -19,10 +21,34 @@ import {
   priorityTaskDiv,
   completedTasksDiv,
 } from "./querySelectors";
-import { limitDatePicker, findPastDue, formatDateTimes } from "./dates";
+import { limitDatePicker } from "./dates";
+
+export function selectAddType() {
+  addCategoryMsg.style.display = "none";
+  selectAddTypeDiv.style.display = "initial";
+  if (selectAddTypeDiv.style.display === "initial") {
+    sideNav.classList.add("cat-form-visible");
+  } else {
+    sideNav.classList.remove("cat-form-visible");
+  }
+}
+
+export function displayCategoryWarning() {
+  categoryWarning.style.display = "initial";
+  selectAddTypeDiv.style.display = "none";
+}
+
+export function closeToDoWarning() {
+  categoryWarning.style.display = "none";
+  categoryFormBox.style.display = "initial";
+}
+
+export function closeSelectionBox() {
+  selectAddTypeDiv.style.display = "none";
+}
 
 export function newCategoryForm() {
-  addCategoryMsg.style.display = "none";
+  selectAddTypeDiv.style.display = "none";
   categoryFormBox.style.display = "initial";
   categoryTab.classList.add("tab-content--active");
 

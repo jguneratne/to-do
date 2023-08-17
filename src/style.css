@@ -210,6 +210,7 @@
 }
 
 .btn-line,
+.select-btn-line,
 .cat-btn-line {
   display: flex;
   flex-wrap: wrap;
@@ -264,7 +265,8 @@ input[type="text"]:valid {
 
 button.add-to-do,
 button.edit-to-do,
-button.add-category,
+/* button.add-category, */
+/* button.select-to-do, */
 button.cancel-category,
 button.cancel-to-do {
   font-family: "Happy Monkey";
@@ -279,7 +281,7 @@ button.cancel-to-do {
 
 button.add-to-do:hover,
 button.edit-to-do:hover,
-button.add-category:hover,
+/* button.add-category:hover, */
 button.cancel-category:hover,
 button.cancel-to-do:hover {
   background-color: var(--form-green-color);
@@ -312,6 +314,8 @@ button.cancel-to-do:hover {
 
 /* Category View: New Category Form */
 
+.select-form-container,
+.create-cat-warning-div,
 .cat-form-container {
   display: none;
   position: absolute;
@@ -321,6 +325,8 @@ button.cancel-to-do:hover {
   right: 0;
 }
 
+.select-form,
+.create-cat-warning,
 .category-form {
   display: flex;
   flex-direction: column;
@@ -333,13 +339,40 @@ button.cancel-to-do:hover {
   border-radius: 1ch;
 }
 
+.select-ask,
+.must-create-cat {
+  text-align: center;
+  font-family: "Lancelot";
+}
+
 input[type="text"].category {
   margin-left: -5ch;
   width: 70%;
 }
 
+.select-btn-line,
 .cat-btn-line {
   margin-top: 2ch;
+}
+
+button.add-category,
+button.agree-btn,
+button.select-to-do-btn {
+  font-family: "Happy Monkey";
+  font-size: 1.8ch;
+  width: 20ch;
+  height: min-content;
+  background-color: var(--main-bground-color);
+  padding: 0.8ch;
+  border-radius: 3ch;
+  border: 1px solid var(--head-foot-color);
+}
+
+button.add-category:hover,
+button.agree-btn:hover,
+button.select-to-do-btn:hover {
+  background-color: var(--form-green-color);
+  cursor: pointer;
 }
 
 /* Category View: New Category Section */

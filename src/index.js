@@ -1,7 +1,9 @@
-import { addBtn, categoryBtn, categoryTab } from "./querySelectors";
 import tabControls from "./tabControl";
 import {
+  selectActionForm,
   showCategoryForm,
+  showCategoryWarning,
+  hideCategoryWarning,
   cancelCategoryForm,
   submitNewCategory,
   submitToDo,
@@ -22,7 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     tabContent.querySelector(".tab-content").click();
   });
 
+  selectActionForm();
   showCategoryForm();
+  showCategoryWarning();
+  hideCategoryWarning();
   cancelCategoryForm();
   submitNewCategory();
   submitToDo();

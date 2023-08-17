@@ -1,4 +1,13 @@
 export const contentBox = document.querySelector(".content-box");
+export const selectAddTypeDiv = document.querySelector(
+  ".select-form-container"
+);
+export const addCategoryBtn = document.querySelector(".add-category");
+export const selectToDoBtn = document.querySelector(".select-to-do-btn");
+export const categoryWarning = document.querySelector(
+  ".create-cat-warning-div"
+);
+export const agreeBtn = document.querySelector(".agree-btn");
 export const addCategoryMsg = document.querySelector(".add-cat-msg");
 export const addBtn = document.querySelector(".show-form-btn");
 export const returnToCatTab = document.querySelector(".cat-tab");

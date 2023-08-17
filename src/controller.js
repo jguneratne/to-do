@@ -1,5 +1,8 @@
 import {
   contentBox,
+  addCategoryBtn,
+  selectToDoBtn,
+  agreeBtn,
   addBtn,
   categoryForm,
   cancelCategoryBtn,
@@ -13,6 +16,10 @@ import {
   sideNav,
 } from "./querySelectors";
 import {
+  selectAddType,
+  displayCategoryWarning,
+  closeToDoWarning,
+  closeSelectionBox,
   showCatMessage,
   newCategoryForm,
   hideCategoryForm,
@@ -37,7 +44,6 @@ import {
   editToDo,
   toDoItems,
   removeToDoFromCategory,
-  //  removeToDoFromCompleted,
   removeCategory,
   changeCompleteStatus,
   sortByCreationDate,
@@ -51,12 +57,36 @@ import {
   formatDatesPriority,
 } from "./dates";
 
+export function selectActionForm() {
+  addBtn.addEventListener("pointerdown", selectAddType);
+}
+
 export function showCategoryForm() {
-  addBtn.addEventListener("pointerdown", newCategoryForm);
+  addCategoryBtn.addEventListener("pointerdown", newCategoryForm);
+}
+
+export function showCategoryWarning() {
+  selectToDoBtn.addEventListener("pointerdown", function () {
+    if (categories.length === 0) {
+      displayCategoryWarning();
+    } else {
+      closeSelectionBox();
+    }
+  });
+}
+
+export function hideCategoryWarning() {
+  agreeBtn.addEventListener("pointerdown", function () {
+    closeToDoWarning();
+  });
 }
 
 export function cancelCategoryForm() {
   cancelCategoryBtn.addEventListener("pointerdown", hideCategoryForm);
+}
+
+export function cancelToDo() {
+  cancelToDoBtn.addEventListener("pointerdown", hideToDoForm);
 }
 
 export function submitNewCategory() {
@@ -93,10 +123,6 @@ export function submitToDo() {
       formatDatesCategory();
     }
   });
-}
-
-export function cancelToDo() {
-  cancelToDoBtn.addEventListener("pointerdown", hideToDoForm);
 }
 
 export function displayByView() {
