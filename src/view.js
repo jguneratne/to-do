@@ -280,6 +280,8 @@ export function showByDueDate(toDoItems) {
       const dueViewDueDate = document.createElement("div");
       dueViewDueDate.className = "due-view-due show-date-due";
       dueViewDueDate.textContent = toDoItems[i].dueDate;
+      dueViewDueDate.style.borderRight = "0.2ch solid black";
+      dueViewDueDate.style.textAlign = "center";
 
       const dueDateTitle = document.createElement("div");
       dueDateTitle.className = "grid-cells .due-view-title";
@@ -393,6 +395,8 @@ export function showByPriority(toDoItems) {
       const priorityViewDueDate = document.createElement("div");
       priorityViewDueDate.className = "priority-view-due show-date-priority";
       priorityViewDueDate.textContent = toDoItems[i].dueDate;
+      priorityViewDueDate.style.borderRight = "0.2ch solid black";
+      priorityViewDueDate.style.textAlign = "center";
 
       const priorityCheck = document.createElement("div");
       priorityCheck.className = "grid-cells .priority-view-complete";
