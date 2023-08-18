@@ -9,7 +9,16 @@ import {
 } from "./querySelectors";
 
 export const categories = [];
+export let categoriesStored = localStorage.setItem(
+  "categoriesArray",
+  JSON.stringify(categories)
+);
+
 export let toDoItems = [];
+export let toDoItemsStored = localStorage.setItem(
+  "toDoItemsArray",
+  JSON.stringify(toDoItems)
+);
 
 export function newCategoryArray() {
   const newCategory = categoryInput.value;
@@ -22,7 +31,12 @@ export function newCategoryArray() {
     alert("Duplicate category. Please choose a new category title");
   } else {
     categories.push(categoryInput.value);
+    categoriesStored = localStorage.setItem(
+      "categoriesArray",
+      JSON.stringify(categories)
+    );
     console.log(categories);
+    console.log(JSON.parse(localStorage.getItem(categoriesStored)));
   }
 }
 
@@ -45,6 +59,10 @@ export function newToDoItem() {
     completedTask,
   };
   toDoItems.push(toDoItem);
+  toDoItemsStored = localStorage.setItem(
+    "toDoItemsArray",
+    JSON.stringify(toDoItems)
+  );
   console.log(toDoItems);
 }
 
@@ -56,6 +74,10 @@ export function removeToDoFromCategory(removedItem) {
 
     if (confirmRemove) {
       toDoItems.splice(removedItem, 1);
+      toDoItemsStored = localStorage.setItem(
+        "toDoItemsArray",
+        JSON.stringify(toDoItems)
+      );
       console.log(toDoItems);
     }
   }
@@ -68,6 +90,10 @@ export function editToDo(entryIndex) {
     toDoItems.at(entryIndex).priority = toDoPriority.value;
     toDoItems.at(entryIndex).description = toDoDescription.value;
     toDoItems.at(entryIndex).dueDate = toDoDueDate.value;
+    toDoItemsStored = localStorage.setItem(
+      "toDoItemsArray",
+      JSON.stringify(toDoItems)
+    );
     console.log(toDoItems);
   }
 }
@@ -89,6 +115,10 @@ export function removeCategory(removedIndex, removedCat) {
       console.log(toDoItems);
 
       categories.splice(removedIndex, 1);
+      categoriesStored = localStorage.setItem(
+        "categoriesArray",
+        JSON.stringify(categories)
+      );
       console.log(categories);
     }
   }
@@ -98,9 +128,17 @@ export function changeCompleteStatus(taskIndex) {
   if (toDoItems.at(taskIndex)) {
     if (toDoItems[taskIndex].completedTask === false) {
       toDoItems[taskIndex].completedTask = true;
+      toDoItemsStored = localStorage.setItem(
+        "toDoItemsArray",
+        JSON.stringify(toDoItems)
+      );
     } else {
       toDoItems[taskIndex].completedTask === true;
       toDoItems[taskIndex].completedTask = false;
+      toDoItemsStored = localStorage.setItem(
+        "toDoItemsArray",
+        JSON.stringify(toDoItems)
+      );
     }
   }
 
