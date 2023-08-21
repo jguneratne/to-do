@@ -67,6 +67,8 @@ export function hideCategoryForm() {
 export function createCategorySection(categories) {
   addCategoryMsg.style.display = "none";
 
+  console.log(categories);
+
   for (let i = 0; i < categories.length; i++) {
     const categoryCard = document.createElement("div");
     categoryCard.className = "cat-card";
@@ -78,24 +80,24 @@ export function createCategorySection(categories) {
 
     const categoryContent = document.createElement("div");
     categoryContent.className = "cat-content";
-    categoryContent.dataset.content = categories[i];
+    categoryContent.dataset.content = `${categories[i]}`;
 
     const addItemBtn = document.createElement("button");
     addItemBtn.type = "button";
     addItemBtn.className = "new-to-do";
     addItemBtn.id = "add-item";
     addItemBtn.value = "add-item";
-    addItemBtn.setAttribute("data-category", categories[i]);
+    addItemBtn.setAttribute("data-category", `${categories[i]}`);
     addItemBtn.textContent = "Add Item";
 
     const deleteIconContainer = document.createElement("div");
     deleteIconContainer.className = "delete-icon";
-    deleteIconContainer.setAttribute("data-delete-cat", categories[i]);
+    deleteIconContainer.setAttribute("data-delete-cat", `${categories[i]}`);
     deleteIconContainer.setAttribute("data-delete-cat-index", i);
 
     const deleteBtnImg = document.createElement("img");
     deleteBtnImg.src = "../src/assets/imgs/trash.svg";
-    deleteBtnImg.setAttribute("data-delete-cat", categories[i]);
+    deleteBtnImg.setAttribute("data-delete-cat", `${categories[i]}`);
     deleteBtnImg.setAttribute("data-delete-cat-index", i);
 
     categorySection.appendChild(categoryCard);

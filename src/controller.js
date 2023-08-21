@@ -38,11 +38,14 @@ import {
   replacePriorityRows,
 } from "./view";
 import {
-  categories,
+  // categories,
+  categoriesArray,
+  // toDoItems,
+  toDoItemsArray,
   newCategoryArray,
   newToDoItem,
   editToDo,
-  toDoItems,
+  editToDoInStorage,
   removeToDoFromCategory,
   removeCategory,
   changeCompleteStatus,
@@ -74,7 +77,7 @@ export function showCategoryForm() {
 
 export function showCategoryWarning() {
   selectToDoBtn.addEventListener("pointerdown", function () {
-    if (categories.length === 0) {
+    if (categoriesArray.length === 0) {
       displayCategoryWarning();
     } else {
       closeSelectionBox();
@@ -102,9 +105,9 @@ export function submitNewCategory() {
     newCategoryArray();
     hideCategoryForm();
     replaceCategorySections();
-    createCategorySection(categories);
+    createCategorySection(categoriesArray);
     replaceToDoItems();
-    displayToDoEntry(toDoItems);
+    displayToDoEntry(toDoItemsArray);
   });
 }
 
@@ -115,17 +118,18 @@ export function submitToDo() {
       sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
-      displayToDoEntry(toDoItems);
+      displayToDoEntry(toDoItemsArray);
       findPastDue();
       formatDatesCategory();
     }
 
     if (e.target === editToDoBtn) {
       editToDo();
+      editToDoInStorage();
       sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
-      displayToDoEntry(toDoItems);
+      displayToDoEntry(toDoItemsArray);
       findPastDue();
       formatDatesCategory();
     }
@@ -138,7 +142,7 @@ export function displayByView() {
     if (categoryBtn.classList.contains("cat-tab")) {
       sortByCreationDate();
       replaceToDoItems();
-      displayToDoEntry(toDoItems);
+      displayToDoEntry(toDoItemsArray);
       findPastDue();
       formatDatesCategory();
     }
@@ -146,7 +150,7 @@ export function displayByView() {
     if (dueDateBtn.classList.contains("date-tab")) {
       sortByDueDate();
       replaceDueDateRows();
-      showByDueDate(toDoItems);
+      showByDueDate(toDoItemsArray);
       findPastDue();
       formatDatesDueView();
     }
@@ -154,7 +158,7 @@ export function displayByView() {
     if (priorityBtn.classList.contains("priority-tab")) {
       sortByPriority();
       replacePriorityRows();
-      showByPriority(toDoItems);
+      showByPriority(toDoItemsArray);
       findPastDue();
       formatDatesPriority();
     }
@@ -182,23 +186,23 @@ export function handleEventDelegation() {
         removeToDoFromCategory(deleteToDoItem);
         sortByCreationDate();
         replaceToDoItems();
-        displayToDoEntry(toDoItems);
+        displayToDoEntry(toDoItemsArray);
         findPastDue();
         formatDatesCategory();
         replaceCompletedRows();
-        showCompletedTasks(toDoItems);
+        showCompletedTasks(toDoItemsArray);
 
         if (dueDateBtn.classList.contains("btn-ctrl--active")) {
           sortByDueDate();
           replaceDueDateRows();
-          showByDueDate(toDoItems);
+          showByDueDate(toDoItemsArray);
           findPastDue();
           formatDatesDueView();
         }
         if (priorityBtn.classList.contains("btn-ctrl--active")) {
           sortByPriority();
           replacePriorityRows();
-          showByPriority(toDoItems);
+          showByPriority(toDoItemsArray);
           findPastDue();
           formatDatesPriority();
         }
@@ -207,32 +211,32 @@ export function handleEventDelegation() {
 
     // Delete Category with any and all entries
     const deleteCategoryIndex = event.target.dataset.deleteCatIndex;
-    const deleteCategory = event.target.dataset.deleteCat;
+    const deleteCategoryName = event.target.dataset.deleteCat;
     const deleteCatBtns = Array.from(
       document.querySelectorAll("[data-delete-cat")
     );
     deleteCatBtns.forEach((btn) => {
       if (event.target === btn) {
-        removeCategory(deleteCategoryIndex, deleteCategory);
+        removeCategory(deleteCategoryIndex, deleteCategoryName);
         replaceCategorySections();
-        createCategorySection(categories);
+        createCategorySection(categoriesArray);
         replaceToDoItems();
-        displayToDoEntry(toDoItems);
+        displayToDoEntry(toDoItemsArray);
         findPastDue();
         formatDatesCategory();
-        if (categories.length === 0) {
+        if (categoriesArray.length === 0) {
           showCatMessage();
         }
       }
     });
 
     // Display Form to edit To Do entry
-    const editBtn = event.target.dataset.edit;
+    const editIcon = parseInt(event.target.dataset.edit);
     const editBtns = Array.from(document.querySelectorAll("[data-edit"));
     editBtns.forEach((edit) => {
       if (event.target === edit) {
-        console.log(editBtn);
-        showFormWithInfo(editBtn, toDoItems);
+        console.log(typeof editIcon);
+        showFormWithInfo(editIcon, toDoItemsArray);
       }
     });
   });
@@ -245,23 +249,23 @@ export function markComplete() {
     if (event.target === taskIndex) console.log(taskIndex);
     changeCompleteStatus(taskIndex);
     replaceCompletedRows();
-    showCompletedTasks(toDoItems);
+    showCompletedTasks(toDoItemsArray);
     replaceToDoItems();
-    displayToDoEntry(toDoItems);
+    displayToDoEntry(toDoItemsArray);
     findPastDue();
     formatDatesCategory();
 
     if (dueDateBtn.classList.contains("btn-ctrl--active")) {
       sortByDueDate();
       replaceDueDateRows();
-      showByDueDate(toDoItems);
+      showByDueDate(toDoItemsArray);
       findPastDue();
       formatDatesDueView();
     }
     if (priorityBtn.classList.contains("btn-ctrl--active")) {
       sortByPriority();
       replacePriorityRows();
-      showByPriority(toDoItems);
+      showByPriority(toDoItemsArray);
       findPastDue();
       formatDatesPriority();
     }
