@@ -72,10 +72,6 @@ export function removeToDoFromCategory(removedItem) {
   }
 }
 
-// export function removeFromStorage() {
-//   localStorage.removeItem("toDoItems");
-// }
-
 export function editToDo(entryIndex) {
   if (toDoItems.at(entryIndex)) {
     toDoItems.at(entryIndex).category = categoryName.textContent;
@@ -118,15 +114,18 @@ export function removeCategory(removedIndex, removedCatName) {
     );
 
     if (confirmRemoveCat) {
-      const deletedEntries = toDoItems.filter(
+      const deletedEntriesByCatName = toDoItems.filter(
         (entry) => entry.category !== removedCatName
       );
-      //console.log(deletedEntries);
-      toDoItems = deletedEntries;
+      //console.log(deletedEntriesByCatName);
+      toDoItems = deletedEntriesByCatName;
+      console.log(toDoItems);
       localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
       toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
       console.log(toDoItemsArray);
 
+      categories.splice(removedIndex, 1);
+      console.log(categories);
       localStorage.setItem("categories", JSON.stringify(categories));
       categoriesArray = JSON.parse(localStorage.getItem("categories"));
       console.log(categoriesArray);
