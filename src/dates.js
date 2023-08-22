@@ -1,6 +1,6 @@
 import { format, parseISO, isAfter } from "date-fns";
 import { dateTimePicker, creationTimePicker } from "./querySelectors";
-import { toDoItems } from "./model";
+import { toDoItemsArray } from "./model";
 
 export function formatDatesCategory() {
   const dueDateDisplay = document.querySelectorAll(".show-due-date");
@@ -62,8 +62,8 @@ export function limitDatePicker() {
 export function findPastDue() {
   const currentDateTime = limitDatePicker();
 
-  for (let i = 0; i < toDoItems.length; i++) {
-    const taskDue = toDoItems[i].dueDate;
+  for (let i = 0; i < toDoItemsArray.length; i++) {
+    const taskDue = toDoItemsArray[i].dueDate;
 
     const comparison = isAfter(
       parseISO(currentDateTime, 0),
@@ -76,7 +76,7 @@ export function findPastDue() {
     );
 
     dueDateDisplay.forEach((date, index) => {
-      if (index === toDoItems.indexOf(toDoItems[i])) {
+      if (index === toDoItemsArray.indexOf(toDoItemsArray[i])) {
         if (comparison === true) {
           date.style.color = "#bc2702";
         }
