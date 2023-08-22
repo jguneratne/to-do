@@ -77,7 +77,6 @@ export function removeToDoFromCategory(removedItem) {
 // }
 
 export function editToDo(entryIndex) {
-  console.log(typeof entryIndex);
   if (toDoItems.at(entryIndex)) {
     toDoItems.at(entryIndex).category = categoryName.textContent;
     toDoItems.at(entryIndex).title = toDoTitle.value.trim();
@@ -89,7 +88,6 @@ export function editToDo(entryIndex) {
 
 export function editToDoInStorage(entryIndex) {
   let arrayCount = localStorage.length;
-  console.log(arrayCount);
   if (arrayCount) {
     for (let i = 0; i < arrayCount; i++) {
       let key = localStorage.key(i);

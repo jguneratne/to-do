@@ -145,6 +145,7 @@ export function showFormWithInfo(editBtnIndex, toDoItems) {
 
     const entryIndex = toDoItems.indexOf(toDoItems[i]);
     editToDo(entryIndex);
+    editToDoInStorage(entryIndex);
   }
 }
 
