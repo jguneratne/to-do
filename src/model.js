@@ -181,18 +181,20 @@ export function changeCompleteStatus(taskIndex) {
 }
 
 export function sortByCreationDate() {
-  toDoItems.sort(
+  toDoItemsArray.sort(
     (date1, date2) =>
       Date.parse(date1.creationTime) - Date.parse(date2.creationTime)
   );
-  console.log(toDoItems);
+
+  console.log(toDoItemsArray);
 }
 
 export function sortByDueDate() {
-  toDoItems.sort(
+  toDoItemsArray.sort(
     (date1, date2) => Date.parse(date1.dueDate) - Date.parse(date2.dueDate)
   );
-  console.log(toDoItems);
+
+  console.log(toDoItemsArray);
 }
 
 export function sortByPriority() {
@@ -202,7 +204,9 @@ export function sortByPriority() {
     high: 1,
   };
 
-  toDoItems.sort((a, b) => importance[a.priority] - importance[b.priority]);
+  toDoItemsArray.sort(
+    (a, b) => importance[a.priority] - importance[b.priority]
+  );
 
-  console.log(toDoItems);
+  console.log(toDoItemsArray);
 }
