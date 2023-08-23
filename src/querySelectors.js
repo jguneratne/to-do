@@ -14,9 +14,6 @@ export const returnToCatTab = document.querySelector(".cat-tab");
 export const categoryBtn = document.querySelector("[data-for-tab='category']");
 export const dueDateBtn = document.querySelector("[data-for-tab='due-date']");
 export const priorityBtn = document.querySelector("[data-for-tab='priority']");
-export const completedBtn = document.querySelector(
-  "[data-for-tab='completed-items']"
-);
 export const categoryTab = document.querySelector(".by-category");
 export const sideNav = document.querySelector(".side-nav");
 export const cancelCategoryBtn = document.querySelector(".cancel-category");
