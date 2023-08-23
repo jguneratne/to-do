@@ -64,40 +64,43 @@ export function hideCategoryForm() {
   sideNav.classList.remove("cat-form-visible");
 }
 
-export function createCategorySection(categories) {
+export function createCategorySection(categoriesArray) {
   addCategoryMsg.style.display = "none";
 
-  console.log(categories);
+  console.log(categoriesArray);
 
-  for (let i = 0; i < categories.length; i++) {
+  for (let i = 0; i < categoriesArray.length; i++) {
     const categoryCard = document.createElement("div");
     categoryCard.className = "cat-card";
     categoryCard.setAttribute("data-cat-num", i);
 
     const cardCategoryName = document.createElement("h2");
     cardCategoryName.className = "cat-name";
-    cardCategoryName.textContent = `${categories[i]}`;
+    cardCategoryName.textContent = `${categoriesArray[i]}`;
 
     const categoryContent = document.createElement("div");
     categoryContent.className = "cat-content";
-    categoryContent.dataset.content = `${categories[i]}`;
+    categoryContent.dataset.content = `${categoriesArray[i]}`;
 
     const addItemBtn = document.createElement("button");
     addItemBtn.type = "button";
     addItemBtn.className = "new-to-do";
     addItemBtn.id = "add-item";
     addItemBtn.value = "add-item";
-    addItemBtn.setAttribute("data-category", `${categories[i]}`);
+    addItemBtn.setAttribute("data-category", `${categoriesArray[i]}`);
     addItemBtn.textContent = "Add Item";
 
     const deleteIconContainer = document.createElement("div");
     deleteIconContainer.className = "delete-icon";
-    deleteIconContainer.setAttribute("data-delete-cat", `${categories[i]}`);
+    deleteIconContainer.setAttribute(
+      "data-delete-cat",
+      `${categoriesArray[i]}`
+    );
     deleteIconContainer.setAttribute("data-delete-cat-index", i);
 
     const deleteBtnImg = document.createElement("img");
     deleteBtnImg.src = "../src/assets/imgs/trash.svg";
-    deleteBtnImg.setAttribute("data-delete-cat", `${categories[i]}`);
+    deleteBtnImg.setAttribute("data-delete-cat", `${categoriesArray[i]}`);
     deleteBtnImg.setAttribute("data-delete-cat-index", i);
     deleteBtnImg.setAttribute("focusable", true);
     deleteBtnImg.setAttribute("tabindex", 0);
@@ -109,6 +112,14 @@ export function createCategorySection(categories) {
     categoryCard.appendChild(deleteIconContainer);
     deleteIconContainer.appendChild(deleteBtnImg);
   }
+}
+
+export function showCatMessage() {
+  console.log(addCategoryMsg.style.display);
+  if (addCategoryMsg.style.display === "none") {
+    addCategoryMsg.style.display = "initial";
+  }
+  console.log(addCategoryMsg.style.display);
 }
 
 export function replaceCategorySections() {
@@ -268,14 +279,6 @@ export function replaceToDoItems() {
       parent.removeChild(parent.firstChild);
     }
   });
-}
-
-export function showCatMessage() {
-  console.log(addCategoryMsg.style.display);
-  if (addCategoryMsg.style.display === "none") {
-    addCategoryMsg.style.display = "initial";
-  }
-  console.log(addCategoryMsg.style.display);
 }
 
 export function showByDueDate(toDoItems) {

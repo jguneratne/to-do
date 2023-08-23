@@ -142,7 +142,7 @@ export function submitNewCategory() {
     e.preventDefault();
     newCategoryArray();
     hideCategoryForm();
-    replaceCategorySections();
+    replaceCategorySections(categoriesArray);
     createCategorySection(categoriesArray);
     replaceToDoItems();
     displayToDoEntry(toDoItemsArray);
@@ -311,15 +311,12 @@ export function handleEventDelegation() {
     deleteCatBtns.forEach((btn) => {
       if (event.target === btn) {
         removeCategory(deleteCategoryIndex, deleteCategoryName);
-        replaceCategorySections();
+        replaceCategorySections(categoriesArray);
         createCategorySection(categoriesArray);
         replaceToDoItems();
         displayToDoEntry(toDoItemsArray);
         findPastDue();
         formatDatesCategory();
-        if (categoriesArray.length === 0) {
-          showCatMessage();
-        }
       }
     });
 
@@ -388,14 +385,16 @@ export function handleEventDelegationWithKeyboard() {
     deleteCatBtns.forEach((btn) => {
       if (event.key === "Enter" && event.target === btn) {
         removeCategory(deleteCategoryIndex, deleteCategoryName);
-        replaceCategorySections();
-        createCategorySection(categoriesArray);
-        replaceToDoItems();
-        displayToDoEntry(toDoItemsArray);
-        findPastDue();
-        formatDatesCategory();
-        if (categoriesArray.length === 0) {
+        replaceCategorySections(categoriesArray);
+
+        if (categoriesArray.length === 0 || categoriesArray.length === "0") {
           showCatMessage();
+        } else {
+          createCategorySection(categoriesArray);
+          replaceToDoItems();
+          displayToDoEntry(toDoItemsArray);
+          findPastDue();
+          formatDatesCategory();
         }
       }
     });
