@@ -173,7 +173,7 @@ export function submitToDo() {
     }
   });
 
-  toDoForm.addEventListener("pointerdown", (e) => {
+  toDoForm.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && e.target === addToDoBtn) {
       newToDoItem();
       sortByCreationDate();
