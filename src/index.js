@@ -10,6 +10,7 @@ import {
   cancelToDo,
   displayByView,
   handleEventDelegation,
+  handleEventDelegationWithKeyboard,
   markComplete,
 } from "./controller";
 
@@ -34,5 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelToDo();
   displayByView();
   handleEventDelegation();
+  handleEventDelegationWithKeyboard();
   markComplete();
 });

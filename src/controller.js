@@ -38,9 +38,7 @@ import {
   replacePriorityRows,
 } from "./view";
 import {
-  // categories,
   categoriesArray,
-  // toDoItems,
   toDoItemsArray,
   newCategoryArray,
   newToDoItem,
@@ -69,10 +67,22 @@ import {
 
 export function selectActionForm() {
   addBtn.addEventListener("pointerdown", selectAddType);
+
+  addBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      selectAddType();
+    }
+  });
 }
 
 export function showCategoryForm() {
   addCategoryBtn.addEventListener("pointerdown", newCategoryForm);
+
+  addCategoryBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      newCategoryForm();
+    }
+  });
 }
 
 export function showCategoryWarning() {
@@ -83,20 +93,48 @@ export function showCategoryWarning() {
       closeSelectionBox();
     }
   });
+
+  selectToDoBtn.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      if (categoriesArray.length === 0) {
+        displayCategoryWarning();
+      } else {
+        closeSelectionBox();
+      }
+    }
+  });
 }
 
 export function hideCategoryWarning() {
   agreeBtn.addEventListener("pointerdown", function () {
     closeToDoWarning();
   });
+
+  agreeBtn.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      closeToDoWarning();
+    }
+  });
 }
 
 export function cancelCategoryForm() {
   cancelCategoryBtn.addEventListener("pointerdown", hideCategoryForm);
+
+  cancelCategoryBtn.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      hideCategoryForm();
+    }
+  });
 }
 
 export function cancelToDo() {
   cancelToDoBtn.addEventListener("pointerdown", hideToDoForm);
+
+  cancelToDoBtn.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      hideToDoForm();
+    }
+  });
 }
 
 export function submitNewCategory() {
@@ -124,6 +162,29 @@ export function submitToDo() {
     }
 
     if (e.target === editToDoBtn) {
+      editToDo();
+      editToDoInStorage();
+      sortByCreationDate();
+      hideToDoForm();
+      replaceToDoItems();
+      displayToDoEntry(toDoItemsArray);
+      findPastDue();
+      formatDatesCategory();
+    }
+  });
+
+  toDoForm.addEventListener("pointerdown", (e) => {
+    if (e.key === "Enter" && e.target === addToDoBtn) {
+      newToDoItem();
+      sortByCreationDate();
+      hideToDoForm();
+      replaceToDoItems();
+      displayToDoEntry(toDoItemsArray);
+      findPastDue();
+      formatDatesCategory();
+    }
+
+    if (e.key === "Enter" && e.target === editToDoBtn) {
       editToDo();
       editToDoInStorage();
       sortByCreationDate();
@@ -235,6 +296,83 @@ export function handleEventDelegation() {
     const editBtns = Array.from(document.querySelectorAll("[data-edit"));
     editBtns.forEach((edit) => {
       if (event.target === edit) {
+        console.log(typeof editIcon);
+        showFormWithInfo(editIcon, toDoItemsArray);
+      }
+    });
+  });
+}
+
+export function handleEventDelegationWithKeyboard() {
+  contentBox.addEventListener("keydown", function (event) {
+    //Display To Do Entry Form
+    const addBtn = event.target.dataset.category;
+    const addBtns = Array.from(document.querySelectorAll("[data-category"));
+    addBtns.forEach((button) => {
+      if (event.key === "Enter" && event.target === button) {
+        toDoFormDisplay(addBtn);
+      }
+    });
+
+    // Delete To Do Items
+    const deleteToDoItem = event.target.dataset.itemDelete;
+    const toDoEntries = Array.from(
+      document.querySelectorAll(["[data-item-delete]"])
+    );
+    toDoEntries.forEach((entry) => {
+      if (event.key === "Enter" && event.target === entry) {
+        removeToDoFromCategory(deleteToDoItem);
+        sortByCreationDate();
+        replaceToDoItems();
+        displayToDoEntry(toDoItemsArray);
+        findPastDue();
+        formatDatesCategory();
+        replaceCompletedRows();
+        showCompletedTasks(toDoItemsArray);
+
+        if (dueDateBtn.classList.contains("btn-ctrl--active")) {
+          sortByDueDate();
+          replaceDueDateRows();
+          showByDueDate(toDoItemsArray);
+          findPastDue();
+          formatDatesDueView();
+        }
+        if (priorityBtn.classList.contains("btn-ctrl--active")) {
+          sortByPriority();
+          replacePriorityRows();
+          showByPriority(toDoItemsArray);
+          findPastDue();
+          formatDatesPriority();
+        }
+      }
+    });
+
+    // Delete Category with any and all entries
+    const deleteCategoryIndex = event.target.dataset.deleteCatIndex;
+    const deleteCategoryName = event.target.dataset.deleteCat;
+    const deleteCatBtns = Array.from(
+      document.querySelectorAll("[data-delete-cat")
+    );
+    deleteCatBtns.forEach((btn) => {
+      if (event.key === "Enter" && event.target === btn) {
+        removeCategory(deleteCategoryIndex, deleteCategoryName);
+        replaceCategorySections();
+        createCategorySection(categoriesArray);
+        replaceToDoItems();
+        displayToDoEntry(toDoItemsArray);
+        findPastDue();
+        formatDatesCategory();
+        if (categoriesArray.length === 0) {
+          showCatMessage();
+        }
+      }
+    });
+
+    // Display Form to edit To Do entry
+    const editIcon = parseInt(event.target.dataset.edit);
+    const editBtns = Array.from(document.querySelectorAll("[data-edit"));
+    editBtns.forEach((edit) => {
+      if (event.key === "Enter" && event.target === edit) {
         console.log(typeof editIcon);
         showFormWithInfo(editIcon, toDoItemsArray);
       }
