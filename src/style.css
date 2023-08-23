@@ -192,28 +192,24 @@
 
 .title-msg::before {
   content: "Add a title.";
-  /* color: var(--focusColor); */
   font-family: "Happy Monkey";
   font-size: 1.8ch;
 }
 
 .priority-msg::before {
   content: "Choose a priority level.";
-  /* color: var(--focusColor); */
   font-family: "Happy Monkey";
   font-size: 1.8ch;
 }
 
 .description-msg::before {
   content: "Add details (optional).";
-  /* color: var(--focusColor); */
   font-family: "Happy Monkey";
   font-size: 1.8ch;
 }
 
 .due-date-msg::before {
   content: "Select a date and time.";
-  /* color: var(--focusColor); */
   font-family: "Happy Monkey";
   font-size: 1.8ch;
 }
@@ -256,8 +252,6 @@ input[type="datetime-local"],
 
 textarea {
   flex: 1;
-  /* height: 3ch;
-  width: 10%; */
   padding-left: 1ch;
   font-family: "Happy Monkey";
   font-size: 1.9ch;
@@ -600,7 +594,6 @@ input[type="checkbox"].complete:checked::before {
 .to-do-entry .priority > img:focus {
   border: none;
   width: 2.8ch;
-  /* height: 3ch; */
   padding: 0.5ch;
 }
 
