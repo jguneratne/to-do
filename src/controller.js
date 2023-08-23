@@ -198,7 +198,7 @@ export function submitToDo() {
 }
 
 export function displayByView() {
-  sideNav.addEventListener("pointerdown", (event) => {
+  sideNav.addEventListener("pointerdown", () => {
     // Display by Category
     if (categoryBtn.classList.contains("cat-tab")) {
       sortByCreationDate();

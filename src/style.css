@@ -469,6 +469,12 @@ button.select-to-do-btn:focus {
   cursor: pointer;
 }
 
+.cat-card .delete-icon > img:focus {
+  border: none;
+  width: 2.8ch;
+  padding: 0.5ch;
+}
+
 /* Category Section: New To Do Item */
 
 .to-do-entry {
@@ -561,6 +567,13 @@ input[type="checkbox"].complete:checked::before {
   cursor: pointer;
 }
 
+.cat-card .delete-icon > img:focus {
+  border: none;
+  width: 2.8ch;
+  height: 3ch;
+  padding: 0.5ch;
+}
+
 .to-do-entry .priority {
   width: 100%;
   height: 3ch;
@@ -582,6 +595,13 @@ input[type="checkbox"].complete:checked::before {
 
 .to-do-entry .priority > img {
   width: 2.2ch;
+}
+
+.to-do-entry .priority > img:focus {
+  border: none;
+  width: 2.8ch;
+  /* height: 3ch; */
+  padding: 0.5ch;
 }
 
 /* Main: Due Date View */

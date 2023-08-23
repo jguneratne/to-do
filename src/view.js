@@ -99,6 +99,8 @@ export function createCategorySection(categories) {
     deleteBtnImg.src = "../src/assets/imgs/trash.svg";
     deleteBtnImg.setAttribute("data-delete-cat", `${categories[i]}`);
     deleteBtnImg.setAttribute("data-delete-cat-index", i);
+    deleteBtnImg.setAttribute("focusable", true);
+    deleteBtnImg.setAttribute("tabindex", 0);
 
     categorySection.appendChild(categoryCard);
     categoryCard.appendChild(cardCategoryName);
@@ -209,6 +211,8 @@ export function displayToDoEntry(toDoItems) {
       deleteIcon.src = "../src/assets/imgs/trash.svg";
       deleteIcon.alt = "Delete Entry";
       deleteIcon.setAttribute("data-item-delete", i);
+      deleteIcon.setAttribute("focusable", true);
+      deleteIcon.setAttribute("tabindex", 0);
 
       const priorityDiv = document.createElement("div");
       priorityDiv.className = "priority";
@@ -229,6 +233,8 @@ export function displayToDoEntry(toDoItems) {
       editIcon.src = "../src/assets/imgs/edit-button-svgrepo-com.svg";
       editIcon.alt = "Edit Entry";
       editIcon.setAttribute("data-edit", i);
+      editIcon.setAttribute("focusable", true);
+      editIcon.setAttribute("tabindex", 0);
 
       catContentDivs.forEach((div) => {
         if (toDoItems[i].category === div.dataset.content) {
