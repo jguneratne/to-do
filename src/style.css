@@ -66,6 +66,10 @@
   cursor: pointer;
 }
 
+.header button.show-form-btn:focus {
+  border: 1px solid var(--main-bground-color);
+}
+
 /* Main */
 
 .main {
@@ -106,6 +110,10 @@
   border-bottom: solid 1px var(--main-bground-color);
 
   cursor: pointer;
+}
+
+.btn-ctrl:focus {
+  outline: 3px solid var(--form-green-color);
 }
 
 .btn-ctrl--active {
@@ -231,7 +239,6 @@
 }
 
 input[type="text"],
-/* input[type="textarea"].description, */
 input[type="datetime-local"],
 .task-priority {
   display: inline-block;
@@ -260,6 +267,13 @@ textarea {
   resize: vertical;
 }
 
+input[type="text"]:focus,
+textarea:focus,
+input[type="datetime-local"]:focus,
+.task-priority:focus {
+  outline: 2px solid var(--form-green-color);
+}
+
 input[type="text"]:valid {
   background-color: var(--main-bground-color);
 }
@@ -284,6 +298,14 @@ button.cancel-category:hover,
 button.cancel-to-do:hover {
   background-color: var(--form-green-color);
   cursor: pointer;
+}
+
+button.add-to-do:focus,
+button.edit-to-do:focus,
+button.cancel-category:focus,
+button.cancel-to-do:focus {
+  border: 2px solid var(--form-green-color);
+  outline: 2px solid var(--form-green-color);
 }
 
 /* Main: Tab Content */
@@ -373,6 +395,12 @@ button.select-to-do-btn:hover {
   cursor: pointer;
 }
 
+button.add-category:focus,
+button.agree-btn:focus,
+button.select-to-do-btn:focus {
+  outline: 2px solid var(--form-green-color);
+}
+
 /* Category View: New Category Section */
 .cat-section {
   width: 100%;
@@ -417,6 +445,10 @@ button.select-to-do-btn:hover {
 
 .new-to-do:hover {
   background-color: var(--main-bground-color);
+}
+
+.new-to-do:focus {
+  outline: 2px solid var(--form-green-color);
 }
 
 .cat-card .delete-icon {
@@ -717,6 +749,10 @@ footer p {
   height: min-content;
   justify-self: end;
   margin-right: 1ch;
+}
+
+footer a:focus {
+  outline: 3px solid var(--form-green-color);
 }
 
 footer img {
