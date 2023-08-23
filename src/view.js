@@ -132,23 +132,26 @@ export function toDoFormDisplay(addBtn) {
   limitDatePicker();
 }
 
-export function showFormWithInfo(editBtnIndex, toDoItems) {
-  for (let i = 0; i < toDoItems.length; i++) {
+export function showFormWithInfo(editBtnIndex, toDoItemsArray) {
+  for (let i = 0; i < toDoItemsArray.length; i++) {
     toDoFormContainer.style.display = "initial";
     toDoFormContainer.scrollTo(0, 0);
     addToDoBtn.style.display = "none";
     editToDoBtn.style.display = "initial";
     limitDatePicker();
 
-    if (parseInt(editBtnIndex) === parseInt(toDoItems.indexOf(toDoItems[i]))) {
-      categoryName.textContent = toDoItems[i].category;
-      toDoTitle.value = toDoItems[i].title;
-      toDoPriority.value = toDoItems[i].priority;
-      toDoDescription.value = toDoItems[i].description;
-      toDoDueDate.value = toDoItems[i].dueDate;
+    if (
+      parseInt(editBtnIndex) ===
+      parseInt(toDoItemsArray.indexOf(toDoItemsArray[i]))
+    ) {
+      categoryName.textContent = toDoItemsArray[i].category;
+      toDoTitle.value = toDoItemsArray[i].title;
+      toDoPriority.value = toDoItemsArray[i].priority;
+      toDoDescription.value = toDoItemsArray[i].description;
+      toDoDueDate.value = toDoItemsArray[i].dueDate;
     }
 
-    const entryIndex = toDoItems.indexOf(toDoItems[i]);
+    const entryIndex = toDoItemsArray.indexOf(toDoItemsArray[i]);
     editToDo(entryIndex);
     editToDoInStorage(entryIndex);
   }
@@ -159,9 +162,9 @@ export function hideToDoForm() {
   toDoForm.reset();
 }
 
-export function displayToDoEntry(toDoItems) {
-  for (let i = 0; i < toDoItems.length; i++) {
-    if (toDoItems[i].completedTask === false) {
+export function displayToDoEntry(toDoItemsArray) {
+  for (let i = 0; i < toDoItemsArray.length; i++) {
+    if (toDoItemsArray[i].completedTask === false) {
       const catContentDivs = document.querySelectorAll(".cat-content");
 
       const toDoEntry = document.createElement("div");
@@ -170,18 +173,18 @@ export function displayToDoEntry(toDoItems) {
 
       const toDoTitle = document.createElement("h3");
       toDoTitle.className = "title";
-      toDoTitle.textContent = toDoItems[i].title;
+      toDoTitle.textContent = toDoItemsArray[i].title;
 
       const toDoDetailsTitle = document.createElement("div");
       toDoDetailsTitle.className = "details-title";
       toDoDetailsTitle.textContent = "Details:";
-      if (toDoItems[i].description === "") {
+      if (toDoItemsArray[i].description === "") {
         toDoDetailsTitle.style.display = "none";
       }
 
       const toDoDetails = document.createElement("p");
       toDoDetails.className = "details";
-      toDoDetails.textContent = toDoItems[i].description;
+      toDoDetails.textContent = toDoItemsArray[i].description;
 
       const toDoDueDateTitle = document.createElement("div");
       toDoDueDateTitle.className = "due-title";
@@ -189,7 +192,7 @@ export function displayToDoEntry(toDoItems) {
 
       const toDoDueDate = document.createElement("p");
       toDoDueDate.className = "show-due-date";
-      toDoDueDate.textContent = toDoItems[i].dueDate;
+      toDoDueDate.textContent = toDoItemsArray[i].dueDate;
 
       const completedDiv = document.createElement("div");
       completedDiv.className = "complete-container";
@@ -223,11 +226,11 @@ export function displayToDoEntry(toDoItems) {
       const priorityColor = document.createElement("div");
       priorityColor.className = "priority-color";
       priorityColor.style.border = "1px solid #535347";
-      if (toDoItems[i].priority.toLowerCase() === "low") {
+      if (toDoItemsArray[i].priority.toLowerCase() === "low") {
         priorityColor.style.backgroundColor = "#e7f24f";
-      } else if (toDoItems[i].priority.toLowerCase() === "medium") {
+      } else if (toDoItemsArray[i].priority.toLowerCase() === "medium") {
         priorityColor.style.backgroundColor = "#eeb250";
-      } else if (toDoItems[i].priority.toLowerCase === "high") {
+      } else if (toDoItemsArray[i].priority.toLowerCase === "high") {
         priorityColor.style.backgroundColor = "#bc2702";
       }
 
@@ -240,7 +243,7 @@ export function displayToDoEntry(toDoItems) {
       editIcon.setAttribute("tabindex", 0);
 
       catContentDivs.forEach((div) => {
-        if (toDoItems[i].category === div.dataset.content) {
+        if (toDoItemsArray[i].category === div.dataset.content) {
           console.log(div.dataset.content);
 
           div.appendChild(toDoEntry);
@@ -273,9 +276,9 @@ export function replaceToDoItems() {
   });
 }
 
-export function showByDueDate(toDoItems) {
-  for (let i = 0; i < toDoItems.length; i++) {
-    if (toDoItems[i].completedTask === false) {
+export function showByDueDate(toDoItemsArray) {
+  for (let i = 0; i < toDoItemsArray.length; i++) {
+    if (toDoItemsArray[i].completedTask === false) {
       const dueDateTasksRowDiv = document.createElement("div");
       dueDateTasksRowDiv.className = "due-tasks-row-parent";
 
@@ -284,18 +287,18 @@ export function showByDueDate(toDoItems) {
 
       const dueViewDueDate = document.createElement("div");
       dueViewDueDate.className = "due-view-due show-date-due";
-      dueViewDueDate.textContent = toDoItems[i].dueDate;
+      dueViewDueDate.textContent = toDoItemsArray[i].dueDate;
       dueViewDueDate.style.borderRight = "0.2ch solid black";
       dueViewDueDate.style.textAlign = "center";
 
       const dueDateTitle = document.createElement("div");
       dueDateTitle.className = "grid-cells .due-view-title";
-      dueDateTitle.textContent = toDoItems[i].title;
+      dueDateTitle.textContent = toDoItemsArray[i].title;
 
       const dueDateDescription = document.createElement("div");
       dueDateDescription.className = "grid-cells .due-view-description";
-      if (toDoItems[i].description !== "") {
-        dueDateDescription.textContent = toDoItems[i].description;
+      if (toDoItemsArray[i].description !== "") {
+        dueDateDescription.textContent = toDoItemsArray[i].description;
       } else {
         dueDateDescription.textContent = "----";
       }
@@ -305,11 +308,11 @@ export function showByDueDate(toDoItems) {
       const dueDatePriorityColor = document.createElement("div");
       dueDatePriorityColor.className = "priority-color";
       dueDatePriorityColor.style.border = "1px solid #535347";
-      if (toDoItems[i].priority.toLowerCase() === "low") {
+      if (toDoItemsArray[i].priority.toLowerCase() === "low") {
         dueDatePriorityColor.style.backgroundColor = "#e7f24f";
-      } else if (toDoItems[i].priority.toLowerCase() === "medium") {
+      } else if (toDoItemsArray[i].priority.toLowerCase() === "medium") {
         dueDatePriorityColor.style.backgroundColor = "#eeb250";
-      } else if (toDoItems[i].priority.toLowerCase === "high") {
+      } else if (toDoItemsArray[i].priority.toLowerCase === "high") {
         dueDatePriorityColor.style.backgroundColor = "#bc2702";
       }
 
@@ -325,7 +328,7 @@ export function showByDueDate(toDoItems) {
       dueDateCheckbox.name = "complete";
       dueDateCheckbox.id = "complete";
       dueDateCheckbox.value = "complete";
-      dueDateCheckbox.checked = toDoItems[i].completedTask;
+      dueDateCheckbox.checked = toDoItemsArray[i].completedTask;
       dueDateCheckbox.setAttribute("data-check", i);
 
       const dueDateDelete = document.createElement("div");
@@ -363,9 +366,9 @@ export function replaceDueDateRows() {
   });
 }
 
-export function showByPriority(toDoItems) {
-  for (let i = 0; i < toDoItems.length; i++) {
-    if (toDoItems[i].completedTask === false) {
+export function showByPriority(toDoItemsArray) {
+  for (let i = 0; i < toDoItemsArray.length; i++) {
+    if (toDoItemsArray[i].completedTask === false) {
       const priorityTasksRowDiv = document.createElement("div");
       priorityTasksRowDiv.className = "priority-tasks-row-parent";
 
@@ -377,29 +380,29 @@ export function showByPriority(toDoItems) {
       const priorityViewPriorityColor = document.createElement("div");
       priorityViewPriorityColor.className = "priority-color";
       priorityViewPriorityColor.style.border = "1px solid #535347";
-      if (toDoItems[i].priority.toLowerCase() === "low") {
+      if (toDoItemsArray[i].priority.toLowerCase() === "low") {
         priorityViewPriorityColor.style.backgroundColor = "#e7f24f";
-      } else if (toDoItems[i].priority.toLowerCase() === "medium") {
+      } else if (toDoItemsArray[i].priority.toLowerCase() === "medium") {
         priorityViewPriorityColor.style.backgroundColor = "#eeb250";
-      } else if (toDoItems[i].priority.toLowerCase === "high") {
+      } else if (toDoItemsArray[i].priority.toLowerCase === "high") {
         priorityViewPriorityColor.style.backgroundColor = "#bc2702";
       }
 
       const priorityTitle = document.createElement("div");
       priorityTitle.className = "grid-cells .priority-view-title";
-      priorityTitle.textContent = toDoItems[i].title;
+      priorityTitle.textContent = toDoItemsArray[i].title;
 
       const priorityDescription = document.createElement("div");
       priorityDescription.className = "grid-cells .priority-view-description";
-      if (toDoItems[i].description !== "") {
-        priorityDescription.textContent = toDoItems[i].description;
+      if (toDoItemsArray[i].description !== "") {
+        priorityDescription.textContent = toDoItemsArray[i].description;
       } else {
         priorityDescription.textContent = "----";
       }
 
       const priorityViewDueDate = document.createElement("div");
       priorityViewDueDate.className = "priority-view-due show-date-priority";
-      priorityViewDueDate.textContent = toDoItems[i].dueDate;
+      priorityViewDueDate.textContent = toDoItemsArray[i].dueDate;
       priorityViewDueDate.style.borderRight = "0.2ch solid black";
       priorityViewDueDate.style.textAlign = "center";
 
@@ -415,7 +418,7 @@ export function showByPriority(toDoItems) {
       priorityCheckbox.name = "complete";
       priorityCheckbox.id = "complete";
       priorityCheckbox.value = "complete";
-      priorityCheckbox.checked = toDoItems[i].completedTask;
+      priorityCheckbox.checked = toDoItemsArray[i].completedTask;
       priorityCheckbox.setAttribute("data-check", i);
 
       const priorityDelete = document.createElement("div");
@@ -453,9 +456,9 @@ export function replacePriorityRows() {
   });
 }
 
-export function showCompletedTasks(toDoItems) {
-  for (let i = 0; i < toDoItems.length; i++) {
-    if (toDoItems[i].completedTask === true) {
+export function showCompletedTasks(toDoItemsArray) {
+  for (let i = 0; i < toDoItemsArray.length; i++) {
+    if (toDoItemsArray[i].completedTask === true) {
       const completedTasksRowDiv = document.createElement("div");
       completedTasksRowDiv.className = "completed-tasks-row-parent";
 
@@ -474,17 +477,17 @@ export function showCompletedTasks(toDoItems) {
       completedCheckbox.name = "complete";
       completedCheckbox.id = "complete";
       completedCheckbox.value = "complete";
-      completedCheckbox.checked = toDoItems[i].completedTask;
+      completedCheckbox.checked = toDoItemsArray[i].completedTask;
       completedCheckbox.setAttribute("data-check", i);
 
       const gridCellsTitle = document.createElement("div");
       gridCellsTitle.className = "grid-cells .complete-view-title";
-      gridCellsTitle.textContent = toDoItems[i].title;
+      gridCellsTitle.textContent = toDoItemsArray[i].title;
 
       const gridCellsDescription = document.createElement("div");
       gridCellsDescription.className = "grid-cells .complete-view-description";
-      if (toDoItems[i].description !== "") {
-        gridCellsDescription.textContent = toDoItems[i].description;
+      if (toDoItemsArray[i].description !== "") {
+        gridCellsDescription.textContent = toDoItemsArray[i].description;
       } else {
         gridCellsDescription.textContent = "----";
       }
@@ -495,11 +498,11 @@ export function showCompletedTasks(toDoItems) {
       const gridCellsPriorityColor = document.createElement("div");
       gridCellsPriorityColor.className = "priority-color";
       gridCellsPriorityColor.style.border = "1px solid #535347";
-      if (toDoItems[i].priority.toLowerCase() === "low") {
+      if (toDoItemsArray[i].priority.toLowerCase() === "low") {
         gridCellsPriorityColor.style.backgroundColor = "#e7f24f";
-      } else if (toDoItems[i].priority.toLowerCase() === "medium") {
+      } else if (toDoItemsArray[i].priority.toLowerCase() === "medium") {
         gridCellsPriorityColor.style.backgroundColor = "#eeb250";
-      } else if (toDoItems[i].priority.toLowerCase === "high") {
+      } else if (toDoItemsArray[i].priority.toLowerCase === "high") {
         gridCellsPriorityColor.style.backgroundColor = "#bc2702";
       }
 
