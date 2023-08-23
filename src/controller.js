@@ -20,7 +20,6 @@ import {
   displayCategoryWarning,
   closeToDoWarning,
   closeSelectionBox,
-  showCatMessage,
   newCategoryForm,
   hideCategoryForm,
   replaceCategorySections,
@@ -57,13 +56,6 @@ import {
   formatDatesDueView,
   formatDatesPriority,
 } from "./dates";
-
-// export function displayMsgAddCat() {
-//   if (categories.length === 0) {
-//     console.log(categories.length);
-//     showCatMessage();
-//   }
-// }
 
 export function selectActionForm() {
   addBtn.addEventListener("pointerdown", selectAddType);
@@ -386,16 +378,11 @@ export function handleEventDelegationWithKeyboard() {
       if (event.key === "Enter" && event.target === btn) {
         removeCategory(deleteCategoryIndex, deleteCategoryName);
         replaceCategorySections(categoriesArray);
-
-        if (categoriesArray.length === 0 || categoriesArray.length === "0") {
-          showCatMessage();
-        } else {
-          createCategorySection(categoriesArray);
-          replaceToDoItems();
-          displayToDoEntry(toDoItemsArray);
-          findPastDue();
-          formatDatesCategory();
-        }
+        createCategorySection(categoriesArray);
+        replaceToDoItems();
+        displayToDoEntry(toDoItemsArray);
+        findPastDue();
+        formatDatesCategory();
       }
     });
 

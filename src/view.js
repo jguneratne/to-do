@@ -114,14 +114,6 @@ export function createCategorySection(categoriesArray) {
   }
 }
 
-export function showCatMessage() {
-  console.log(addCategoryMsg.style.display);
-  if (addCategoryMsg.style.display === "none") {
-    addCategoryMsg.style.display = "initial";
-  }
-  console.log(addCategoryMsg.style.display);
-}
-
 export function replaceCategorySections() {
   // Replaces all category sections on each new category creation to prevent duplicates
   while (categorySection.firstChild) {
