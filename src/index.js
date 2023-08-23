@@ -9,6 +9,7 @@ import {
   submitToDo,
   cancelToDo,
   displayByView,
+  displayByViewWithKeyboard,
   handleEventDelegation,
   handleEventDelegationWithKeyboard,
   markComplete,
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   submitToDo();
   cancelToDo();
   displayByView();
+  displayByViewWithKeyboard();
   handleEventDelegation();
   handleEventDelegationWithKeyboard();
   markComplete();

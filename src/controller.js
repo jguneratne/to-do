@@ -226,6 +226,38 @@ export function displayByView() {
   });
 }
 
+export function displayByViewWithKeyboard() {
+  sideNav.addEventListener("keydown", (event) => {
+    // Display by Category
+    if (event.key === "Enter" && categoryBtn.classList.contains("cat-tab")) {
+      sortByCreationDate();
+      replaceToDoItems();
+      displayToDoEntry(toDoItemsArray);
+      findPastDue();
+      formatDatesCategory();
+    }
+    // Display by Due Date
+    if (event.key === "Enter" && dueDateBtn.classList.contains("date-tab")) {
+      sortByDueDate();
+      replaceDueDateRows();
+      showByDueDate(toDoItemsArray);
+      findPastDue();
+      formatDatesDueView();
+    }
+    // Display by Priority
+    if (
+      event.key === "Enter" &&
+      priorityBtn.classList.contains("priority-tab")
+    ) {
+      sortByPriority();
+      replacePriorityRows();
+      showByPriority(toDoItemsArray);
+      findPastDue();
+      formatDatesPriority();
+    }
+  });
+}
+
 export function handleEventDelegation() {
   contentBox.addEventListener("pointerdown", function (event) {
     //Display To Do Entry Form
