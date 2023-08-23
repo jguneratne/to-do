@@ -526,6 +526,10 @@ input[type="checkbox"].complete {
   position: relative;
 }
 
+input[type="checkbox"].complete:focus {
+  outline: 2px solid var(--form-green-color);
+}
+
 input[type="checkbox"].complete:checked {
   border: 1px solid var(--form-green-color);
   background-color: var(--main-bground-color);
