@@ -1,4 +1,4 @@
-import { editToDo, editToDoInStorage } from "./model";
+import { categoriesArray, toDoItemsArray } from "./model";
 import {
   addCategoryMsg,
   selectAddTypeDiv,
@@ -33,6 +33,12 @@ export function selectAddType() {
   }
 }
 
+export function showCatMessage() {
+  addCategoryMsg.style.display = "initial";
+
+  console.log(addCategoryMsg.style.display);
+}
+
 export function displayCategoryWarning() {
   categoryWarning.style.display = "initial";
   selectAddTypeDiv.style.display = "none";
@@ -64,7 +70,7 @@ export function hideCategoryForm() {
   sideNav.classList.remove("cat-form-visible");
 }
 
-export function createCategorySection(categoriesArray) {
+export function createCategorySection() {
   addCategoryMsg.style.display = "none";
 
   console.log(categoriesArray);
@@ -132,7 +138,7 @@ export function toDoFormDisplay(addBtn) {
   limitDatePicker();
 }
 
-export function showFormWithInfo(editBtnIndex, editBtnCat, toDoItemsArray) {
+export function showFormWithInfo(editBtnIndex, editBtnCat) {
   for (let i = 0; i < toDoItemsArray.length; i++) {
     toDoFormContainer.style.display = "initial";
     toDoFormContainer.scrollTo(0, 0);
@@ -152,7 +158,6 @@ export function showFormWithInfo(editBtnIndex, editBtnCat, toDoItemsArray) {
     }
 
     const entryIndex = toDoItemsArray.indexOf(toDoItemsArray[i]);
-    editToDo(entryIndex);
   }
 }
 
@@ -161,7 +166,7 @@ export function hideToDoForm() {
   toDoForm.reset();
 }
 
-export function displayToDoEntry(toDoItemsArray) {
+export function displayToDoEntry() {
   for (let i = 0; i < toDoItemsArray.length; i++) {
     if (toDoItemsArray[i].completedTask === false) {
       const catContentDivs = document.querySelectorAll(".cat-content");
@@ -276,7 +281,7 @@ export function replaceToDoItems() {
   });
 }
 
-export function showByDueDate(toDoItemsArray) {
+export function showByDueDate() {
   for (let i = 0; i < toDoItemsArray.length; i++) {
     if (toDoItemsArray[i].completedTask === false) {
       const dueDateTasksRowDiv = document.createElement("div");
@@ -366,7 +371,7 @@ export function replaceDueDateRows() {
   });
 }
 
-export function showByPriority(toDoItemsArray) {
+export function showByPriority() {
   for (let i = 0; i < toDoItemsArray.length; i++) {
     if (toDoItemsArray[i].completedTask === false) {
       const priorityTasksRowDiv = document.createElement("div");
@@ -456,7 +461,7 @@ export function replacePriorityRows() {
   });
 }
 
-export function showCompletedTasks(toDoItemsArray) {
+export function showCompletedTasks() {
   for (let i = 0; i < toDoItemsArray.length; i++) {
     if (toDoItemsArray[i].completedTask === true) {
       const completedTasksRowDiv = document.createElement("div");

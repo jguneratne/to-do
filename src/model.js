@@ -8,11 +8,11 @@ import {
   categoryName,
 } from "./querySelectors";
 
-export const categories = [];
+let categories = JSON.parse(localStorage.categories || "[]");
 localStorage.setItem("categories", JSON.stringify(categories));
 export let categoriesArray = JSON.parse(localStorage.getItem("categories"));
 
-export let toDoItems = [];
+let toDoItems = JSON.parse(localStorage.toDoItems || "[]");
 localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
 export let toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
 
@@ -26,8 +26,9 @@ export function newCategoryArray() {
   ) {
     alert("Duplicate category. Please choose a new category title");
   } else {
-    categories.push(newCategory);
-    localStorage.setItem("categories", JSON.stringify(categories));
+    let addCategory = JSON.parse(localStorage.getItem("categories"));
+    addCategory.push(newCategory);
+    localStorage.setItem("categories", JSON.stringify(addCategory));
     categoriesArray = JSON.parse(localStorage.getItem("categories"));
     console.log(categoriesArray);
   }
@@ -51,8 +52,9 @@ export function newToDoItem() {
     creationTime,
     completedTask,
   };
-  toDoItems.push(toDoItem);
-  localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
+  let addToDoItem = JSON.parse(localStorage.getItem("toDoItems"));
+  addToDoItem.push(toDoItem);
+  localStorage.setItem("toDoItems", JSON.stringify(addToDoItem));
   toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
   console.log(toDoItemsArray);
 }
@@ -64,8 +66,6 @@ export function removeToDoFromCategory(removedItem) {
     );
 
     if (confirmRemove) {
-      toDoItems.splice(removedItem, 1);
-
       let arrayCount = localStorage.length;
       if (arrayCount) {
         for (let i = 0; i < arrayCount; i++) {
@@ -83,24 +83,11 @@ export function removeToDoFromCategory(removedItem) {
           }
         }
       }
-
-      console.log(toDoItemsArray);
     }
   }
 }
 
-export function editToDo(entryIndex) {
-  if (toDoItems.at(entryIndex)) {
-    toDoItems.at(entryIndex).category = categoryName.textContent;
-    toDoItems.at(entryIndex).title = toDoTitle.value.trim();
-    toDoItems.at(entryIndex).priority = toDoPriority.value.trim();
-    toDoItems.at(entryIndex).description = toDoDescription.value.trim();
-    toDoItems.at(entryIndex).dueDate = toDoDueDate.value.trim();
-  }
-}
-
 export function editToDoInStorage(entryIndex) {
-  console.log(entryIndex);
   let arrayCount = localStorage.length;
   if (arrayCount) {
     for (let i = 0; i < arrayCount; i++) {
@@ -115,6 +102,7 @@ export function editToDoInStorage(entryIndex) {
         updateArray.at(entryIndex).priority = toDoPriority.value.trim();
         updateArray.at(entryIndex).description = toDoDescription.value.trim();
         updateArray.at(entryIndex).dueDate = toDoDueDate.value.trim();
+
         localStorage.setItem("toDoItems", JSON.stringify(updateArray));
         toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
         console.log(toDoItemsArray);
@@ -132,18 +120,16 @@ export function removeCategory(removedIndex, removedCatName) {
     );
 
     if (confirmRemoveCat) {
-      const deletedEntriesByCatName = toDoItems.filter(
+      let editToDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
+      const deletedEntriesByCatName = editToDoItemsArray.filter(
         (entry) => entry.category !== removedCatName
       );
 
-      toDoItems = deletedEntriesByCatName;
-      console.log(toDoItems);
-      localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
+      editToDoItemsArray = deletedEntriesByCatName;
+
+      localStorage.setItem("toDoItems", JSON.stringify(editToDoItemsArray));
       toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
       console.log(toDoItemsArray);
-
-      categories.splice(removedIndex, 1);
-      console.log(categories);
 
       let arrayCount = localStorage.length;
       if (arrayCount) {
@@ -172,9 +158,11 @@ export function removeCategory(removedIndex, removedCatName) {
 }
 
 export function changeCompleteStatus(taskIndex) {
-  if (toDoItems.at(taskIndex)) {
-    if (toDoItems[taskIndex].completedTask === false) {
-      toDoItems[taskIndex].completedTask = true;
+  let checkComplete = JSON.parse(localStorage.getItem("toDoItems"));
+
+  if (checkComplete.at(taskIndex)) {
+    if (checkComplete[taskIndex].completedTask === false) {
+      checkComplete[taskIndex].completedTask = true;
 
       let arrayCount = localStorage.length;
       if (arrayCount) {
@@ -183,18 +171,17 @@ export function changeCompleteStatus(taskIndex) {
           console.log(key);
 
           if (key === "toDoItems") {
-            let updateArray = JSON.parse(localStorage.getItem("toDoItems"));
-
-            updateArray[taskIndex].completedTask = true;
-            localStorage.setItem("toDoItems", JSON.stringify(updateArray));
+            localStorage.setItem("toDoItems", JSON.stringify(checkComplete));
             toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
             console.log(toDoItemsArray);
           }
         }
       }
     } else {
-      toDoItems[taskIndex].completedTask === true;
-      toDoItems[taskIndex].completedTask = false;
+      let uncheckComplete = JSON.parse(localStorage.getItem("toDoItems"));
+
+      uncheckComplete[taskIndex].completedTask === true;
+      uncheckComplete[taskIndex].completedTask = false;
 
       let arrayCount = localStorage.length;
       if (arrayCount) {
@@ -203,10 +190,7 @@ export function changeCompleteStatus(taskIndex) {
           console.log(key);
 
           if (key === "toDoItems") {
-            let updateArray = JSON.parse(localStorage.getItem("toDoItems"));
-
-            updateArray[taskIndex].completedTask = false;
-            localStorage.setItem("toDoItems", JSON.stringify(updateArray));
+            localStorage.setItem("toDoItems", JSON.stringify(uncheckComplete));
             toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
             console.log(toDoItemsArray);
           }
@@ -214,8 +198,6 @@ export function changeCompleteStatus(taskIndex) {
       }
     }
   }
-
-  console.log(toDoItemsArray);
 }
 
 export function sortByCreationDate() {

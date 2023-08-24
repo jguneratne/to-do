@@ -17,6 +17,7 @@ import {
 } from "./querySelectors";
 import {
   selectAddType,
+  showCatMessage,
   displayCategoryWarning,
   closeToDoWarning,
   closeSelectionBox,
@@ -41,7 +42,6 @@ import {
   toDoItemsArray,
   newCategoryArray,
   newToDoItem,
-  editToDo,
   editToDoInStorage,
   removeToDoFromCategory,
   removeCategory,
@@ -56,6 +56,20 @@ import {
   formatDatesDueView,
   formatDatesPriority,
 } from "./dates";
+
+export function buildFromStorage() {
+  if (categoriesArray.length === 0) {
+    showCatMessage();
+  } else {
+    replaceCategorySections();
+    createCategorySection();
+    sortByCreationDate();
+    replaceToDoItems();
+    displayToDoEntry();
+    findPastDue();
+    formatDatesCategory();
+  }
+}
 
 export function selectActionForm() {
   addBtn.addEventListener("pointerdown", selectAddType);
@@ -134,10 +148,10 @@ export function submitNewCategory() {
     e.preventDefault();
     newCategoryArray();
     hideCategoryForm();
-    replaceCategorySections(categoriesArray);
-    createCategorySection(categoriesArray);
+    replaceCategorySections();
+    createCategorySection();
     replaceToDoItems();
-    displayToDoEntry(toDoItemsArray);
+    displayToDoEntry();
   });
 }
 
@@ -148,18 +162,17 @@ export function submitToDo() {
       sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
-      displayToDoEntry(toDoItemsArray);
+      displayToDoEntry();
       findPastDue();
       formatDatesCategory();
     }
 
     if (e.target === editToDoBtn) {
-      editToDo();
       editToDoInStorage();
       sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
-      displayToDoEntry(toDoItemsArray);
+      displayToDoEntry();
       findPastDue();
       formatDatesCategory();
     }
@@ -171,18 +184,17 @@ export function submitToDo() {
       sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
-      displayToDoEntry(toDoItemsArray);
+      displayToDoEntry();
       findPastDue();
       formatDatesCategory();
     }
 
     if (e.key === "Enter" && e.target === editToDoBtn) {
-      editToDo();
       editToDoInStorage();
       sortByCreationDate();
       hideToDoForm();
       replaceToDoItems();
-      displayToDoEntry(toDoItemsArray);
+      displayToDoEntry();
       findPastDue();
       formatDatesCategory();
     }
@@ -195,7 +207,7 @@ export function displayByView() {
     if (categoryBtn.classList.contains("cat-tab")) {
       sortByCreationDate();
       replaceToDoItems();
-      displayToDoEntry(toDoItemsArray);
+      displayToDoEntry();
       findPastDue();
       formatDatesCategory();
     }
@@ -203,7 +215,7 @@ export function displayByView() {
     if (dueDateBtn.classList.contains("date-tab")) {
       sortByDueDate();
       replaceDueDateRows();
-      showByDueDate(toDoItemsArray);
+      showByDueDate();
       findPastDue();
       formatDatesDueView();
     }
@@ -211,7 +223,7 @@ export function displayByView() {
     if (priorityBtn.classList.contains("priority-tab")) {
       sortByPriority();
       replacePriorityRows();
-      showByPriority(toDoItemsArray);
+      showByPriority();
       findPastDue();
       formatDatesPriority();
     }
@@ -224,7 +236,7 @@ export function displayByViewWithKeyboard() {
     if (event.key === "Enter" && categoryBtn.classList.contains("cat-tab")) {
       sortByCreationDate();
       replaceToDoItems();
-      displayToDoEntry(toDoItemsArray);
+      displayToDoEntry();
       findPastDue();
       formatDatesCategory();
     }
@@ -232,7 +244,7 @@ export function displayByViewWithKeyboard() {
     if (event.key === "Enter" && dueDateBtn.classList.contains("date-tab")) {
       sortByDueDate();
       replaceDueDateRows();
-      showByDueDate(toDoItemsArray);
+      showByDueDate();
       findPastDue();
       formatDatesDueView();
     }
@@ -243,7 +255,7 @@ export function displayByViewWithKeyboard() {
     ) {
       sortByPriority();
       replacePriorityRows();
-      showByPriority(toDoItemsArray);
+      showByPriority();
       findPastDue();
       formatDatesPriority();
     }
@@ -271,23 +283,23 @@ export function handleEventDelegation() {
         removeToDoFromCategory(deleteToDoItem);
         sortByCreationDate();
         replaceToDoItems();
-        displayToDoEntry(toDoItemsArray);
+        displayToDoEntry();
         findPastDue();
         formatDatesCategory();
         replaceCompletedRows();
-        showCompletedTasks(toDoItemsArray);
+        showCompletedTasks();
 
         if (dueDateBtn.classList.contains("btn-ctrl--active")) {
           sortByDueDate();
           replaceDueDateRows();
-          showByDueDate(toDoItemsArray);
+          showByDueDate();
           findPastDue();
           formatDatesDueView();
         }
         if (priorityBtn.classList.contains("btn-ctrl--active")) {
           sortByPriority();
           replacePriorityRows();
-          showByPriority(toDoItemsArray);
+          showByPriority();
           findPastDue();
           formatDatesPriority();
         }
@@ -303,10 +315,10 @@ export function handleEventDelegation() {
     deleteCatBtns.forEach((btn) => {
       if (event.target === btn) {
         removeCategory(deleteCategoryIndex, deleteCategoryName);
-        replaceCategorySections(categoriesArray);
-        createCategorySection(categoriesArray);
+        replaceCategorySections();
+        createCategorySection();
         replaceToDoItems();
-        displayToDoEntry(toDoItemsArray);
+        displayToDoEntry();
         findPastDue();
         formatDatesCategory();
       }
@@ -319,7 +331,7 @@ export function handleEventDelegation() {
     editBtns.forEach((edit) => {
       if (event.target === edit) {
         console.log(typeof editIcon);
-        showFormWithInfo(editIcon, editIconCat, toDoItemsArray);
+        showFormWithInfo(editIcon, editIconCat);
       }
     });
   });
@@ -346,23 +358,23 @@ export function handleEventDelegationWithKeyboard() {
         removeToDoFromCategory(deleteToDoItem);
         sortByCreationDate();
         replaceToDoItems();
-        displayToDoEntry(toDoItemsArray);
+        displayToDoEntry();
         findPastDue();
         formatDatesCategory();
         replaceCompletedRows();
-        showCompletedTasks(toDoItemsArray);
+        showCompletedTasks();
 
         if (dueDateBtn.classList.contains("btn-ctrl--active")) {
           sortByDueDate();
           replaceDueDateRows();
-          showByDueDate(toDoItemsArray);
+          showByDueDate();
           findPastDue();
           formatDatesDueView();
         }
         if (priorityBtn.classList.contains("btn-ctrl--active")) {
           sortByPriority();
           replacePriorityRows();
-          showByPriority(toDoItemsArray);
+          showByPriority();
           findPastDue();
           formatDatesPriority();
         }
@@ -378,10 +390,10 @@ export function handleEventDelegationWithKeyboard() {
     deleteCatBtns.forEach((btn) => {
       if (event.key === "Enter" && event.target === btn) {
         removeCategory(deleteCategoryIndex, deleteCategoryName);
-        replaceCategorySections(categoriesArray);
-        createCategorySection(categoriesArray);
+        replaceCategorySections();
+        createCategorySection();
         replaceToDoItems();
-        displayToDoEntry(toDoItemsArray);
+        displayToDoEntry();
         findPastDue();
         formatDatesCategory();
       }
@@ -393,7 +405,7 @@ export function handleEventDelegationWithKeyboard() {
     editBtns.forEach((edit) => {
       if (event.key === "Enter" && event.target === edit) {
         console.log(typeof editIcon);
-        showFormWithInfo(editIcon, toDoItemsArray);
+        showFormWithInfo(editIcon);
       }
     });
   });
@@ -406,23 +418,23 @@ export function markComplete() {
     if (event.target === taskIndex) console.log(taskIndex);
     changeCompleteStatus(taskIndex);
     replaceCompletedRows();
-    showCompletedTasks(toDoItemsArray);
+    showCompletedTasks();
     replaceToDoItems();
-    displayToDoEntry(toDoItemsArray);
+    displayToDoEntry();
     findPastDue();
     formatDatesCategory();
 
     if (dueDateBtn.classList.contains("btn-ctrl--active")) {
       sortByDueDate();
       replaceDueDateRows();
-      showByDueDate(toDoItemsArray);
+      showByDueDate();
       findPastDue();
       formatDatesDueView();
     }
     if (priorityBtn.classList.contains("btn-ctrl--active")) {
       sortByPriority();
       replacePriorityRows();
-      showByPriority(toDoItemsArray);
+      showByPriority();
       findPastDue();
       formatDatesPriority();
     }

@@ -1,5 +1,6 @@
 import tabControls from "./tabControl";
 import {
+  buildFromStorage,
   selectActionForm,
   showCategoryForm,
   showCategoryWarning,
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tabContent.querySelector(".tab-content").click();
   });
 
+  buildFromStorage();
   selectActionForm();
   showCategoryForm();
   showCategoryWarning();
