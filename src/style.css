@@ -92,6 +92,13 @@
   background-color: var(--inactive-tab-color);
 }
 
+.forms-box {
+  grid-area: 1 / 2 / 2 / 3;
+  min-height: 100%;
+  height: min-content;
+  margin: 0 2ch;
+}
+
 .content-box {
   grid-area: 1 / 2 / 2 / 3;
   min-height: 100%;
