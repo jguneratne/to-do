@@ -83,6 +83,7 @@ export function editToDo(entryIndex) {
 }
 
 export function editToDoInStorage(entryIndex) {
+  console.log(entryIndex);
   let arrayCount = localStorage.length;
   if (arrayCount) {
     for (let i = 0; i < arrayCount; i++) {

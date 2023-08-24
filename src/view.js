@@ -1,4 +1,4 @@
-import { editToDo } from "./model";
+import { editToDo, editToDoInStorage } from "./model";
 import {
   addCategoryMsg,
   selectAddTypeDiv,
@@ -132,7 +132,7 @@ export function toDoFormDisplay(addBtn) {
   limitDatePicker();
 }
 
-export function showFormWithInfo(editBtnIndex, toDoItemsArray) {
+export function showFormWithInfo(editBtnIndex, editBtnCat, toDoItemsArray) {
   for (let i = 0; i < toDoItemsArray.length; i++) {
     toDoFormContainer.style.display = "initial";
     toDoFormContainer.scrollTo(0, 0);
@@ -144,7 +144,7 @@ export function showFormWithInfo(editBtnIndex, toDoItemsArray) {
       parseInt(editBtnIndex) ===
       parseInt(toDoItemsArray.indexOf(toDoItemsArray[i]))
     ) {
-      categoryName.textContent = toDoItemsArray[i].category;
+      categoryName.textContent = editBtnCat;
       toDoTitle.value = toDoItemsArray[i].title;
       toDoPriority.value = toDoItemsArray[i].priority;
       toDoDescription.value = toDoItemsArray[i].description;
@@ -153,7 +153,6 @@ export function showFormWithInfo(editBtnIndex, toDoItemsArray) {
 
     const entryIndex = toDoItemsArray.indexOf(toDoItemsArray[i]);
     editToDo(entryIndex);
-    editToDoInStorage(entryIndex);
   }
 }
 
@@ -239,6 +238,7 @@ export function displayToDoEntry(toDoItemsArray) {
       editIcon.src = "../src/assets/imgs/edit-button-svgrepo-com.svg";
       editIcon.alt = "Edit Entry";
       editIcon.setAttribute("data-edit", i);
+      editIcon.setAttribute("data-edit-cat", toDoItemsArray[i].category);
       editIcon.setAttribute("focusable", true);
       editIcon.setAttribute("tabindex", 0);
 

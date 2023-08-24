@@ -314,11 +314,12 @@ export function handleEventDelegation() {
 
     // Display Form to edit To Do entry
     const editIcon = parseInt(event.target.dataset.edit);
+    const editIconCat = event.target.dataset.editCat;
     const editBtns = Array.from(document.querySelectorAll("[data-edit"));
     editBtns.forEach((edit) => {
       if (event.target === edit) {
         console.log(typeof editIcon);
-        showFormWithInfo(editIcon, toDoItemsArray);
+        showFormWithInfo(editIcon, editIconCat, toDoItemsArray);
       }
     });
   });
