@@ -39,7 +39,6 @@ import {
 } from "./view";
 import {
   categoriesArray,
-  toDoItemsArray,
   newCategoryArray,
   newToDoItem,
   editToDoInStorage,
