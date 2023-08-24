@@ -65,8 +65,25 @@ export function removeToDoFromCategory(removedItem) {
 
     if (confirmRemove) {
       toDoItems.splice(removedItem, 1);
-      localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
-      toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
+
+      let arrayCount = localStorage.length;
+      if (arrayCount) {
+        for (let i = 0; i < arrayCount; i++) {
+          let key = localStorage.key(i);
+          console.log(key);
+
+          if (key === "toDoItems") {
+            let updateArray = JSON.parse(localStorage.getItem("toDoItems"));
+
+            updateArray.splice(removedItem, 1);
+
+            localStorage.setItem("toDoItems", JSON.stringify(updateArray));
+            toDoItemsArray = JSON.parse(localStorage.getItem("toDoItems"));
+            console.log(toDoItemsArray);
+          }
+        }
+      }
+
       console.log(toDoItemsArray);
     }
   }
