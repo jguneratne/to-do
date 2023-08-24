@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do Application></title>
+    <link rel="stylesheet" type="text/css" href="../src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="heading">My To Do List</h1>
+        <button class="btn-ctrl show-form-btn" data-for-tab="category">
+          <img
+            src="../src/assets/imgs/plus-box.svg"
+            alt="Button to Add To-Do Item"
+          />
+        </button>
+      </div>
+
+      <div class="main">
+        <div class="side-nav">
+          <button class="btn-ctrl tab-btn cat-tab" data-for-tab="category">
+            Category View
+          </button>
+          <button
+            class="btn-ctrl tab-btn date-tab"
+            data-for-tab="due-date"
+            data-date-view="date"
+          >
+            Due Date View
+          </button>
+          <button
+            class="btn-ctrl tab-btn priority-tab"
+            data-for-tab="priority"
+            data-priority-view="priority"
+          >
+            Priority View
+          </button>
+          <button
+            class="btn-ctrl tab-btn completed-tab"
+            data-for-tab="completed-items"
+          >
+            Completed Tasks
+          </button>
+        </div>
+
+        <div class="forms-box">
+          <!-- Begin Selection Form -->
+          <div class="select-form-container" id="select-form-container">
+            <form class="select-form" id="select-form">
+              <h2 class="select-ask">What would you like to do?</h2>
+              <div class="select-btn-line">
+                <div class="btn">
+                  <button
+                    type="button"
+                    id="add-new-cat"
+                    value="add-new-cat"
+                    class="add-category"
+                  >
+                    Add Category
+                  </button>
+                </div>
+                <div class="btn">
+                  <button
+                    type="button"
+                    id="select-to-do"
+                    value="select-to-do"
+                    class="select-to-do-btn"
+                  >
+                    Add To Do
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- End Selection Form -->
+
+          <!-- Create Category Message -->
+          <div class="create-cat-warning-div" id="create-cat-warning">
+            <div class="create-cat-warning">
+              <h2 class="must-create-cat">
+                Add your first Category to start adding To Do items
+              </h2>
+              <div class="btn-line">
+                <button
+                  type="button"
+                  id="agree"
+                  value="agree"
+                  class="agree-btn"
+                >
+                  Ok!
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End Selection Form -->
+
+          <!-- Begin Category Form -->
+          <div class="cat-form-container" id="cat-form-container">
+            <form class="category-form" id="category-form">
+              <div class="category-line">
+                <label for="description">Category:</label>
+                <input
+                  type="text"
+                  id="category"
+                  class="category"
+                  name="category"
+                  required
+                />
+              </div>
+              <div class="cat-btn-line">
+                <button type="submit" id="add" value="add" class="add-category">
+                  Add
+                </button>
+                <button
+                  type="button"
+                  id="cancel-btn"
+                  value="cancel-btn"
+                  class="cancel-category"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- End Category Form -->
+
+          <!-- Form to Submit To Do Entries -->
+          <div class="form-div">
+            <form action="#" method="get" class="form">
+              <div class="req-msg">
+                <p>Required fields are marked with *</p>
+              </div>
+
+              <div class="form-line">
+                <label for="Category">Category:</label>
+                <div class="category-name"></div>
+              </div>
+
+              <div class="form-line">
+                <label for="title">* Title:</label>
+                <input
+                  type="text"
+                  id="title"
+                  class="title"
+                  name="toDoInfo"
+                  required
+                />
+              </div>
+              <div class="instruct">
+                <p class="title-msg"></p>
+              </div>
+
+              <div class="form-line">
+                <label for="task-priority">Priority Level:</label>
+                <select
+                  id="task-priority"
+                  class="task-priority"
+                  name="toDoInfo"
+                >
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+              <div class="instruct">
+                <p class="priority-msg"></p>
+              </div>
+
+              <div class="form-line">
+                <label for="description">Description:</label>
+                <textarea
+                  id="description"
+                  class="description"
+                  name="toDoInfo"
+                  cols="40"
+                  rows="10"
+                  wrap="hard"
+                ></textarea>
+              </div>
+              <div class="instruct">
+                <p class="description-msg"></p>
+              </div>
+
+              <div class="form-line">
+                <label for="due-date">* Due Date:</label>
+                <input
+                  type="datetime-local"
+                  id="due-date"
+                  class="due-date"
+                  name="toDoInfo"
+                  required
+                />
+              </div>
+              <div class="instruct">
+                <p class="due-date-msg"></p>
+              </div>
+
+              <div class="form-line hidden">
+                <label for="creation-date">* Creation Date:</label>
+                <input
+                  type="datetime-local"
+                  id="creation-date"
+                  class="creation-date"
+                  name="toDoInfo"
+                  required
+                />
+              </div>
+
+              <div class="btn-line">
+                <button
+                  type="button"
+                  id="add"
+                  value="add"
+                  class="add-to-do"
+                  data-form-add="form-add"
+                >
+                  Add
+                </button>
+
+                <button
+                  type="button"
+                  id="edit"
+                  value="edit"
+                  class="edit-to-do"
+                  data-form-edit="form-edit"
+                >
+                  Edit
+                </button>
+
+                <button
+                  type="button"
+                  id="cancel-btn"
+                  value="cancel-btn"
+                  class="cancel-to-do"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- End Form -->
+        </div>
+
+        <div class="content-box">
+          <div class="tab-content by-category cat-tab" data-tab="category">
+            <div class="cat-section">
+              <h2 class="add-cat-msg">
+                Create Your First Category To Start Adding To-Do Items!
+              </h2>
+            </div>
+          </div>
+
+          <div class="tab-content by-due-date" data-tab="due-date">
+            <div class="due-view-div">
+              <div class="due-task-header">
+                <h2 class="due-date-header headers">Due Date</h2>
+                <h2 class="due-title-header headers">Title</h2>
+                <h2 class="due-description-header headers">Description</h2>
+                <h2 class="due-priority-header headers">Priority</h2>
+                <h2 class="due-complete-header headers">Complete</h2>
+                <h2 class="due-delete-header headers">Delete</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content by-priority" data-tab="priority">
+            <div class="priority-view-div">
+              <div class="priority-task-header">
+                <h2 class="priority-priority-header headers">Priority</h2>
+                <h2 class="priority-title-header headers">Title</h2>
+                <h2 class="priority-description-header headers">Description</h2>
+                <h2 class="priority-date-header headers">Due Date</h2>
+                <h2 class="priority-complete-header headers">Complete</h2>
+                <h2 class="priority-delete-header headers">Delete</h2>
+              </div>
+            </div>
+
+            <div class="priority-tasks-row-parent">
+              <div class="priority-view-row">
+                <div class="grid-cells priority-view-priority">
+                  <div class="priority-color"></div>
+                </div>
+                <div class="grid-cells priority-view-title">Test</div>
+                <div class="grid-cells priority-view-description">Test</div>
+                <div class="grid-cells priority-view-due">
+                  Aug 17, 2023, 11:15 AM
+                </div>
+                <div class="grid-cells priority-view-complete">
+                  <label for="complete"></label>
+                  <input
+                    type="checkbox"
+                    id="complete"
+                    class="complete"
+                    name="complete"
+                    value="Complete:"
+                  />
+                </div>
+                <div class="grid-cells priority-view-delete">
+                  <img src="../src/assets/imgs/trash.svg" alt="Delete Entry" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content by-completed" data-tab="completed-items">
+            <div class="completed-view-div">
+              <div class="completed-task-header">
+                <h2 class="completed-completed-header headers">Completed</h2>
+                <h2 class="completed-title-header headers">Title</h2>
+                <h2 class="completed-description-header headers">
+                  Description
+                </h2>
+                <h2 class="completed-priority-header headers">Priority</h2>
+                <h2 class="completed-delete-header headers">Delete</h2>
+              </div>
+              <div class="completed-tasks-row-div"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p class="my-copyright">Jenn Guneratne © 2023</p>
+
+        <a
+          href="https://github.com/jguneratne/to-do"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="github-logo"
+            src="../src/assets/imgs/GitHub-Mark-32px.png"
+            alt="Octocat GitHub Logo"
+          />
+        </a>
+      </footer>
+    </div>
+  <script src="bundle.js"></script></body>
+</html>
