@@ -68,6 +68,8 @@ export function buildFromStorage() {
     displayToDoEntry();
     findPastDue();
     formatDatesCategory();
+    replaceCompletedRows();
+    showCompletedTasks();
   }
 }
 
