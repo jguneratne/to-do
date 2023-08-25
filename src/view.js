@@ -1,4 +1,6 @@
 import "./style.css";
+import deleteIconImg from "./assets/imgs/trash.svg";
+import editIconImg from "./assets/imgs/edit-button-svgrepo-com.svg";
 import { categoriesArray, toDoItemsArray } from "./model";
 import {
   addCategoryMsg,
@@ -106,7 +108,7 @@ export function createCategorySection() {
     deleteIconContainer.setAttribute("data-delete-cat-index", i);
 
     const deleteBtnImg = document.createElement("img");
-    deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+    deleteBtnImg.src = deleteIconImg;
     deleteBtnImg.setAttribute("data-delete-cat", `${categoriesArray[i]}`);
     deleteBtnImg.setAttribute("data-delete-cat-index", i);
     deleteBtnImg.setAttribute("focusable", true);
@@ -219,7 +221,7 @@ export function displayToDoEntry() {
       deleteIconDiv.className = "delete-icon";
 
       const deleteIcon = document.createElement("img");
-      deleteIcon.src = "../src/assets/imgs/trash.svg";
+      deleteIcon.src = deleteIconImg;
       deleteIcon.alt = "Delete Entry";
       deleteIcon.setAttribute("data-item-delete", i);
       deleteIcon.setAttribute("focusable", true);
@@ -241,7 +243,7 @@ export function displayToDoEntry() {
 
       const editIcon = document.createElement("img");
       editIcon.className = "edit-btn";
-      editIcon.src = "../src/assets/imgs/edit-button-svgrepo-com.svg";
+      editIcon.src = editIconImg;
       editIcon.alt = "Edit Entry";
       editIcon.setAttribute("data-edit", i);
       editIcon.setAttribute("data-edit-cat", toDoItemsArray[i].category);
@@ -341,7 +343,7 @@ export function showByDueDate() {
       dueDateDelete.className = "grid-cells .due-view-delete";
 
       const deleteBtnImg = document.createElement("img");
-      deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+      deleteBtnImg.src = deleteIconImg;
       deleteBtnImg.setAttribute("data-item-delete", i);
 
       dueDateTaskDiv.appendChild(dueDateTasksRowDiv);
@@ -431,7 +433,7 @@ export function showByPriority() {
       priorityDelete.className = "grid-cells .priority-view-delete";
 
       const deleteBtnImg = document.createElement("img");
-      deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+      deleteBtnImg.src = deleteIconImg;
       deleteBtnImg.setAttribute("data-item-delete", i);
 
       priorityTaskDiv.appendChild(priorityTasksRowDiv);
@@ -516,7 +518,7 @@ export function showCompletedTasks() {
       gridCellsDelete.className = "grid-cells .complete-view-delete";
 
       const deleteBtnImg = document.createElement("img");
-      deleteBtnImg.src = "../src/assets/imgs/trash.svg";
+      deleteBtnImg.src = deleteIconImg;
       deleteBtnImg.setAttribute("data-item-delete", i);
 
       completedTasksDiv.appendChild(completedTasksRowDiv);
