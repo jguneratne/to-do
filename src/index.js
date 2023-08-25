@@ -1,3 +1,4 @@
+import "./style.css";
 import tabControls from "./tabControl";
 import {
   buildFromStorage,
