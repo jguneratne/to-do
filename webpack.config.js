@@ -36,6 +36,9 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "assets/[name]-[hash][ext]",
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -47,7 +50,7 @@ module.exports = {
           {
             loader: "html-loader",
             options: {
-              root: path.resolve(__dirname, "src/assets"),
+              root: path.resolve(__dirname, "src"),
             },
           },
         ],

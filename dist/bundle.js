@@ -6108,7 +6108,7 @@ module.exports = __webpack_require__.p + "f7b40c9fef4315fd0d81.woff2";
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "3850e0ebedd15efb907f.svg";
+module.exports = __webpack_require__.p + "assets/edit-button-svgrepo-com-3850e0ebedd15efb907f.svg";
 
 /***/ }),
 
@@ -6118,7 +6118,7 @@ module.exports = __webpack_require__.p + "3850e0ebedd15efb907f.svg";
   \***********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "130e357021a89c46fad4.svg";
+module.exports = __webpack_require__.p + "assets/trash-130e357021a89c46fad4.svg";
 
 /***/ }),
 
