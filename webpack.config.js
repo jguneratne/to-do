@@ -22,7 +22,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "To Do Application",
       filename: "index.html",
-      template: "src/template.html",
+      template: "src/template.ejs",
       inject: "body",
       scriptLoading: ["module"],
     }),
