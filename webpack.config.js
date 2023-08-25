@@ -46,6 +46,9 @@ module.exports = {
         use: [
           {
             loader: "html-loader",
+            options: {
+              root: path.resolve(__dirname, "src/assets"),
+            },
           },
         ],
       },
