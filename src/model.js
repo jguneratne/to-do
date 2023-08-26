@@ -20,7 +20,7 @@ export function newCategoryArray() {
   const newCategory = categoryInput.value.trim();
 
   if (
-    categories.some(
+    categoriesArray.some(
       (category) => category.toLowerCase() === newCategory.toLowerCase()
     )
   ) {
