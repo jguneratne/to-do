@@ -466,13 +466,13 @@ button.select-to-do-btn:focus {
 }
 
 .cat-card .delete-icon > img:hover {
-  width: 2.2ch;
+  transform: scale(1.2);
   cursor: pointer;
 }
 
 .cat-card .delete-icon > img:focus {
   border: none;
-  width: 2.8ch;
+  transform: scale(1.2);
   padding: 0.5ch;
 }
 
@@ -563,15 +563,13 @@ input[type="checkbox"].complete:checked::before {
 }
 
 .to-do-entry .delete-icon > img:hover {
-  width: 2.2ch;
-  margin-top: 2.1ch;
+  transform: scale(1.2);
   cursor: pointer;
 }
 
 .cat-card .delete-icon > img:focus {
   border: none;
-  width: 2.8ch;
-  height: 3ch;
+  transform: scale(1.2);
   padding: 0.5ch;
 }
 
@@ -598,9 +596,15 @@ input[type="checkbox"].complete:checked::before {
   width: 2.2ch;
 }
 
+.to-do-entry .priority > img:hover {
+  border: none;
+  transform: scale(2.2);
+  padding: 0.5ch;
+}
+
 .to-do-entry .priority > img:focus {
   border: none;
-  width: 2.8ch;
+  transform: scale(1.2);
   padding: 0.5ch;
 }
 
@@ -751,7 +755,7 @@ input[type="checkbox"].complete:checked::before {
 }
 
 .grid-cells > img:hover {
-  width: 2.2ch;
+  transform: scale(1.2);
   cursor: pointer;
 }
 
